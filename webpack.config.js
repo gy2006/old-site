@@ -8,7 +8,11 @@ var config = require('./config');
 
 const webpackConfig = {
   entry: {
-    app: ['./src/main.js']
+    app: [
+      "webpack-dev-server/client?http://localhost:8080/",
+      "webpack/hot/dev-server",
+      './src/main.js'
+    ]
   },
   module: {
     loaders: []
@@ -23,10 +27,10 @@ const webpackConfig = {
   }
 };
 
+
 // ------------------------------------
 // Loaders
 // ------------------------------------
-
 webpackConfig.module.loaders.push({
   test: /\.jade$/,
   loader: 'jade',
@@ -50,10 +54,10 @@ webpackConfig.module.loaders.push({
   loader: ExtractTextPlugin.extract('style', 'css!sass')
 });
 
+
 // ------------------------------------
 // Plugins
 // ------------------------------------
-
 webpackConfig.plugins.push(new ExtractTextPlugin('main.css'));
 
 webpackConfig.plugins.push(new webpack.DefinePlugin(config.globals));

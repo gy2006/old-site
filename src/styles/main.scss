@@ -1,11 +1,8 @@
+@import '~normalize-css/normalize';
 @import 'bourbon';
-
-$c-blue: #5863F8;
 
 html,body{
   width: 100%;
-  background-color: $c-blue;
-  font-size: $double-octave;
 };
 
 #test{

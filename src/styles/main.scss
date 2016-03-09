@@ -1,0 +1,17 @@
+@import 'bourbon';
+
+$c-blue: #5863F8;
+
+html,body{
+  width: 100%;
+  background-color: $c-blue;
+  font-size: $double-octave;
+};
+
+#test{
+  @include animation-iteration-count(infinite);
+}
+
+#test1{
+  @include triangle(12px, gray, down);
+}

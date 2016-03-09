@@ -1,0 +1,6 @@
+{
+  "globals": {
+    "__TARGET__": "'target'",
+    "__API__": "'api'"
+  }
+}

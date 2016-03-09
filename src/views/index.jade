@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block title
+  title Article
+
+block content
+  - var items = [1, 2, 3]
+  - var props = require('../../config/index.json');
+  div.item
+    h4 这是读的 HtmlWebpackPlugin 中的配置
+    span #{htmlWebpackPlugin.options.template}
+    h4 这直接读的全局的配置
+    span #{__API__}
+    h4 这是读的 require 进来的文件中的数据
+    span #{props.globals.__TARGET__}

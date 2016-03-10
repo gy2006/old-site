@@ -5,6 +5,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var Bourbon = require('bourbon');
 var glob = require('glob');
 var config = require('./config');
+var nconf = require('nconf');
+nconf.file('./config/index.json');
 
 const webpackConfig = {
   entry: {
@@ -12,14 +14,15 @@ const webpackConfig = {
       "webpack-dev-server/client?http://localhost:8080/",
       "webpack/hot/dev-server",
       './src/main.js'
-    ]
+    ],
+    vendor: config.vendor
   },
   module: {
     loaders: []
   },
   output: {
     path: './dist',
-    filename: 'app.js'
+    filename: '[name].[hash].js'
   },
   plugins: [],
   sassLoader: {
@@ -60,7 +63,8 @@ webpackConfig.module.loaders.push({
 // ------------------------------------
 webpackConfig.plugins.push(new ExtractTextPlugin('main.css'));
 
-webpackConfig.plugins.push(new webpack.DefinePlugin(config.globals));
+nconf.env().argv();
+webpackConfig.plugins.push(new webpack.DefinePlugin(nconf.get(nconf.get('NODE_ENV'))));
 
 glob.sync('./src/views/**/*.jade').map(file => {
   webpackConfig.plugins.push(

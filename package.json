@@ -1,13 +1,17 @@
 {
   "name": "flow-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "Flow.ci Site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development webpack-dev-server --hot --inline --content-base dist/",
     "compile": "npm run clean && webpack",
     "clean": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FIRHQ/flow-site.git"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +26,7 @@
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
     "json-loader": "^0.5.4",
+    "nconf": "^0.8.4",
     "node-sass": "^3.4.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
@@ -30,6 +35,7 @@
   },
   "dependencies": {
     "bourbon": "^4.2.6",
-    "normalize-css": "^2.3.1"
+    "normalize-css": "^2.3.1",
+    "jquery": "^2.2.1"
   }
 }

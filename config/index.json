@@ -2,5 +2,15 @@
   "globals": {
     "__TARGET__": "'target'",
     "__API__": "'api'"
+  },
+  "vendor": [],
+  "NODE_ENV": "development",
+  "development": {
+    "__API__": "'development api'",
+    "__TARGET__": "'development target'"
+  },
+  "production": {
+    "__API__": "'production api'",
+    "__TARGET__": "'production target'"
   }
 }

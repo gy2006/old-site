@@ -17,7 +17,7 @@ const handleSignIn = (event) => {
   $.post(SIGNIN_URL, data)
     .done(resp => {
       const accessToken = resp.access_token;
-      document.cookie = `${COOKIE_KEY}=${accessToken}; domain=${COOKIE_DOMAIN}.flow.ci; max-age=${COOKIE_MAXAGE}`;
+      document.cookie = `${COOKIE_KEY}=${accessToken}; domain=${COOKIE_DOMAIN}.flow.ci; path='/'; max-age=${COOKIE_MAXAGE}`;
       // window.location = __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__;
       window.location = `${__DASHBOARD_URL__}?access_token=${accessToken}`;
     })

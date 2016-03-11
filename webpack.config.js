@@ -4,15 +4,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var glob = require('glob');
 var Bourbon = require('bourbon');
-var nconf = require('nconf');
 var config = require('./config');
-nconf.file('./config/index.json');
+
+var nconf = require('nconf');
+nconf.env().argv();
 
 const webpackConfig = {
   entry: {
     app: [
-      "webpack-dev-server/client?http://localhost:8080/",
-      "webpack/hot/dev-server",
       './src/main.js'
     ],
     vendor: config.vendor
@@ -30,6 +29,12 @@ const webpackConfig = {
   }
 };
 
+if (nconf.get('TARGET') === 'local') {
+  webpackConfig.entry.app = [
+    "webpack-dev-server/client?http://localhost:8080/",
+    "webpack/hot/dev-server"
+  ].concat(webpackConfig.entry.app);
+}
 
 // ------------------------------------
 // Loaders
@@ -62,7 +67,7 @@ webpackConfig.module.loaders.push({
 // ------------------------------------
 webpackConfig.plugins.push(new ExtractTextPlugin('main.css'));
 
-nconf.env().argv();
+
 webpackConfig.plugins.push(new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local'));
 
 glob.sync('./src/views/**/*.jade').map(file => {

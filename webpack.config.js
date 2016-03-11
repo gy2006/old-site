@@ -2,10 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var Bourbon = require('bourbon');
 var glob = require('glob');
-var config = require('./config');
+var Bourbon = require('bourbon');
 var nconf = require('nconf');
+var config = require('./config');
 nconf.file('./config/index.json');
 
 const webpackConfig = {
@@ -57,14 +57,13 @@ webpackConfig.module.loaders.push({
   loader: ExtractTextPlugin.extract('style', 'css!sass')
 });
 
-
 // ------------------------------------
 // Plugins
 // ------------------------------------
 webpackConfig.plugins.push(new ExtractTextPlugin('main.css'));
 
 nconf.env().argv();
-webpackConfig.plugins.push(new webpack.DefinePlugin(nconf.get(nconf.get('NODE_ENV'))));
+webpackConfig.plugins.push(new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local'));
 
 glob.sync('./src/views/**/*.jade').map(file => {
   webpackConfig.plugins.push(
@@ -74,7 +73,7 @@ glob.sync('./src/views/**/*.jade').map(file => {
       inject: 'body'
     })
   );
-})
+});
 
 module.exports = webpackConfig;
 

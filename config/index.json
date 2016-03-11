@@ -1,16 +1,22 @@
 {
-  "globals": {
-    "__TARGET__": "'target'",
-    "__API__": "'api'"
-  },
+  "globals": {},
   "vendor": [],
-  "NODE_ENV": "development",
-  "development": {
-    "__API__": "'development api'",
-    "__TARGET__": "'development target'"
+  "local": {
+    "__TARGET__" : "'local'",
+    "NODE_ENV": "'development'",
+    "__API__": "'//api-lyon.flow.ci'",
+    "__DASHBOARD_URL__": "'//localhost:3000'"
+  },
+  "lyon": {
+    "__TARGET__" : "'lyon'",
+    "NODE_ENV": "'production'",
+    "__API__": "'//api-lyon.flow.ci'",
+    "__DASHBOARD_URL__": "'//lyon.flow.ci'"
   },
   "production": {
-    "__API__": "'production api'",
-    "__TARGET__": "'production target'"
+    "__TARGET__" : "'production'",
+    "NODE_ENV": "'production'",
+    "__API__": "'//api.flow.ci'",
+    "__DASHBOARD_URL__": "'//dashboard.flow.ci'"
   }
 }

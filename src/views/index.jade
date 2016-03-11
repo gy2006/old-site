@@ -1,8 +1,5 @@
 extends ../layouts/default
 
-block title
-  title Article
-
 block content
   - var items = [1, 2, 3]
   - var props = require('../../config/index.json');
@@ -13,3 +10,6 @@ block content
     span #{__API__}
     h4 这是读的 require 进来的文件中的数据
     span #{props.globals.__TARGET__}
+
+    a(href='/signin.html') Sign In
+    a(href='/signup.html') Sign Up

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack-dev-server --hot --inline --content-base dist/",
+    "start": "TARGET=local webpack-dev-server --hot --inline --content-base dist/",
     "compile": "npm run clean && webpack",
     "clean": "rm -rf dist"
   },
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "bourbon": "^4.2.6",
-    "normalize-css": "^2.3.1",
-    "jquery": "^2.2.1"
+    "jquery": "^2.2.1",
+    "normalize-css": "^2.3.1"
   }
 }

@@ -1,15 +1,14 @@
 extends ../layouts/default
 
 block content
-  - var items = [1, 2, 3]
   - var props = require('../../config/index.json');
   div.item
-    h4 这是读的 HtmlWebpackPlugin 中的配置
-    span #{htmlWebpackPlugin.options.template}
-    h4 这直接读的全局的配置
-    span #{__API__}
-    h4 这是读的 require 进来的文件中的数据
-    span #{props.globals.__TARGET__}
-
-    a(href='/signin.html') Sign In
-    a(href='/signup.html') Sign Up
+    h1 Flow.ci
+    h3 Slogan: This slogan came up in a barbecue
+    h3 Frontend: Here it is
+    h3 Backend: You can't see me
+    h3 Design: On the way
+    h3 Now: &nbsp;
+      a(href='/signin.html') Sign In
+    h3 or: &nbsp;
+      a(href='/signup.html') Sign Up

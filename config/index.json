@@ -11,7 +11,7 @@
     "__TARGET__" : "'lyon'",
     "NODE_ENV": "'production'",
     "__API__": "'//api-lyon.flow.ci'",
-    "__DASHBOARD_URL__": "'//lyon.flow.ci'"
+    "__DASHBOARD_URL__": "'//dashboard.lyon.flow.ci'"
   },
   "production": {
     "__TARGET__" : "'production'",

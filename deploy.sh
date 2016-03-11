@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+# VARS
+DEPLOY_TIME=`date +%Y%m%d%H%M%S`
+REMOTE_DIR="/var/www/flow-site"
+DEPLOY_DIR="${REMOTE_DIR}/${DEPLOY_TIME}"
+LATEST_DIR="${REMOTE_DIR}/latest"
+
+TARGET=$1
+PORT=22
+echo "########## Deploy to ${TARGET} ##########"
+
+# BUILD & Choose server
+if [ ! -z ${TARGET} ]; then
+  TARGET=${TARGET} npm run compile
+  USER=fir
+
+  if [ "${TARGET}" == "local" ]; then
+    # 从内部部署lyon
+    HOST="192.168.1.249"
+  elif [ "${TARGET}" == "lyon" ]; then
+    # 从外部部署lyon
+    HOST='223.223.195.73'
+    PORT=8022
+  fi;
+  # FIXME: other target should support here
+else
+  TARGET=production npm run compile
+  USER=ubuntu
+  HOST="10.0.0.136"
+fi;
+
+echo "########## Build success ##########"
+
+# DEPLOY
+ssh ${USER}@${HOST} -p ${PORT} "mkdir -p ${DEPLOY_DIR}"
+scp -P ${PORT}  -r ./dist/* ${USER}@${HOST}:${DEPLOY_DIR}
+
+ssh ${USER}@${HOST} -p ${PORT}  <<EOF
+if [ -d ${LATEST_DIR} ]; then
+   rm -rf ${LATEST_DIR}
+fi
+ln -s ${DEPLOY_DIR} ${LATEST_DIR}
+ls ${REMOTE_DIR} | grep "^[0-9]\{1,\}$" | sort -r | sed -n '6,\$p' | awk '{cmd="rm -rf ${REMOTE_DIR}/"\$1; system(cmd)}'
+exit
+EOF
+echo "########## Deploy success ##########"
+exit 0

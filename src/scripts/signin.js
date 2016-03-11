@@ -18,7 +18,8 @@ const handleSignIn = (event) => {
     .done(resp => {
       const accessToken = resp.access_token;
       document.cookie = `${COOKIE_KEY}=${accessToken}; domain=${COOKIE_DOMAIN}.flow.ci; max-age=${COOKIE_MAXAGE}`;
-      window.location = __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__;
+      // window.location = __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__;
+      window.location = `${__DASHBOARD_URL__}?access_token=${accessToken}`;
     })
     .fail(error => {
       alert(Errors[error.responseJSON.code]);

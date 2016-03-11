@@ -1,0 +1,17 @@
+@import '~normalize-css/normalize';
+@import 'bourbon';
+@import 'colors';
+@import 'base';
+@import 'signin';
+
+html,body{
+  width: 100%;
+};
+
+#test{
+  @include animation-iteration-count(infinite);
+}
+
+#test1{
+  @include triangle(12px, gray, down);
+}

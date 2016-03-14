@@ -98,9 +98,11 @@ function injectQuery () {
     return;
   }
   const params = getSearch();
-  for(var prop in params) {
-    let value = params[prop];
-    $(`#${prop}`).val(value);
+  if (params.sign) {
+    $(`#${SIGN}`).val(params.sign);
+  }
+  if (params.email) {
+    $(`#${EMAIL}`).val(params.email);
   }
   $('#form-signup').submit(handlerSubmit);
 }

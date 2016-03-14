@@ -3,7 +3,7 @@ extends ../layouts/users
 block content
   h1 Flow.ci
   form#form-signup
-    input#sign(type='hidden')
+    input#sign(type='text', placeholder='Sign')
     input#email(placeholder='Email',type='email' required)
     input#username(placeholder='Username')
     input#password(placeholder='Password', type='password')

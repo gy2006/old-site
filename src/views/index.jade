@@ -1,14 +1,9 @@
 extends ../layouts/default
 
 block content
+  #particles-js
   - var props = require('../../config/index.json');
+  .position-wrapper
+    h1#logo flow.ci
+    p.slogan Flow your code, Free your work
   div.item
-    h1 Flow.ci
-    h3 Slogan: This slogan came up in a barbecue
-    h3 Frontend: Here it is
-    h3 Backend: You can't see me
-    h3 Design: On the way
-    h3 Now: &nbsp;
-      a(href='/signin.html') Sign In
-    h3 or: &nbsp;
-      a(href='/signup.html') Sign Up

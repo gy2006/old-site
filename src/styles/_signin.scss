@@ -1,19 +1,5 @@
 @charset 'UTF-8';
 
-html, body{
-  min-height: 100vh;
-}
-
-body{
-  background-color: $body-bg;
-  color: $c-font-sec;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-}
-
 #form-signin{
   width: 320px;
   display: flex;

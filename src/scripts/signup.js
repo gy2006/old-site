@@ -104,6 +104,10 @@ function getSearch () {
 }
 
 function injectQuery () {
+  if (!$('#form-signup').length) {
+    // not signup
+    return;
+  }
   const params = getSearch();
   for(var prop in params) {
     let value = params[prop];

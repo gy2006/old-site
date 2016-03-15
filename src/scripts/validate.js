@@ -23,10 +23,10 @@ export default function validate (type, value, require, element) {
     const max = $element.attr('maxlength');
     const min = $element.attr('minlength');
     if (max && !maxLength(value, max)){
-      error[name] = `Invalid, length max lt ${max}`;
+      error = `Invalid, length must lt ${max}`;
     }
     if (min && !minLength(value, min)) {
-      error[name] = `Invalid, length max lg ${min}`;
+      error = `Invalid, length must lg ${min}`;
     }
   }
   if (error)

@@ -3,8 +3,8 @@ extends ../layouts/users
 block content
   h1 Flow.ci
   form#form-signup
-    input#sign(type='text', placeholder='Sign')
-    input#email(placeholder='Email',type='email' required)
-    input#username(placeholder='Username')
-    input#password(placeholder='Password', type='password')
+    input#sign(type='text', name='sign', placeholder='Sign' required)
+    input#email(placeholder='Email', name='email' type='email', required)
+    input#username(placeholder='Username', name='username' required, minlength='3')
+    input#password(placeholder='Password', name='password', type='password', minlength='6')
     input(type='submit', value='Sign Up')

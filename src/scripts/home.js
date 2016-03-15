@@ -1,4 +1,8 @@
-particlesJS('particles-js', {
+import form from './form';
+import $ from 'jquery';
+import mixpanel from 'mixpanel-browser';
+import { EMAIL_REG, USERNAME_REG } from './constant';
+window.particlesJS && particlesJS('particles-js', {
   "particles": {
     "number": {
       "value": 100,
@@ -111,4 +115,24 @@ particlesJS('particles-js', {
   console.log('callback - particles.js config loaded');
 });
 
+mixpanel.init(__MIXPANEL_TOKEN__);
+
+
+function handlerSubmit (e) {
+  e.preventDefault();
+  const $form = form(this);
+  if (!$form.isValid()) {
+    const error = $form.getError();
+    console.error(error);
+    return;
+  }
+  const field = $form.getField();
+  field['user_infomation'] = $('#user_infomation').val();
+  mixpanel.track('apply for ci', field);
+  alert('Success to apply ci');
+  $form[0] && $form[0].reset();
+}
+$(function () {
+  $("#apply-form").submit(handlerSubmit)
+});
 export default {};

@@ -1,50 +1,12 @@
 import $ from 'jquery';
 import saveAccessToken from './saveAccessToken';
 import Errors from './errors';
-
-const EMAIL_REG = /^[a-zA-Z0-9_+.-]+\@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,6}/i;
-const USERNAME_REG = /^[0-9a-zA-Z]{3,15}$/;
+import form from './form';
 
 const USERNAME = 'username';
 const EMAIL = 'email';
 const SIGN = 'sign';
 const PASSWORD = 'password';
-
-function validate (field) {
-  const { email, sign, username, password } = field;
-  const errors = {}
-
-  if (!email) {
-    errors.email = 'Required';
-  } else if (!EMAIL_REG.test(email)) {
-    errors.email = 'Invalid';
-  }
-
-  if(!sign) {
-    errors.sign = 'Required';
-  }
-
-  if (!username) {
-    errors.username = 'Required';
-  } else if (!USERNAME_REG.test(username)) {
-    errors.username = 'Invalid, length >= 3';
-  }
-  if (!password) {
-    errors.password = 'Required';
-  } else if (password.length < 6) {
-    errors.password = '6 characters minimum';
-  }
-  return errors;
-}
-
-function isEmptyObject (obj) {
-  let isEmpty = true;
-  for (let v in obj) {
-    isEmpty = false;
-    break;
-  }
-  return isEmpty;
-}
 
 function createUser (field) {
   $.post({
@@ -62,22 +24,14 @@ function createUser (field) {
 
 function handlerSubmit (event) {
   event.preventDefault();
-  const field = [USERNAME, EMAIL, SIGN, PASSWORD].reduce(function(obj, name) {
-    let value = $(`#${name}`).val();
-    if (value){
-      obj[name] = value
-    }
-    return obj;
-  }, {} );
-  const errors = validate(field);
-  if (!isEmptyObject(errors)) {
-    // maybe pend error message
-    console.log('field error', errors);
-    return false;
+  const $form = form(this);
+  if (!$form.isValid()) {
+    const error = $form.getError();
+    console.error(error);
+    return;
   }
-
+  const field = $form.getField();
   return createUser(field);
-
 }
 
 function getSearch () {

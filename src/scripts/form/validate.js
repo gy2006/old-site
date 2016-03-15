@@ -1,4 +1,5 @@
-import { EMAIL_REG, USERNAME_REG } from './constant';
+import { EMAIL_REG, USERNAME_REG } from '../constant';
+import $ from 'jquery';
 
 export function isEmail (value) {
   return EMAIL_REG.test(value);

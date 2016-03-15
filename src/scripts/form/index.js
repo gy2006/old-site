@@ -1,7 +1,6 @@
 import validate from './validate';
 import $ from 'jquery';
 
-window.$ = $;
 function getInputField (formElement) {
   const field = {};
   const error = {};

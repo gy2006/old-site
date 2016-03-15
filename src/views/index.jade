@@ -6,4 +6,7 @@ block content
   .position-wrapper
     h1#logo flow.ci
     p.slogan Flow your code, Free your work
-  div.item
+  form#apply-form
+    input#email(type='email', placeholder='Email', required)
+    textarea#user_infomation(placeholder='Something about your')
+    input(type='submit' value='申请')

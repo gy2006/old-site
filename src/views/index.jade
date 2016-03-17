@@ -1,12 +1,66 @@
 extends ../layouts/default
 
 block content
-  #particles-js
-  - var props = require('../../config/index.json');
-  .position-wrapper
-    h1#logo flow.ci
-    p.slogan Flow your code, Free your work
-  form#apply-form
-    input#email(type='email', placeholder='Email', required)
-    textarea#user_infomation(placeholder='Something about your')
-    input(type='submit' value='申请')
+  .gradient-banner
+    .slogan
+      h1 How much time do you waste when build your CI?
+      p.subtitle Just give me a song of the time
+
+    .form-container
+      form#apply-form
+        input#email(type='email', placeholder='Email', required)
+        textarea#user_infomation(placeholder='Something about your')
+        input(type='submit' value='申请')
+
+  //- .sec.sec-highlights
+  //-   h2 Fully customizable Flow
+  //-   p.sub Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  //-   .flows
+  //-     div
+  //-       .lang-name Develop
+  //-       .lang-flow
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-     div
+  //-       .lang-name Test
+  //-       .lang-flow
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-     div
+  //-       .lang-name Build
+  //-       .lang-flow
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-     div
+  //-       .lang-name Hehehe
+  //-       .lang-flow
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-     div
+  //-       .lang-name Android
+  //-       .lang-flow
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+  //-         .step
+
+
+
+  //- .sec.sec-languages
+  //-   h2 Languages We Supported
+
+  //- .sec.sec-plugins
+  //-   h2 Lots of Plugins

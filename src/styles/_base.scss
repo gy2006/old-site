@@ -1,6 +1,12 @@
 @charset 'UTF-8';
 
-a{
-  color: #fff;
-  text-decoration: none;
+.hidden{
+  display: none;
+}
+
+input, button, textarea{
+  outline: none;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 3px;
 }

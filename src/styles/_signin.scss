@@ -7,13 +7,6 @@
   input{ margin-bottom: 8px; }
 }
 
-input, button{
-  outline: none;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 3px;
-}
-
 input[type='submit']{
   background-color: $c-blue;
   color: $c-font;

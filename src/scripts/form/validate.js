@@ -5,7 +5,7 @@ export function isEmail (value) {
   return EMAIL_REG.test(value);
 }
 
-export function isNormalText (value) {
+export function isUserName (value) {
   return USERNAME_REG.test(value);
 }
 export function maxLength (value, max) {
@@ -37,11 +37,11 @@ export default function validate (type, value, require, element) {
     case 'email':
       !isEmail(value) && (error = 'Invalid');
       break;
-    case 'text':
-      !isNormalText(value) && (error = 'Invalid');
+    case 'username':
+      !isUserName(value) && (error = 'Invalid');
       break;
     default:
-      console.warn('empty validate:', type);
+      // console.warn('empty validate:', type);
       break;
   }
 

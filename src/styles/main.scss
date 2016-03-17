@@ -1,17 +1,59 @@
 @import '~normalize-css/normalize';
 @import 'bourbon';
 @import 'colors';
+@import 'fonts';
 @import 'base';
+@import 'home';
 @import 'signin';
+@import 'signup';
 
-html,body{
+html, body{
   width: 100%;
-};
-
-#test{
-  @include animation-iteration-count(infinite);
+  min-height: 100vh;
 }
 
-#test1{
-  @include triangle(12px, gray, down);
+body{
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.navbar{
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  ul{
+    margin: 40px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    li{
+    }
+  }
+
+  a {
+    padding: 8px 18px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+.navbar-left{
+  padding-top: 40px;
+  margin-left: 40px;
+  .logo{
+    margin: 0;
+    font-weight: 100;
+    font-size: 20px;
+    background-color: #fff;
+    font-family: 'Campton-SemiBold';
+    a{
+      display: block;
+      padding: 8px 18px 2px;
+      color: #7580d9;
+    }
+  }
+}
+.navbar-right{
+  margin-right: 28px;
+  right: 0;
+  ul li a{ padding: 8px; }
 }

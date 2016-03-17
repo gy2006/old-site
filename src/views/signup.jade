@@ -1,9 +1,11 @@
-extends ../layouts/users
+extends ../layouts/default
 
 block content
-  h1 Flow.ci
-  form#form-signin
-    input(placeholder='Email')
-    input(placeholder='Username')
-    input(placeholder='Password')
-    button Sign Up
+  .gradient-banner.form
+    form#form-signup
+      h1 Flow.ci
+      input#email(placeholder='邮箱', name='email' type='email', required)
+      input#username(placeholder='用户名', name='username' required, minlength='3')
+      input#password(placeholder='密码', name='password', type='password', minlength='6')
+      input#sign(type='text', name='sign', placeholder='邀请码' required)
+      input(type='submit', value='Sign Up')

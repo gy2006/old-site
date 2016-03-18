@@ -40,7 +40,7 @@ function getSearch () {
   const reg = /([\w\d]+)\=([^&]*)/g;
   let maxLoop = 10;
   while(reg.test(search) && maxLoop > 0) {
-    params[RegExp.$1] = RegExp.$2;
+    params[RegExp.$1] = decodeURIComponent(RegExp.$2);
     maxLoop--;
   }
   return params;

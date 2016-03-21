@@ -1,0 +1,31 @@
+@import 'bourbon';
+
+#apply-form, #signin-form, #signup-form{
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+
+  legend{
+    margin-bottom: 20px;
+    font-weight: 100;
+    font-size: 20px;
+  }
+
+  input, textarea{
+    margin-bottom: 8px;
+    border-color: $col-primary;
+    @include placeholder {
+      color: rgba($col-primary, .5);
+    }
+  }
+
+  input[type='submit']{
+    background-color: $col-font-gray;
+    background-color: $col-primary;
+    color: #fff;
+  }
+
+  textarea{
+    height: 80px;
+  }
+}

@@ -75,7 +75,7 @@ webpackConfig.module.loaders.push(
 // ------------------------------------
 // Plugins
 // ------------------------------------
-webpackConfig.plugins.push(new ExtractTextPlugin('main.css'));
+webpackConfig.plugins.push(new ExtractTextPlugin('main.[contenthash].css'));
 
 
 webpackConfig.plugins.push(new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local'));

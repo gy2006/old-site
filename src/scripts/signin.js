@@ -5,10 +5,10 @@ import form from './form';
 
 const SIGNIN_URL = `${__API__}/login`;
 
-function handleSignIn (event) {
+const handleSignIn = (event) => {
   event.preventDefault();
 
-  const $form = form(this);
+  const $form = form($('#signin-form')[0]);
 
   if (!$form.isValid()) {
     const error = $form.getError();
@@ -26,8 +26,12 @@ function handleSignIn (event) {
       alert(Errors[error.responseJSON.code]);
     });
 };
+
 $(function(){
-  $('#form-signin').submit(handleSignIn);
-})
+  if (/^\/signin(\.html)?/.test(location.pathname)) {
+    $('body').addClass('page-signin');
+    $('#signin-form').submit(handleSignIn);
+  }
+});
 
 export default {};

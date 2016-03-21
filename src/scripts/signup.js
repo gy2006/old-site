@@ -24,7 +24,7 @@ function createUser (field) {
 
 function handlerSubmit (event) {
   event.preventDefault();
-  const $form = form(this);
+  const $form = form($('#signup-form')[0]);
   if (!$form.isValid()) {
     const error = $form.getError();
     console.error(error);
@@ -47,18 +47,20 @@ function getSearch () {
 }
 
 function injectQuery () {
-  if (!$('#form-signup').length) {
-    // not signup
-    return;
+  if (/^\/signup(\.html)?/.test(location.pathname)) {
+    $('body').addClass('page-signup');
+
+    const params = getSearch();
+    if (params.sign) {
+      $(`#${SIGN}`).val(params.sign);
+    }
+    if (params.email) {
+      $(`#${EMAIL}`).val(params.email);
+    }
+    $('#signup-form').submit(handlerSubmit);
   }
-  const params = getSearch();
-  if (params.sign) {
-    $(`#${SIGN}`).val(params.sign);
-  }
-  if (params.email) {
-    $(`#${EMAIL}`).val(params.email);
-  }
-  $('#form-signup').submit(handlerSubmit);
 }
+
 $(injectQuery);
+
 export default {};

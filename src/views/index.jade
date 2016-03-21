@@ -1,66 +1,15 @@
 extends ../layouts/default
 
 block content
-  .gradient-banner
+  .page-container.page-home
+    //- .right-block
     .slogan
-      h1 How much time do you waste when build your CI?
-      p.subtitle Just give me a song of the time
+      h1 How much time do you waste on building CI?
+      p.subtitle Just give me the time of a song.
 
     .form-container
       form#apply-form
-        input#email(type='email', placeholder='Email', required)
-        textarea#user_infomation(placeholder='Something about your')
-        input(type='submit' value='申请')
-
-  //- .sec.sec-highlights
-  //-   h2 Fully customizable Flow
-  //-   p.sub Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  //-   .flows
-  //-     div
-  //-       .lang-name Develop
-  //-       .lang-flow
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-     div
-  //-       .lang-name Test
-  //-       .lang-flow
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-     div
-  //-       .lang-name Build
-  //-       .lang-flow
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-     div
-  //-       .lang-name Hehehe
-  //-       .lang-flow
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-     div
-  //-       .lang-name Android
-  //-       .lang-flow
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-  //-         .step
-
-
-
-  //- .sec.sec-languages
-  //-   h2 Languages We Supported
-
-  //- .sec.sec-plugins
-  //-   h2 Lots of Plugins
+        legend Apply Early Access
+        input#email(type='email', placeholder='Work email', required)
+        textarea#user_infomation(placeholder='Options\n 1. 开发团队规模\n 2. 是否用过 CI\n 3. 公司或者产品名')
+        input(type='submit' value='Early Access')

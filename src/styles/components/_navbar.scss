@@ -1,0 +1,89 @@
+@import 'bourbon';
+
+.float-navbar{
+  position: fixed;
+  z-index: 999;
+  top: 40px;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 8px 20px -6px rgba(0,0,0,.2), 0 -1px 10px 0px rgba(0,0,0,.05);
+  display: flex;
+
+  .nav-card{
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .card-hover{ cursor: pointer; }
+}
+
+.nav-right{
+  right: 40px;
+  background-color: #ECEEF1;
+  .slash-split{
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-card{
+    position: relative;
+    background-color: #FFF;
+  }
+  .nav-card:first-child{
+    margin-right: 6.5px;
+    &:after{
+      position: absolute;
+      z-index: 4;
+      content: ' ';
+      right: -12px;
+      @include triangle(12px 60px, white, up-left);
+    }
+  }
+  .nav-card:last-child{
+    margin-left: 6.5px;
+    &:before{
+      position: absolute;
+      z-index: 4;
+      content: ' ';
+      left: -12px;
+      @include triangle(12px 60px, white, down-right);
+    }
+  }
+}
+
+.nav-main{
+  left: 40px;
+  .nav-logo{
+    width: 100px;
+    background-color: $col-primary;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: 10px 6px 27px -4px rgba(0,36,100,.3);
+  }
+}
+
+body.page-signin{
+  .nav-right{ background-color: transparent; }
+  .nav-right .nav-card:first-child{
+    background-color: $col-primary;
+    a{ color: #FFF; }
+    &:after{
+      @include triangle(12px 60px, $col-primary, up-left);
+    }
+  }
+}
+
+body.page-signup{
+  .nav-right{ background-color: transparent; }
+  .nav-right .nav-card:last-child{
+    background-color: $col-primary;
+    a{ color: #FFF; }
+    &:before{
+      @include triangle(12px 60px, $col-primary, down-right);
+    }
+  }
+}

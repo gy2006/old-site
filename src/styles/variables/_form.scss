@@ -1,0 +1,24 @@
+input:not([type='submit']), textarea{
+  outline: none;
+  border: 1px solid $col-font-gray;
+  padding: 8px 12px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+}
+
+textarea{
+  padding: 12px;
+  resize: vertical;
+}
+
+button, input[type='submit']{
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  background-color: $col-font-gray;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+}

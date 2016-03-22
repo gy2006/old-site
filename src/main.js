@@ -50,15 +50,14 @@ function bootstrap () {
   let user;
   if (token) {
     user = getUser(token);
+    user.done(redirectToFlow(token));
   }
 
   if (/^\/signup(\.html)?/.test(path)) {
     // signup
-    user && user.done(redirectToFlow(token));
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
     // signin
-    user && user.done(redirectToFlow(token));
     signin();
   } else {
     // home

@@ -10,16 +10,23 @@ export default function createUser (user, isInvited) {
     url: SIGNUP_URL,
     data: user
   }).done(function (resp) {
-
-    analysis.track('Signup', {
-      distinct_id: user.email,
-      Invited: isInvited ? 'YES' : 'NO'
-    });
-
     const accessToken = resp.access_token;
     saveAccessToken(accessToken);
-    redirect(accessToken);
-    // redirect to dashboard;
+
+    analysis.identify(user.email);
+    analysis.people.set({
+      '$first_name': user.username,
+      '$created': new Date(),
+      '$email': user.email,
+      'buildtimes': 0
+    });
+    analysis.track('Sign up', {
+      distinct_id: user.email,
+      Invited: isInvited ? 'YES' : 'NO'
+    }, function () {
+      redirect(accessToken);
+      // console.log('redirect');
+    });
   }).fail(function (e) {
     const error = e.responseJSON;
     if (typeof error.errors === 'string') {

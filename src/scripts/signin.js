@@ -5,7 +5,7 @@ import signin from './actions/signin';
 function bindSubmit(form) {
   function handlerSubmit (e) {
     e.preventDefault();
-    console.log('enter home submit', form.getValues());
+    // console.log('enter home submit', form.getValues());
     signin(form.getValues());
   }
   form.$form.submit(handlerSubmit);
@@ -25,7 +25,7 @@ function initValidate () {
 
 export default function bootstrap() {
   $('body').addClass('page-signin');
-  console.log('bootstrap signin');
+  // console.log('bootstrap signin');
   const form = initValidate()
   bindSubmit(form);
 }

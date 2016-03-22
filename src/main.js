@@ -38,8 +38,8 @@ FormErrorHandler.setRulesMap({
 
 function redirectToFlow (token) {
   return function (){
-    console.log('redirect to flow');
-    // redirect(token);
+    // console.log('redirect to flow');
+    redirect(token);
   }
 }
 

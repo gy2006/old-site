@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+
+.page-signup{
+  .form-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#signup-form{
+  legend{ color: $col-green; }
+  input, textarea{
+    border-color: $col-green;
+    @include placeholder{ color: rgba($col-green, .5); }
+  }
+  input[type='submit']{ background-color: $col-green; }
+}

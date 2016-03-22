@@ -1,0 +1,21 @@
+@charset 'UTF-8';
+
+.page-signin{
+  .form-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#signin-form{
+  legend{ color: $col-primary; }
+  .form-control{
+    display: flex;
+    flex-direction: column;
+  }
+  // input, textarea{
+  //   border-color: $col-green;
+  //   @include placeholder{ color: rgba($col-green, .5); }
+  // }
+  // input[type='submit']{ background-color: $col-green; }
+}

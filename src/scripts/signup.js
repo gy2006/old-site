@@ -18,7 +18,7 @@ function bindSubmit(form) {
 }
 
 function initValidate () {
-  return new FormValidate("#form-signup", [{
+  return new FormValidate("#signup-form", [{
     name: 'email',
     rules: 'required|email'
   }, {
@@ -48,6 +48,7 @@ function injectSeach () {
   }
 }
 export default function bootstrap () {
+  $('body').addClass('page-signup');
   console.log('bootstrap signup');
   injectSeach();
   const form = initValidate()

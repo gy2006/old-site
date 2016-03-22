@@ -1,10 +1,14 @@
-nav.navbar.navbar-left
-  h1.logo
-    a(href='/') flow.ci
+.float-navbar.nav-main
+  .nav-card.nav-logo
+    a(href='/')
+      img(src=require('../static/images/logo-inline-white.svg'))
 
-nav.navbar.navbar-right
-  ul
-    li
-      a(href='/signin.html') 登录
-    li
-      a(href='/signup.html') 注册
+
+.float-navbar.nav-right.nav-menus
+  //- .slash-split
+  //-   svg(width='12' height='60')
+  //-     line(x1='12' y1='0' x2='0' y2='60' stroke='#8D9094' stroke-width='1')
+  .nav-card.nav-signin
+    a(href='/signin.html') Sign In
+  .nav-card.nav-signup
+    a(href='/signup.html') Sign Up

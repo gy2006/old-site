@@ -12,7 +12,7 @@ function bindSubmit(form) {
 }
 
 function initValidate () {
-  return new FormValidate("#form-signin", [{
+  return new FormValidate("#signin-form", [{
     name: 'login',
     rules: 'required|loginname',
     errorElement: '#form-signin .form-loginname .text-danger'
@@ -23,8 +23,8 @@ function initValidate () {
   }]);
 }
 
-
 export default function bootstrap() {
+  $('body').addClass('page-signin');
   console.log('bootstrap signin');
   const form = initValidate()
   bindSubmit(form);

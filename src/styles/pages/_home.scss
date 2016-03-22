@@ -1,0 +1,40 @@
+@charset 'UTF-8';
+@import 'bourbon';
+
+$col-page-home-primary: $col-font-black;
+
+$slogan-color: $col-page-home-primary;
+$subtitle-color: $col-page-home-primary;
+
+.page-home{
+  .slogan{
+    flex: 1 1 0;
+    padding-right: 40px;
+    h1{
+      font-weight: 100;
+      font-size: 40px;
+      margin: 0 0 20px 0;
+      color: $slogan-color;
+    }
+    .subtitle{
+      font-weight: 100;
+      font-size: 28px;
+      margin: 0;
+      color: $subtitle-color;
+    }
+  }
+  .form-container{
+    flex: 1 1 0;
+    margin-top: 60px;
+  }
+}
+
+#apply-form{
+  legend{ color: $col-green; }
+  input, textarea{
+    border-color: $col-green;
+    @include placeholder{ color: rgba($col-green, .5); }
+  }
+  textarea{ height: 140px; }
+  input[type='submit']{ background-color: $col-green; }
+}

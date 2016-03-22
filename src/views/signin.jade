@@ -1,13 +1,14 @@
 extends ../layouts/default
 
 block content
-  .gradient-banner.form
-    form#form-signin
-      h1 Flow.ci
-      div.form-control.form-loginname
-        input#login(placeholder='Email or Username', name='login', type='user', required)
-        span.text-danger
-      div.form-control.form-password
-        input#password(placeholder='Password', name='password', type='password', required)
-        span.text-danger
-      input(type='submit', value='Sign In')
+  .page-container.page-signin
+    .form-container
+      form#signin-form
+        legend Sign in to flow.ci
+        div.form-control.form-loginname
+          input#login(placeholder='Email or Username', name='login', type='user', required)
+          span.text-danger
+        div.form-control.form-password
+          input#password(placeholder='Password', name='password', type='password', required)
+          span.text-danger
+        input(type='submit', value='Sign In')

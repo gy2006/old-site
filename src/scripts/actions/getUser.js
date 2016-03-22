@@ -9,9 +9,9 @@ export default function (token) {
   //   return USER;
   // }
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
-    method: 'get'
+    method: 'head'
   }).done((resp)=>{
     USER = resp;
-    analysis.identify(resp.email);
+    // analysis.identify(resp.email);
   })
 }

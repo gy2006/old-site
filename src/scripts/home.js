@@ -7,13 +7,12 @@ function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault();
     const fields = form.getValues();
-    // console.log('enter home submit', fields);
     const property = Object.assign({}, fields,{
       distinct_id: fields.email,
       refer: document.referrer
     });
     analysis.track('Input Email', property);
-    alert('Success apply ci');
+    alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
     applyCI(fields);
   }
   form.$form.submit(handlerSubmit);
@@ -30,7 +29,6 @@ function initValidate () {
 }
 
 export default function bootstrap() {
-  // console.log('bootstrap home');
   const form = initValidate();
   bindSubmit(form);
 }

@@ -16,9 +16,11 @@ const defaultRules = {
     return !!value;
   },
   maxlength: function (value, max) {
+    max = max ? parseInt(max) : max;
     return value.length <= max;
   },
   minlength: function (value, min) {
+    min = min ? parseInt(min) : min;
     return value.length >= min;
   }
 }

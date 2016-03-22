@@ -14,6 +14,7 @@
 */
 import $ from 'jquery';
 import Validators from './validate';
+import ErrorHandler from './plugin';
 
 const REQUIRED = 'required';
 let defaultValidators = Object.assign({}, Validators);
@@ -71,7 +72,7 @@ function getForm ($formElement) {
   return dForm;
 }
 
-function isEmpty (obj) {
+export function isEmpty (obj) {
   let result = true;
   for (let key in obj) {
     result = false;
@@ -80,17 +81,17 @@ function isEmpty (obj) {
   return result;
 }
 
-function isObject (value) {
+export function isObject (value) {
   return value != null && typeof value === 'object';
 }
 
-function isFunction (value) {
+export function isFunction (value) {
   return typeof value === 'function';
 }
 
 export default class FormValidate {
   static setDefaultValidators (validators) {
-    defaultValidators = Object.assign({}, validators);
+    defaultValidators = Object.assign({}, defaultValidators, validators);
   }
 
   static getDefaultValidators () {
@@ -120,6 +121,7 @@ export default class FormValidate {
     this.validators = Object.assign({}, FormValidate.getDefaultValidators(), options.validators);
     this.fields = fields;
     this.fieldToRules = this._analyticsFields(fields);
+    this.errorHandler = new ErrorHandler(this.fields, options);
     return this;
   }
 
@@ -164,7 +166,7 @@ export default class FormValidate {
       const isValid = fieldRules.every((rule) => {
         const r = this.validateByRule(fieldValue, rule, values);
         if (!r) {
-          this.setError(fieldName, rule.name);
+          this.setError(fieldName, rule.name, rule);
         }
         return r;
       })
@@ -201,22 +203,24 @@ export default class FormValidate {
   reset () {
     this.errors = {};
     this.values = null;
+    this.errorHandler.clearErrors();
     return true;
   }
 
-  setError (fieldName, ruleName) {
+  setError (fieldName, ruleName, rule) {
     const error = this.errors[fieldName] || {};
     error[ruleName] = true;
     this.errors[fieldName] = error;
+    this.errorHandler.setError(fieldName, ruleName, rule.params);
   }
 
 
   onSubmit (event) {
     if (this.reset() && !this.validates()) {
+      console.log(this.errors);
       this.callback(this.errors, this.getValues());
       event.stopImmediatePropagation();
       event.preventDefault();
-      console.log('in validate form');
     }
   }
 }

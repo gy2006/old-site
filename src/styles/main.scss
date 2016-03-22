@@ -57,3 +57,10 @@ body{
   right: 0;
   ul li a{ padding: 8px; }
 }
+
+.form-control{
+  input{
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

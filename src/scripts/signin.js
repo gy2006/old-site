@@ -1,33 +1,31 @@
 import $ from 'jquery';
-import Errors from './errors';
-import saveAccessToken from './saveAccessToken';
-import form from './form';
+import FormValidate from './validate';
+import signin from './actions/signin';
 
-const SIGNIN_URL = `${__API__}/login`;
-
-function handleSignIn (event) {
-  event.preventDefault();
-
-  const $form = form(this);
-
-  if (!$form.isValid()) {
-    const error = $form.getError();
-    console.error(error);
-    return;
+function bindSubmit(form) {
+  function handlerSubmit (e) {
+    e.preventDefault();
+    console.log('enter home submit', form.getValues());
+    signin(form.getValues());
   }
-  const data = $form.getField();
-  $.post(SIGNIN_URL, data)
-    .done(resp => {
-      const accessToken = resp.access_token;
-      saveAccessToken(accessToken);
-      window.location = __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__;
-    })
-    .fail(error => {
-      alert(Errors[error.responseJSON.code]);
-    });
-};
-$(function(){
-  $('#form-signin').submit(handleSignIn);
-})
+  form.$form.submit(handlerSubmit);
+}
 
-export default {};
+function initValidate () {
+  return new FormValidate("#form-signin", [{
+    name: 'login',
+    rules: 'required|loginname',
+    errorElement: '#form-signin .form-loginname .text-danger'
+  }, {
+    name: 'password',
+    rules: 'required|minlength:3',
+    errorElement: '#form-signin .form-password .text-danger'
+  }]);
+}
+
+
+export default function bootstrap() {
+  console.log('bootstrap signin');
+  const form = initValidate()
+  bindSubmit(form);
+}

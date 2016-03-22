@@ -8,8 +8,10 @@ block content
 
     .form-container
       form#apply-form
-        input#email(type='email', placeholder='Email', required)
-        textarea#user_infomation(placeholder='Something about your')
+        div.form-control.form-control-email
+          input#email(type='email', name='email', placeholder='Email', required)
+          span.text-danger
+        textarea#user_infomation(name='user_infomation', placeholder='Something about your')
         input(type='submit' value='申请')
 
   //- .sec.sec-highlights

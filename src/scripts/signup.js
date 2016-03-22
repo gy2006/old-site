@@ -9,7 +9,7 @@ function bindSubmit(form) {
   const search = getSearch();
   function handlerSubmit (e) {
     e.preventDefault();
-    console.log('enter home submit', form.getValues());
+    // console.log('enter home submit', form.getValues());
     const fields = form.getValues();
 
     createUser(fields, !!search.project_id);
@@ -49,7 +49,7 @@ function injectSeach () {
 }
 export default function bootstrap () {
   $('body').addClass('page-signup');
-  console.log('bootstrap signup');
+  // console.log('bootstrap signup');
   injectSeach();
   const form = initValidate()
   bindSubmit(form);

@@ -5,6 +5,10 @@ block content
     .form-container
       form#signin-form
         legend Sign in to flow.ci
-        input#login(placeholder='Email or Username', type='user', required)
-        input#password(placeholder='Password', type='password', required)
+        div.form-control.form-loginname
+          input#login(placeholder='Email or Username', name='login', type='user', required)
+          span.text-danger
+        div.form-control.form-password
+          input#password(placeholder='Password', name='password', type='password', required)
+          span.text-danger
         input(type='submit', value='Sign In')

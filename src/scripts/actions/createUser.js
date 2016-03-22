@@ -21,6 +21,16 @@ export default function createUser (user, isInvited) {
     redirect(accessToken);
     // redirect to dashboard;
   }).fail(function (e) {
-    alert(Errors[e.responseJSON.code]);
+    const error = e.responseJSON;
+    if (typeof error.errors === 'string') {
+      alert(Errors[error.code]);
+    } else if (typeof error.errors === 'object') {
+      const field = Object.keys(error.errors)[0];
+      if (field) {
+        alert(error.errors[field][0]);
+      } else {
+        alert(JSON.stringify(error.errors));
+      }
+    }
   })
 }

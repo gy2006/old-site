@@ -1,27 +1,35 @@
-import form from './form';
+import FormValidate from './validate';
 import $ from 'jquery';
-import mixpanel from 'mixpanel-browser';
+import applyCI from './actions/applyForCi';
+import analysis from './actions/analysis';
 
-mixpanel.init(__MIXPANEL_TOKEN__);
-
-function handlerSubmit (e) {
-  e.preventDefault();
-  const $form = form($("#apply-form")[0]);
-  if (!$form.isValid()) {
-    const error = $form.getError();
-    console.error(error);
-    return;
+function bindSubmit (form) {
+  function handlerSubmit (e) {
+    e.preventDefault();
+    const fields = form.getValues();
+    console.log('enter home submit', fields);
+    const property = Object.assign({}, fields,{
+      distinct_id: fields.email,
+      refer: document.referrer
+    });
+    analysis.track('Input Email', property);
+    applyCI(fields);
   }
-  const field = $form.getField();
-  field['user_infomation'] = $('#user_infomation').val();
-  mixpanel.track('apply for ci', field);
-  alert('Success to apply ci');
-  $form[0] && $form[0].reset();
+  form.$form.submit(handlerSubmit);
 }
 
-$(function () {
-  if (/^\//.test(location.pathname)) {
-    $("#apply-form").submit(handlerSubmit)
-  }
-});
-export default {};
+function initValidate () {
+  return new FormValidate("#apply-form", [{
+    name: 'email',
+    rules: 'required|email',
+    errorElement: "#apply-form .form-control-email .text-danger"
+  }, {
+    name: 'user_infomation'
+  }]);
+}
+
+export default function bootstrap() {
+  console.log('bootstrap home');
+  const form = initValidate();
+  bindSubmit(form);
+}

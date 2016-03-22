@@ -7,11 +7,6 @@ function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault();
     const fields = form.getValues();
-    const property = Object.assign({}, fields,{
-      distinct_id: fields.email,
-      refer: document.referrer
-    });
-    analysis.track('Input Email', property);
     applyCI(fields);
     alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
     this.reset();

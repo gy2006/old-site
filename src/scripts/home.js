@@ -12,8 +12,9 @@ function bindSubmit (form) {
       refer: document.referrer
     });
     analysis.track('Input Email', property);
-    alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
     applyCI(fields);
+    alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
+    this.reset();
   }
   form.$form.submit(handlerSubmit);
 }

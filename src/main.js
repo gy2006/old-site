@@ -52,13 +52,13 @@ function bootstrap () {
     user = getUser(token);
   }
 
-  if (path.indexOf('signup') > -1) {
+  if (/^\/signup(\.html)?/.test(path)) {
     // signup
-    user.done(redirectToFlow(token));
+    user && user.done(redirectToFlow(token));
     signup();
-  } else if (path.indexOf('signin') > -1) {
+  } else if (/^\/signin(\.html)?/.test(path)) {
     // signin
-    user.done(redirectToFlow(token));
+    user && user.done(redirectToFlow(token));
     signin();
   } else {
     // home

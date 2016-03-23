@@ -2,7 +2,7 @@ import './styles/main.scss';
 import $ from 'jquery';
 import { get as getCookie } from './scripts/util/cookies';
 import User from './scripts/actions/user';
-import redirect from './scripts/actions/redirect';
+import redirectToDashboard from './scripts/actions/redirectToDashboard';
 
 import home from './scripts/home';
 import signin from './scripts/signin';
@@ -39,7 +39,7 @@ FormErrorHandler.setRulesMap({
 function redirectToFlow (token) {
   return function (){
     // console.log('redirect to flow');
-    redirect(token);
+    redirectToDashboard(token);
   }
 }
 

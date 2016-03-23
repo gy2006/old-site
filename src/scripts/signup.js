@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import FormValidate from './validate';
-import createUser from './actions/createUser';
+import User from './actions/user';
 import analysis from './actions/analysis';
 import getSearch from './util/getSearch';
 
@@ -12,7 +12,7 @@ function bindSubmit(form) {
     // console.log('enter home submit', form.getValues());
     const fields = form.getValues();
 
-    createUser(fields, !!search.project_id);
+    User.create(fields, !!search.project_id);
   }
   form.$form.submit(handlerSubmit);
 }

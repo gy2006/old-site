@@ -2,7 +2,7 @@ import $ from 'jquery';
 import saveAccessToken from './saveAccessToken';
 import { SIGNIN_URL } from '../constant';
 import Errors from '../errors';
-import redirect from './redirect';
+import redirectToDashboard from './redirectToDashboard';
 import analysis from './analysis';
 import User from './user';
 export default function signIn (data) {
@@ -14,7 +14,7 @@ export default function signIn (data) {
     User.get(accessToken).done(function (user) {
       analysis.identify(user.email);
       analysis.people.increment('signed_in', 1, function () {
-        redirect(accessToken);
+        redirectToDashboard(accessToken);
       });
     })
 

@@ -8,7 +8,7 @@ function bindSubmit (form) {
     e.preventDefault();
     const fields = form.getValues();
     applyCI(fields);
-    alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
+    alert('Thank you for applying for flow.ci early access. \nWe will review your application and send the invitation code to your email.');
     this.reset();
   }
   form.$form.submit(handlerSubmit);

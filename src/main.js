@@ -12,7 +12,7 @@ import analysis from './scripts/actions/analysis';
 
 import FormValidate from './scripts/validate';
 import FormErrorHandler from './scripts/validate/plugin';
-import {COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
 analysis.init(__MIXPANEL_TOKEN__);
 

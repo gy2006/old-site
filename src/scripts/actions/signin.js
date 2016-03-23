@@ -5,6 +5,7 @@ import Errors from '../errors';
 import redirectToDashboard from './redirectToDashboard';
 import analysis from './analysis';
 import User from './user';
+
 export default function signIn (data) {
 
   return $.post(SIGNIN_URL, data).done((resp) => {
@@ -22,5 +23,4 @@ export default function signIn (data) {
   }).fail((error)=>{
     alert(Errors[error.responseJSON.code]);
   });
-
 }

@@ -1,8 +1,8 @@
 import './styles/main.scss';
 import $ from 'jquery';
 import { get as getCookie } from './scripts/util/cookies';
-import getUser from './scripts/actions/getUser';
-import redirect from './scripts/actions/redirect';
+import User from './scripts/actions/user';
+import redirectToDashboard from './scripts/actions/redirectToDashboard';
 
 import home from './scripts/home';
 import signin from './scripts/signin';
@@ -12,7 +12,7 @@ import analysis from './scripts/actions/analysis';
 
 import FormValidate from './scripts/validate';
 import FormErrorHandler from './scripts/validate/plugin';
-import {COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
 analysis.init(__MIXPANEL_TOKEN__);
 
@@ -39,17 +39,16 @@ FormErrorHandler.setRulesMap({
 function redirectToFlow (token) {
   return function (){
     // console.log('redirect to flow');
-    redirect(token);
+    redirectToDashboard(token);
   }
 }
 
 function bootstrap () {
   const path = location.pathname;
   const token = getCookie(COOKIE_KEY);
-  console.log('token', token);
   let user;
   if (token) {
-    user = getUser(token);
+    user = User.test(token);
     user.done(redirectToFlow(token));
   }
 

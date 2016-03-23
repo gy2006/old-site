@@ -1,11 +1,23 @@
 import $ from 'jquery';
-import Errors from '../errors';
-import saveAccessToken from './saveAccessToken';
-import { SIGNUP_URL } from '../constant';
-import redirect from './redirect';
+import { GETUSER_URL, SIGNUP_URL } from '../constant';
 import analysis from './analysis';
+import saveAccessToken from './saveAccessToken';
+import redirectToDashboard from './redirectToDashboard';
+import Errors from '../errors';
 
-export default function createUser (user, isInvited) {
+
+export function get (token) {
+  return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
+    method: 'get'
+  });
+}
+export function test (token) {
+  return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
+    method: 'head'
+  })
+}
+
+export function create (user, isInvited) {
   return $.post({
     url: SIGNUP_URL,
     data: user
@@ -18,13 +30,14 @@ export default function createUser (user, isInvited) {
       '$first_name': user.username,
       '$created': new Date(),
       '$email': user.email,
-      'buildtimes': 0
+      'buildtimes': 0,
+      'Application': 'Passed'
     });
     analysis.track('Sign up', {
       distinct_id: user.email,
       Invited: isInvited ? 'YES' : 'NO'
     }, function () {
-      redirect(accessToken);
+      redirectToDashboard(accessToken);
       // console.log('redirect');
     });
   }).fail(function (e) {
@@ -40,4 +53,10 @@ export default function createUser (user, isInvited) {
       }
     }
   })
+}
+
+export default {
+  get: get,
+  test: test,
+  create: create
 }

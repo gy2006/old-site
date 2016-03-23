@@ -1,7 +1,7 @@
 import './styles/main.scss';
 import $ from 'jquery';
 import { get as getCookie } from './scripts/util/cookies';
-import getUser from './scripts/actions/getUser';
+import User from './scripts/actions/user';
 import redirect from './scripts/actions/redirect';
 
 import home from './scripts/home';
@@ -46,10 +46,9 @@ function redirectToFlow (token) {
 function bootstrap () {
   const path = location.pathname;
   const token = getCookie(COOKIE_KEY);
-  console.log('token', token);
   let user;
   if (token) {
-    user = getUser(token);
+    user = User.test(token);
     user.done(redirectToFlow(token));
   }
 

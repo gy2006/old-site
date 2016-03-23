@@ -10,29 +10,29 @@ const CODE_MAPPING = {
 }
 
 const FIELD_CODE_MAPPING = {
-  unknown:                  '00',
-  invalid:                  '01',
-  present:                  '10',
-  accepted:                 '20',
-  confirmation:             '30',
-  exclusion:                '40',
-  with:                     '50',
-  without:                  '51',
-  inclusion:                '60',
-  wrong_length:             '70',
-  too_short:                '71',
-  too_long:                 '72',
-  not_a_number:             '80',
-  not_an_integer:           '81',
-  greater_than:             '82',
-  greater_than_or_equal_to: '83',
-  equal_to:                 '84',
-  less_than:                '85',
-  less_than_or_equal_to:    '86',
-  odd:                      '87',
-  even:                     '88',
-  other_than:               '89',
-  blank:                    '90'
+  '00': 'unknown',
+  '01': 'invalid',
+  '10': 'present',
+  '20': 'accepted',
+  '30': 'confirmation',
+  '40': 'exclusion',
+  '50': 'with',
+  '51': 'without',
+  '60': 'inclusion',
+  '70': 'wrong_length',
+  '71': 'too_short',
+  '72': 'too_long',
+  '80': 'not_a_number',
+  '81': 'not_an_integer',
+  '82': 'greater_than',
+  '83': 'greater_than_or_equal_to',
+  '84': 'equal_to',
+  '85': 'less_than',
+  '86': 'less_than_or_equal_to',
+  '87': 'odd',
+  '88': 'even',
+  '89': 'other_than',
+  '90': 'blank'
 }
 
 function isObject (value) {
@@ -43,9 +43,9 @@ function getFieldErrorMessage (errors) {
   for (let field in errors) {
     const codes = errors[field];
     const ms = codes.map((code)=>{
-      FIELD_CODE_MAPPING[code];
+      return FIELD_CODE_MAPPING[code];
     }).filter((m)=> m);
-    const message = field + ': ' + ms.join(',');
+    const message = field + ': ' + ms.join(', ');
     errorMessage.push(message);
   }
   return errorMessage.join('\n');

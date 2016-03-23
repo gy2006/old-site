@@ -18,7 +18,8 @@ export default function createUser (user, isInvited) {
       '$first_name': user.username,
       '$created': new Date(),
       '$email': user.email,
-      'buildtimes': 0
+      'buildtimes': 0,
+      'Application': 'Passed'
     });
     analysis.track('Sign up', {
       distinct_id: user.email,

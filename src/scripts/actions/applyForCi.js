@@ -5,7 +5,7 @@ export default function (fields) {
   analysis.people.set_once({
     '$email': fields.email,
     'Apply_At': new Date(),
-    'Application': ''
+    'Application': 'apply'
   });
   analysis.people.set({
     'User_Infomation': fields.user_infomation

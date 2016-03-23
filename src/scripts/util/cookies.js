@@ -13,7 +13,8 @@ export function get (name) {
   const cookies = document.cookie.split(";");
   let cookieValue;
   const hasCookie = cookies.some((cookie) => {
-    if (cookie.indexOf(`${name}=`) > -1){
+    const reg = new RegExp(`^\\s*${name}\\s*=`);
+    if (reg.test(cookie)){
       cookieValue = cookie.split("=")[1];
       return true;
     }

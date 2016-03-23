@@ -1,5 +1,5 @@
 /*
-  FormValidate( selector, fields: [
+  FormValidator( selector, fields: [
     {
       name: string
       rule: string spilt by |, 'require| pattern: /^xxxx$/'
@@ -14,10 +14,31 @@
 */
 import $ from 'jquery';
 import Validators from './validate';
-import ErrorHandler from './plugin';
+import AliasPlugin from './plugin';
 
 const REQUIRED = 'required';
+
 let defaultValidators = Object.assign({}, Validators);
+let defaultRulesMapping = {
+  email: 'Invalid Email',
+  required: 'Required',
+  maxlength: function ({ params: ruleParams }, field) {
+    return `Must not exceed ${ruleParams[0]} characters in length`;
+  },
+  minlength: function ({ params: ruleParams }, field) {
+    return `Must at least ${ruleParams[0]} characters in length`;
+  },
+  'default': 'Invalid'
+};
+
+function getRuleMessage (rule, field) {
+  const map = defaultRulesMapping[rule.name] || defaultRulesMapping['default'];
+  let message = map;
+  if (isFunction(map)) {
+    message = map(rule, field);
+  }
+  return message;
+}
 
 function noop () {};
 /*
@@ -89,7 +110,7 @@ export function isFunction (value) {
   return typeof value === 'function';
 }
 
-export default class FormValidate {
+export default class FormValidator {
   static setDefaultValidators (validators) {
     defaultValidators = Object.assign({}, defaultValidators, validators);
   }
@@ -97,31 +118,41 @@ export default class FormValidate {
   static getDefaultValidators () {
     return defaultValidators;
   }
-  /*
-    (selector, fields, callback, options)
-    (selector, fields, callback)
-    (selector, fields, options)
-  */
-  constructor (selector, fields, arg3, arg4) {
-    let options = {}, callback = noop;
-    if(arg3 && isFunction(arg3)) {
-      callback = arg3;
-      if(arg4 && isObject(arg4)) {
-        options = arg4;
-      }
-    } else if (arg3 && isObject(arg3)) {
-      options = arg3;
-    }
 
+  static setDefaultRulesMap (map) {
+    defaultRulesMapping = Object.assign({}, defaultRulesMapping, map);
+  }
+
+  static getDefaultRulesMap () {
+    return defaultRulesMapping;
+  }
+  /*
+    (selector, fields, options)
+    options: {
+      validators: {},
+      onerror: function,
+      // before: function, before submit
+      // after: function, after submit
+    }
+  */
+  constructor (selector, fields, options = {}) {
     $(selector).submit(this.onSubmit.bind(this));
-    this.callback = callback || noop;
+
     this.selector = selector;
     this.$form = $(selector);
     this.form = getForm(this.$form);
-    this.validators = Object.assign({}, FormValidate.getDefaultValidators(), options.validators);
+
+    this.options = options;
+    this.onerror = options.onerror || noop;
+
     this.fields = fields;
+    this.validators = Object.assign({}, FormValidator.getDefaultValidators(),
+      options.validators);
     this.fieldToRules = this._analyticsFields(fields);
-    this.errorHandler = new ErrorHandler(this.fields, options);
+    const aliases = [ ...fields];
+    options.errorElement && aliases.push({ name: '$form', errorElement: options.errorElement });
+    this.aliasPlugin = new AliasPlugin(aliases);
+
     return this;
   }
 
@@ -150,29 +181,33 @@ export default class FormValidate {
     const errors = {};
     const values = this.getValues();
     let result = true;
+
+    function setError (field, rule) {
+      result = false;
+      errors[field.name] = getRuleMessage(rule, field);
+    }
+
     for (let fieldName in fieldToRules) {
       let fieldRules = fieldToRules[fieldName];
-      const fieldValue = values[fieldName];
-
+      const field = {
+        name: fieldName,
+        value: values[fieldName]
+      }
       // 如果为空，则需要判断是否有require 规则
-      if (!fieldValue) {
+      if (!field.value) {
         const firstRule = fieldRules[0];
         if (firstRule && firstRule.name === REQUIRED) {
-          this.setError(fieldName, firstRule.name);
+          setError(field, firstRule);
         }
-        continue;
+      } else {
+        fieldRules.every((rule) => {
+          const r = this.validateByRule(field.value, rule, values);
+          !r && setError(field, rule);
+          return r;
+        })
       }
-
-      const isValid = fieldRules.every((rule) => {
-        const r = this.validateByRule(fieldValue, rule, values);
-        if (!r) {
-          this.setError(fieldName, rule.name, rule);
-        }
-        return r;
-      })
-      // set result false
-      !isValid && (result = false);
     }
+    this.errors = errors;
     return result;
   }
 
@@ -181,8 +216,6 @@ export default class FormValidate {
     const params = [value, ...rule.params];
     return validator && validator.apply(values, params);
   }
-
-
 
   getValues (reflesh) {
     if (!reflesh && this.values) {
@@ -203,24 +236,24 @@ export default class FormValidate {
   reset () {
     this.errors = {};
     this.values = null;
-    this.errorHandler.clearErrors();
+    this.aliasPlugin.clear();
     return true;
   }
 
-  setError (fieldName, ruleName, rule) {
-    const error = this.errors[fieldName] || {};
-    error[ruleName] = true;
-    this.errors[fieldName] = error;
-    this.errorHandler.setError(fieldName, ruleName, rule.params);
-  }
-
-
   onSubmit (event) {
+    event.preventDefault();
     if (this.reset() && !this.validates()) {
       console.log(this.errors);
-      this.callback(this.errors, this.getValues());
+
+      this.aliasPlugin.setTexts(this.errors);
+
+      this.onerror(this.errors, this.getValues());
       event.stopImmediatePropagation();
-      event.preventDefault();
     }
+  }
+
+  setError (fieldName, message) {
+    this.errors[fieldName] = message;
+    this.aliasPlugin.setText(fieldName, message);
   }
 }

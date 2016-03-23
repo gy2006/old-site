@@ -152,7 +152,7 @@ export default class FormValidator {
     const aliases = [ ...fields];
     options.errorElement && aliases.push({ name: '$form', errorElement: options.errorElement });
     this.aliasPlugin = new AliasPlugin(aliases);
-
+    this.reset();
     return this;
   }
 

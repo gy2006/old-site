@@ -3,7 +3,7 @@ import FormValidate from './validate';
 import User from './actions/user';
 import analysis from './actions/analysis';
 import getSearch from './util/getSearch';
-
+import Errors from './errors';
 
 function bindSubmit(form) {
   const search = getSearch();
@@ -12,7 +12,9 @@ function bindSubmit(form) {
     // console.log('enter home submit', form.getValues());
     const fields = form.getValues();
 
-    User.create(fields, !!search.project_id);
+    User.create(fields, !!search.project_id).fail((e)=>{
+      form.setError('$form', Errors(e));
+    });
   }
   form.$form.submit(handlerSubmit);
 }
@@ -20,17 +22,23 @@ function bindSubmit(form) {
 function initValidate () {
   return new FormValidate("#signup-form", [{
     name: 'email',
-    rules: 'required|email'
+    rules: 'required|email',
+    errorElement: '#signup-form .form-email .text-danger'
   }, {
     name: 'username',
-    rules: 'required|minlength:3'
+    rules: 'required|minlength:3',
+    errorElement: '#signup-form .form-username .text-danger'
   }, {
     name: 'password',
-    rules: 'required| minlength:3'
+    rules: 'required|minlength:3',
+    errorElement: '#signup-form .form-password .text-danger'
   }, {
     name: 'sign',
-    rules: 'required'
-  }]);
+    rules: 'required',
+    errorElement: '#signup-form .form-sign .text-danger'
+  }], {
+    errorElement: '#signup-form .form-error'
+  });
 }
 
 function injectSeach () {

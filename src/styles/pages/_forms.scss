@@ -11,8 +11,21 @@
     font-size: 20px;
   }
 
+  .form-control{
+    margin-bottom: 12px;
+    input{
+      width: 100%;
+      margin-bottom: 4px;
+    }
+  }
+  .text-danger {
+    color: $col-red;
+    margin-bottom: 4px;
+  }
+  .form-error{
+    margin-bottom: 12px;
+  }
   input, textarea{
-    margin-bottom: 8px;
     border-color: $col-primary;
     @include placeholder {
       color: rgba($col-primary, .5);

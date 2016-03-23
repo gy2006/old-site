@@ -1,19 +1,62 @@
 import $ from 'jquery';
-import { GETUSER_URL } from '../constant';
+import { GETUSER_URL, SIGNUP_URL } from '../constant';
 import analysis from './analysis';
+import saveAccessToken from './saveAccessToken';
+import redirectToDashboard from './redirectToDashboard';
+import Errors from '../errors';
 
-export function getUser (token) {
+
+export function get (token) {
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
     method: 'get'
   });
 }
-export function testUser(token) {
+export function test (token) {
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
     method: 'head'
   })
 }
 
+export function create (user, isInvited) {
+  return $.post({
+    url: SIGNUP_URL,
+    data: user
+  }).done(function (resp) {
+    const accessToken = resp.access_token;
+    saveAccessToken(accessToken);
+
+    analysis.identify(user.email);
+    analysis.people.set({
+      '$first_name': user.username,
+      '$created': new Date(),
+      '$email': user.email,
+      'buildtimes': 0,
+      'Application': 'Passed'
+    });
+    analysis.track('Sign up', {
+      distinct_id: user.email,
+      Invited: isInvited ? 'YES' : 'NO'
+    }, function () {
+      redirectToDashboard(accessToken);
+      // console.log('redirect');
+    });
+  }).fail(function (e) {
+    const error = e.responseJSON;
+    if (typeof error.errors === 'string') {
+      alert(Errors[error.code]);
+    } else if (typeof error.errors === 'object') {
+      const field = Object.keys(error.errors)[0];
+      if (field) {
+        alert(error.errors[field][0]);
+      } else {
+        alert(JSON.stringify(error.errors));
+      }
+    }
+  })
+}
+
 export default {
-  get: getUser,
-  test: testUser
+  get: get,
+  test: test,
+  create: create
 }

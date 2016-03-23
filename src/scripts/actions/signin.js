@@ -10,10 +10,8 @@ export default function signIn (data) {
   return $.post(SIGNIN_URL, data).done((resp) => {
     const accessToken = resp.access_token;
     saveAccessToken(accessToken);
-    analysis.identify(data.login);
-    analysis.people.increment('signed_in', 1, function () {
-      redirect(accessToken);
-    });
+    // can't get user email, no mixpanel increment signed_in
+    redirect(accessToken);
 
     // redirect to dashboard;
   }).fail((error)=>{

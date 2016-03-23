@@ -14,18 +14,21 @@
   .form-control{
     margin-bottom: 12px;
     input{
-      width: 100%;
       margin-bottom: 4px;
     }
   }
+
   .text-danger {
     color: $col-red;
     margin-bottom: 4px;
+    display: none;
   }
+
   .form-error{
     margin-bottom: 12px;
   }
   input, textarea{
+    width: 100%;
     border-color: $col-primary;
     @include placeholder {
       color: rgba($col-primary, .5);

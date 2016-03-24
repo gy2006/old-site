@@ -7,9 +7,10 @@ function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault();
     const fields = form.getValues();
-    applyCI(fields);
-    alert('Thank you for applying for flow.ci early access. \nWe will review your application and send the invitation code to your email.');
-    this.reset();
+    applyCI(fields, () => {
+      $(".page-home .form-container").addClass('success');
+      this.reset();
+    });
   }
   form.$form.submit(handlerSubmit);
 }

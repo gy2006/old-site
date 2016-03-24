@@ -8,10 +8,12 @@ block content
       p.subtitle Just give me the time of a song.
 
     .form-container
+      p.text-success Thank you for applying for flow.ci early access. <br/>We will review your application and send the invitation code to your email.
       form#apply-form
         legend Apply Early Access
         div.form-control.form-control-email
-          input#email(type='email', name='email', placeholder='Work email', required)
+          input#email(type='email', name='email', placeholder='Work email', required, autofocus)
           span.text-danger
-        textarea#user_infomation(name='user_infomation', placeholder='Options\n 1. 开发团队规模\n 2. 是否用过 CI\n 3. 公司或者产品名')
+        div.form-control
+          textarea#user_infomation(name='user_infomation', placeholder='Options\n 1. 开发团队规模\n 2. 是否用过 CI\n 3. 公司或者产品名')
         input(type='submit' value='Early Access')

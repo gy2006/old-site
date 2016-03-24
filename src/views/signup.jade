@@ -5,8 +5,17 @@ block content
     .form-container
       form#signup-form
         legend Join flow.ci
-        input#email(placeholder='Job Email', name='email' type='email', required)
-        input#username(placeholder='Username', type='username' name='username' required, minlength='3')
-        input#password(placeholder='Password', name='password', type='password', minlength='6')
-        input#sign(type='text', name='sign', placeholder='Invite Code' required)
+        div.form-control.form-email
+          input#email(placeholder='Job Email', name='email', type='email', required)
+          span.text-danger
+        div.form-control.form-username
+          input#username(placeholder='Username',  name='username', type='text', minlength='3', required)
+          span.text-danger
+        div.form-control.form-password
+          input#password(placeholder='Password', name='password', type='password', required)
+          span.text-danger
+        div.form-control.form-sign
+          input#sign(type='text', name='sign', placeholder='Invite Code', required )
+          span.text-danger
+        div.text-danger.form-error
         input(type='submit', value='Create an account')

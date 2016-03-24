@@ -1,6 +1,8 @@
 import analysis from './analysis';
 
-export default function (fields) {
+function noop () {}
+
+export default function (fields, callback = noop) {
   analysis.identify(fields.email);
   analysis.people.set_once({
     '$email': fields.email,
@@ -10,5 +12,5 @@ export default function (fields) {
   analysis.people.set({
     'User_Infomation': fields.user_infomation
   });
-  return analysis.track('Input Email', fields);
+  return analysis.track('Input Email', fields, callback);
 }

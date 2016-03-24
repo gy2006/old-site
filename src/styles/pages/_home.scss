@@ -26,6 +26,19 @@ $subtitle-color: $col-page-home-primary;
   .form-container{
     flex: 1 1 0;
     margin-top: 60px;
+    .text-success{
+      display: none;
+      font-size: 20px;
+      color: $col-green;
+    }
+    &.success{
+      .text-success{
+        display: block;
+      }
+      #apply-form{
+        display: none;
+      }
+    }
   }
 }
 

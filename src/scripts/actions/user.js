@@ -40,19 +40,7 @@ export function create (user, isInvited) {
       redirectToDashboard(accessToken);
       // console.log('redirect');
     });
-  }).fail(function (e) {
-    const error = e.responseJSON;
-    if (typeof error.errors === 'string') {
-      alert(Errors[error.code]);
-    } else if (typeof error.errors === 'object') {
-      const field = Object.keys(error.errors)[0];
-      if (field) {
-        alert(error.errors[field][0]);
-      } else {
-        alert(JSON.stringify(error.errors));
-      }
-    }
-  })
+  });
 }
 
 export default {

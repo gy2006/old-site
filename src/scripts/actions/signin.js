@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import saveAccessToken from './saveAccessToken';
 import { SIGNIN_URL } from '../constant';
-import Errors from '../errors';
 import redirectToDashboard from './redirectToDashboard';
 import analysis from './analysis';
 import User from './user';
@@ -20,7 +19,5 @@ export default function signIn (data) {
     })
 
     // redirect to dashboard;
-  }).fail((error)=>{
-    alert(Errors[error.responseJSON.code]);
   });
 }

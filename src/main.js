@@ -47,8 +47,13 @@ function bootstrap () {
   const token = getCookie(COOKIE_KEY);
   let user;
   if (token) {
+    analysis.time_event('Auto Redirect')
     user = User.test(token);
-    user.done(redirectToFlow(token));
+    user.done(function () {
+      analysis.track('Auto Redirect', {}, redirectToFlow(token));
+    }).fail(function () {
+      analysis.track('Auto Redirect', { redirect: false, getUser: 'faild' });
+    });
   } else {
     analysis.pageView();
   }

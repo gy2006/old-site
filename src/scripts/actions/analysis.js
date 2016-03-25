@@ -10,6 +10,9 @@ export default {
   track: function () {
     return mixpanel.track.apply(mixpanel, arguments);
   },
+  pageView: function (property) {
+    return mixpanel.track('Page View', Object.assign({} ,{ path: location.pathname, protocol: location.protocol }, property));
+  },
   people:{
     set: function () {
       return mixpanel.people.set.apply(mixpanel.people, arguments);

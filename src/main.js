@@ -49,6 +49,8 @@ function bootstrap () {
   if (token) {
     user = User.test(token);
     user.done(redirectToFlow(token));
+  } else {
+    analysis.pageView();
   }
 
   if (/^\/signup(\.html)?/.test(path)) {

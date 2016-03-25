@@ -12,6 +12,7 @@ const CODE_MAPPING = {
 const FIELD_CODE_MAPPING = {
   '00': 'unknown',
   '01': 'invalid',
+  '02': 'taken',
   '10': 'present',
   '20': 'accepted',
   '30': 'confirmation',

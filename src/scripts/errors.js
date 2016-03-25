@@ -61,7 +61,7 @@ function getFieldErrorMessage (errors) {
     const message = getFieldName(field) + ': ' + ms.join(', ');
     errorMessage.push(message);
   }
-  return errorMessage.join('\n');
+  return errorMessage;
 }
 
 export default function getErrorMessage (resp) {

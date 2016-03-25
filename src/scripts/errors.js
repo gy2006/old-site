@@ -12,10 +12,10 @@ const CODE_MAPPING = {
 const FIELD_CODE_MAPPING = {
   '00': 'unknown',
   '01': 'invalid',
-  '02': 'taken',
-  '10': 'present',
-  '20': 'accepted',
-  '30': 'confirmation',
+  '02': 'already exists',  // 重复
+  '10': 'present',  // 不存在
+  '20': 'accepted', // 不接受
+  '30': 'confirmation',   // checkbox 没确认
   '40': 'exclusion',
   '50': 'with',
   '51': 'without',
@@ -36,9 +36,21 @@ const FIELD_CODE_MAPPING = {
   '90': 'blank'
 }
 
+const FIELD_MAPPING = {
+  username: 'Username',
+  password: 'Password',
+  sign: 'Invite Code',
+  login: 'Email or Username'
+}
+
 function isObject (value) {
   return value != null && typeof value === 'object';
 }
+
+function getFieldName (field) {
+  return FIELD_MAPPING[field] || field;
+}
+
 function getFieldErrorMessage (errors) {
   const errorMessage = [];
   for (let field in errors) {
@@ -46,7 +58,7 @@ function getFieldErrorMessage (errors) {
     const ms = codes.map((code)=>{
       return FIELD_CODE_MAPPING[code];
     }).filter((m)=> m);
-    const message = field + ': ' + ms.join(', ');
+    const message = getFieldName(field) + ': ' + ms.join(', ');
     errorMessage.push(message);
   }
   return errorMessage.join('\n');

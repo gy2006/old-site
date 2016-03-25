@@ -21,7 +21,7 @@ function initValidate () {
     errorElement: '#signin-form .form-loginname .text-danger'
   }, {
     name: 'password',
-    rules: 'required|minlength:3',
+    rules: 'required|minlength:6',
     errorElement: '#signin-form .form-password .text-danger'
   }], {
     errorElement: '#signin-form .form-error'

@@ -7,7 +7,7 @@
       invalidClass
     }
   ], options: {
-    validators: [{ // 额外的规则 Object.assign(defaultRule, rule);
+    validators: [{ // 额外的规则 $.extend(defaultRule, rule);
       rule name: function (value, otherParams in use) {}
     }]
   })
@@ -18,7 +18,7 @@ import AliasPlugin from './plugin';
 
 const REQUIRED = 'required';
 
-let defaultValidators = Object.assign({}, Validators);
+let defaultValidators = $.extend({}, Validators);
 let defaultRulesMapping = {
   email: 'Invalid Email',
   required: 'Required',
@@ -112,7 +112,7 @@ export function isFunction (value) {
 
 export default class FormValidator {
   static setDefaultValidators (validators) {
-    defaultValidators = Object.assign({}, defaultValidators, validators);
+    defaultValidators = $.extend({}, defaultValidators, validators);
   }
 
   static getDefaultValidators () {
@@ -120,7 +120,7 @@ export default class FormValidator {
   }
 
   static setDefaultRulesMap (map) {
-    defaultRulesMapping = Object.assign({}, defaultRulesMapping, map);
+    defaultRulesMapping = $.extend({}, defaultRulesMapping, map);
   }
 
   static getDefaultRulesMap () {
@@ -146,7 +146,7 @@ export default class FormValidator {
     this.onerror = options.onerror || noop;
 
     this.fields = fields;
-    this.validators = Object.assign({}, FormValidator.getDefaultValidators(),
+    this.validators = $.extend({}, FormValidator.getDefaultValidators(),
       options.validators);
     this.fieldToRules = this._analyticsFields(fields);
     const aliases = [ ...fields];

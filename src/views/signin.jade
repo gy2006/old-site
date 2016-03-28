@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
   .page-container.page-signin
     .form-container
-      form#signin-form
+      form#signin-form(method='post')
         legend Sign in to flow.ci
         div.form-control.form-loginname
           input#login(placeholder='Email or Username', name='login', type='user', required)

@@ -1,5 +1,6 @@
 import './styles/main.scss';
 import $ from 'jquery';
+import './scripts/polyfill/assign';
 import { get as getCookie } from './scripts/util/cookies';
 import User from './scripts/actions/user';
 import redirectToDashboard from './scripts/actions/redirectToDashboard';

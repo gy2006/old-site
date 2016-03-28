@@ -1,5 +1,4 @@
 import './styles/main.scss';
-import './scripts/polyfill/assign';
 import $ from 'jquery';
 import { get as getCookie } from './scripts/util/cookies';
 import User from './scripts/actions/user';

@@ -9,7 +9,7 @@ block content
 
     .form-container
       p.text-success Thank you for applying for flow.ci early access. <br/>We will review your application and send the invitation code to your email.
-      form#apply-form
+      form#apply-form(method='post')
         legend Apply Early Access
         div.form-control.form-control-email
           input#email(type='email', name='email', placeholder='Work email', required, autofocus)

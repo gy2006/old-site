@@ -3,7 +3,7 @@ extends ../layouts/default
 block content
   .page-container.page-signup
     .form-container
-      form#signup-form
+      form#signup-form(method='post')
         legend Join flow.ci
         div.form-control.form-email
           input#email(placeholder='Job Email', name='email', type='email', required)

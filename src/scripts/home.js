@@ -11,7 +11,6 @@ function bindSubmit (form) {
       $(".page-home .form-container").addClass('success');
       this.reset();
     });
-    // alert('Thank you for applying for Flow.ci early access. \nWe will review your application and send the invitation code to your email.');
   }
   form.$form.submit(handlerSubmit);
 }

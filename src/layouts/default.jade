@@ -4,6 +4,10 @@ html
     meta(charset='utf-8')
     block title
       title flow.ci
+    script(type="text/javascript", src="https://dn-bughd-web.qbox.me/bughd.min.js", crossOrigin="anonymous")
+    script(type="text/javascript").
+      window.bughd = window.bughd || function(){};
+      bughd("create",{key:"e24809f6f6789481ee4508a5830e56fd"});
   body
     include ../includes/navbar
     block content

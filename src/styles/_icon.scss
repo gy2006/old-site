@@ -1,0 +1,183 @@
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'flowci';
+    src:    url('../static/fonts/flowci.eot?tcd03l');
+    src:    url('../static/fonts/flowci.eot?tcd03l#iefix') format('embedded-opentype'),
+        url('../static/fonts/flowci.ttf?tcd03l') format('truetype'),
+        url('../static/fonts/flowci.woff?tcd03l') format('woff'),
+        url('../static/fonts/flowci.svg?tcd03l#flowci') format('svg');
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'flowci' !important;
+    line-height: 1;
+
+    speak: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-history:before {
+    content: "\e918";
+}
+.icon-list:before {
+    content: "\e908";
+}
+.icon-logo-inline:before {
+    content: "\e900";
+}
+.icon-logo:before {
+    content: "\e901";
+}
+.icon-close:before {
+    content: "\e600";
+}
+.icon-repo-push:before {
+    content: "\e902";
+}
+.icon-menu:before {
+    content: "\e903";
+}
+.icon-code-fork:before {
+    content: "\e904";
+}
+.icon-git-commit:before {
+    content: "\e905";
+}
+.icon-dots-three-horizontal:before {
+    content: "\e906";
+}
+.icon-mac:before {
+    content: "\e907";
+}
+.icon-timer:before {
+    content: "\e909";
+}
+.icon-github:before {
+    content: "\e90a";
+}
+.icon-android:before {
+    content: "\e90b";
+}
+.icon-search:before {
+    content: "\e90c";
+}
+.icon-trash:before {
+    content: "\e90d";
+}
+.icon-file-text2:before {
+    content: "\e90e";
+}
+.icon-key:before {
+    content: "\e90f";
+}
+.icon-gear:before {
+    content: "\e910";
+}
+.icon-ruby:before {
+    content: "\e912";
+}
+.icon-apple:before {
+    content: "\e913";
+}
+.icon-left:before {
+    content: "\e914";
+}
+.icon-code:before {
+    content: "\e915";
+}
+.icon-down:before {
+    content: "\e916";
+}
+.icon-right:before {
+    content: "\e917";
+}
+.icon-spinner5:before {
+    content: "\e91c";
+}
+.icon-plus:before {
+    content: "\e91f";
+}
+.icon-edit:before {
+    content: "\e920";
+}
+.icon-user:before {
+    content: "\e921";
+}
+.icon-paper-plane:before {
+    content: "\e922";
+}
+.icon-bitbucket-logo:before {
+    content: "\e924";
+}
+.icon-github-logo:before {
+    content: "\e925";
+}
+.icon-nodejs:before {
+    content: "\e926";
+}
+.icon-rails:before {
+    content: "\e927";
+}
+.icon-osx:before {
+    content: "\e928";
+}
+.icon-check:before {
+    content: "\e92e";
+}
+.icon-power:before {
+    content: "\e92f";
+}
+.icon-blocked:before {
+    content: "\e930";
+}
+.icon-loop:before {
+    content: "\e932";
+}
+.icon-git:before {
+    content: "\e933";
+}
+.icon-hand-pointer-o:before {
+    content: "\e934";
+}
+.icon-database:before {
+    content: "\e935";
+}
+.icon-terminal:before {
+    content: "\e936";
+}
+.icon-tools:before {
+    content: "\e937";
+}
+.icon-bolt:before {
+    content: "\e938";
+}
+.icon-gitlab-logo-txt:before {
+    content: "\e948";
+}
+.icon-python:before {
+    content: "\e94a";
+}
+.icon-php:before {
+    content: "\e94b";
+}
+.icon-locked:before {
+    content: "\e94c";
+}
+.icon-hour-glass:before {
+    content: "\e911";
+}
+.icon-file-code:before {
+    content: "\f010";
+}
+.icon-notebook-text:before {
+    content: "\e919";
+}

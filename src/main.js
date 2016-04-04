@@ -50,7 +50,7 @@ function bootstrap () {
     analysis.time_event('Auto Redirect')
     user = User.test(token);
     user.done(function () {
-      analysis.track('Auto Redirect', {}, redirectToFlow(token));
+      // analysis.track('Auto Redirect', {}, redirectToFlow(token));
     }).fail(function () {
       analysis.track('Auto Redirect', { redirect: false, getUser: 'faild' });
     });

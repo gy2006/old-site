@@ -6,14 +6,14 @@
 
 @import './components/navbar';
 @import './components/footer';
+@import './components/wrapper';
 
 html, body{
   width: 100%;
 }
 
 body{
-  padding: 140px 40px 40px 40px;
-  padding: 140px 0 40px;
+  // padding: 40px;
   margin: 0;
   color: $col-font-gray;
   font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;

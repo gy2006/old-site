@@ -1,19 +1,64 @@
 extends ../layouts/default
 
 block content
-  .page-container.page-home
-    //- .right-block
-    .slogan
-      h1 How much time do you waste on building CI?
-      p.subtitle Just give me the time of a song.
+  .page-home
+    .content-wrapper-270
+      .banner
+        .slogan
+          h1 How much time do you waste on building CI?
+          p.subtitle Just give me<br/>the time of a song.
 
-    .form-container
-      p.text-success Thank you for applying for flow.ci early access. <br/>We will review your application and send the invitation code to your email.
-      form#apply-form(method='post')
-        legend Apply Early Access
-        div.form-control.form-control-email
-          input#email(type='email', name='email', placeholder='Work email', required, autofocus)
-          span.text-danger
-        div.form-control
-          textarea#user_infomation(name='user_infomation', placeholder='Options\n 1. 开发团队规模\n 2. 是否用过 CI\n 3. 公司或者产品名')
-        input(type='submit' value='Early Access')
+        .form-container
+          form#apply-form(method='post')
+            input#email(type='email', name='email', placeholder='Work email', required)
+            input(type='submit' value='Apply')
+          //- div.form-control.form-control-email
+          //-   span.text-danger
+          //- p.text-success Thank you for applying for flow.ci early access. <br/>We will review your application and send the invitation code to your email.
+
+    .flow-concept
+      .content-wrapper-270
+        h2
+          b Anything
+          small you can add to your flow
+        button#flow-add-step
+          svg(width='22', height='22')
+            line(x1='0',y1='11',x2='22',y2='11',stroke-width='4',stroke='white')
+            line(x1='11',y1='0',x2='11',y2='22',stroke-width='4',stroke='white')
+      .flow
+        .flow-line
+        .flow-steps
+          span.step
+            i
+            p Push
+          span.step
+            i
+            p Clone Code
+          span.step
+            i
+            p Testing
+          span.step
+            i
+            p Build
+
+    .languages
+      .content-wrapper-270
+        h2
+          b Languages
+          small is not the Key
+        .langs
+          div.lang
+            i.icon-ruby
+            p Ruby
+          div.lang
+            i.icon-python
+            p Python
+          div.lang
+            i.icon-php
+            p PHP
+          div.lang
+            i.icon-nodejs
+            p Node.js
+          div.lang
+            i.icon-android
+            p Android

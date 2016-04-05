@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "TARGET=local webpack-dev-server --hot --inline --content-base dist/",
+    "start": "TARGET=local webpack-dev-server --hot --inline --content-base dist/ --host 0.0.0.0",
     "compile": "npm run clean && webpack",
     "clean": "rm -rf dist"
   },

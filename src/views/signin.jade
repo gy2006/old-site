@@ -4,7 +4,7 @@ block content
   .page-signin
     .content-wrapper-270
       .form-container
-        form#signin-form(method='post')
+        form#signin-form(method='post' onsubmit="return false;")
           legend Sign in to flow.ci
           div.form-control.form-loginname
             input#login(placeholder='Email or Username', name='login', type='user', required)

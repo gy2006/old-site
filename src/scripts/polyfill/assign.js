@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
 if (!Object.assign) {
-  Object.prototype.assign = $.extend;
+  Object.assign = $.extend;
 }
 export default Object

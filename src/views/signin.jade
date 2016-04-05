@@ -1,16 +1,15 @@
 extends ../layouts/default
 
 block content
-  .page-signin
-    .content-wrapper-270
-      .form-container
-        form#signin-form(method='post')
-          legend Sign in to flow.ci
-          div.form-control.form-loginname
-            input#login(placeholder='Email or Username', name='login', type='user', required)
-            span.text-danger
-          div.form-control.form-password
-            input#password(placeholder='Password', name='password', type='password', required)
-            span.text-danger
-          div.text-danger.form-error
-          input(type='submit', value='Sign In')
+  .page-container.page-signin
+    .form-container
+      form#signin-form(method='post' onsubmit="return false;")
+        legend Sign in to flow.ci
+        div.form-control.form-loginname
+          input#login(placeholder='Email or Username', name='login', type='user', required)
+          span.text-danger
+        div.form-control.form-password
+          input#password(placeholder='Password', name='password', type='password', required)
+          span.text-danger
+        div.text-danger.form-error
+        input(type='submit', value='Sign In')

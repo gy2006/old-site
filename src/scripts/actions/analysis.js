@@ -1,5 +1,4 @@
 import mixpanel from 'mixpanel-browser';
-import $ from 'jquery';
 
 export default {
   init: function () {

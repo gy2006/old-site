@@ -37,8 +37,9 @@ $subtitle-color: $col-page-home-primary;
     }
     .form-result{
       display: none;
-      font-size: 22px;
-      margin-bottom: 2px;
+      font-size: 18px;
+      height: 62px;
+      line-height: 62px;
     }
     &.success{
       .form-result{

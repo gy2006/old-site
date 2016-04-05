@@ -9,7 +9,7 @@ block content
           p.subtitle Just give me<br/>the time of a song.
 
         .form-container
-          form#apply-form(method='post')
+          form#apply-form(method='post' onsubmit="return false;")
             input#email(type='email', name='email', placeholder='Work email', required)
             input(type='submit' value='Apply')
           //- div.form-control.form-control-email

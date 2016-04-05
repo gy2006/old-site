@@ -1,8 +1,14 @@
 @charset 'UTF-8';
 
 .page-signin{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  justify-content: center;
   .form-container{
     display: flex;
+
     justify-content: center;
   }
 }

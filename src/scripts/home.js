@@ -19,9 +19,7 @@ function initValidate () {
   return new FormValidate("#apply-form", [{
     name: 'email',
     rules: 'required|email',
-    errorElement: "#apply-form .form-control-email .text-danger"
-  }, {
-    name: 'user_infomation'
+    errorElement: ".page-home .text-danger"
   }]);
 }
 

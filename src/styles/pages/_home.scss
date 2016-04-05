@@ -31,6 +31,25 @@ $subtitle-color: $col-page-home-primary;
     }
   }
 
+  .form-container{
+    .text-danger{
+      margin-left: 20px;
+    }
+    .form-result{
+      display: none;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+    &.success{
+      .form-result{
+        display: block;
+      }
+      #apply-form{
+        display: none;
+      }
+    }
+  }
+
   .flow-concept, .languages{
     h2{
       color: $col-font-black;
@@ -190,18 +209,5 @@ $subtitle-color: $col-page-home-primary;
     text-transform: uppercase;
   }
   input[type='email']{
-  }
-  .text-success{
-    display: none;
-    font-size: 20px;
-    color: $col-green;
-  }
-  &.success{
-    .text-success{
-      display: block;
-    }
-    #apply-form{
-      display: none;
-    }
   }
 }

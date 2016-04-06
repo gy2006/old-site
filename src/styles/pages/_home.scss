@@ -85,7 +85,9 @@ $subtitle-color: $col-page-home-primary;
         transform: scale(1.1);
         box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.2)
       }
-
+      &[disabled='disabled'] {
+        opacity: .4;
+      }
       svg{ display: block; }
     }
     .flow{

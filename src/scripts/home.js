@@ -48,10 +48,11 @@ export default function bootstrap() {
     [6,'Slack']
   ];
 
-  $('#flow-add-step').click(() => {
-    if (!steps.length) return;
-
+  $('#flow-add-step').click(function () {
     const step = steps.shift();
     $(`<span class='step new-item'><i></i><p>${step[1]}</p></span>`).insertAt(step[0], flow);
+    if (!steps.length) {
+      $(this).attr('disabled', 'disabled');
+    }
   });
 }

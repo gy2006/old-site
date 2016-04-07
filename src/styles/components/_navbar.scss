@@ -2,11 +2,11 @@
 
 .navbar{
   position: fixed;
-  z-index: 999;
   top: 0;
   left: 0;
-  width: 100%;
+  z-index: 999;
   padding-top: 40px;
+  width: 100%;
   .content-wrapper-60{
     @include clearfix;
   }
@@ -16,10 +16,19 @@
   }
   .nav-logo{
     a{
+      position: relative;
       display: block;
       img{
         display: block;
         height: 20px;
+      }
+      .icon-beta{
+        position: absolute;
+        right: -14px;
+        bottom: -20px;
+        color: $col-primary;
+        font-size: 12px;
+        transform: scale(.75);
       }
     }
   }
@@ -29,8 +38,8 @@
 
     .nav-item{
       display: inline-flex;
-      padding: 0 10px;
       margin: 0 6px;
+      padding: 0 10px;
       text-transform: uppercase;
       &:last-child{
         margin-right: 0;

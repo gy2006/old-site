@@ -24,11 +24,13 @@ export default class Button {
 
   startLoading () {
     let loop = 0;
-    this.timer = setInterval(() => {
+    const loopFn = () => {
       loop++;
       const length = loop % 4;
       this.$element.val(this.value + fill(' .', length));
-    }, TIME_INTERVAL)
+    }
+    loopFn();
+    this.timer = setInterval(loopFn, TIME_INTERVAL)
   }
 
   endLoading () {

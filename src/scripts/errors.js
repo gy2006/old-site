@@ -40,7 +40,7 @@ const FIELD_CODE_PARAM_MAPPING = {
   username: {
     min: 3,
     max: 15,
-    example: 'hell@fir.im',
+    example: 'flowci',
     'default': 'must greater than 3 and less than 15'
   },
   password: {

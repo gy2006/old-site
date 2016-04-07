@@ -26,11 +26,11 @@ function initValidate () {
     errorElement: '#signup-form .form-email .text-danger'
   }, {
     name: 'username',
-    rules: 'required|minlength:3',
+    rules: 'required|minlength:3|maxlength:15',
     errorElement: '#signup-form .form-username .text-danger'
   }, {
     name: 'password',
-    rules: 'required|minlength:3',
+    rules: 'required|minlength:6',
     errorElement: '#signup-form .form-password .text-danger'
   }, {
     name: 'sign',

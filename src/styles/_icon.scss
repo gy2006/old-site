@@ -2,11 +2,11 @@
     font-weight: normal;
     font-style: normal;
     font-family: 'flowci';
-    src:    url('../static/fonts/flowci.eot?783b9');
-    src:    url('../static/fonts/flowci.eot?783b9#iefix') format('embedded-opentype'),
-        url('../static/fonts/flowci.ttf?783b9') format('truetype'),
-        url('../static/fonts/flowci.woff?783b9') format('woff'),
-        url('../static/fonts/flowci.svg?783b9#flowci') format('svg');
+    src:    url('../static/fonts/flowci.eot?odq6iu');
+    src:    url('../static/fonts/flowci.eot?odq6iu#iefix') format('embedded-opentype'),
+        url('../static/fonts/flowci.ttf?odq6iu') format('truetype'),
+        url('../static/fonts/flowci.woff?odq6iu') format('woff'),
+        url('../static/fonts/flowci.svg?odq6iu#flowci') format('svg');
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-git-pull-request:before {
+    content: "\e91b";
+}
 .icon-comments-o:before {
     content: "\e91a";
 }

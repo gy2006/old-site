@@ -36,9 +36,11 @@
   }
 
   input[type='submit']{
-    background-color: $col-font-gray;
     background-color: $col-primary;
     color: #fff;
+    &[disabled='disabled'] {
+      opacity: .7;
+    }
   }
 
   textarea{

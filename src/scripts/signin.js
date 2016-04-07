@@ -2,13 +2,19 @@ import $ from 'jquery';
 import FormValidate from './validate';
 import signin from './actions/signin';
 import Errors from './errors';
+import Button from './button';
 
 function bindSubmit(form) {
   function handlerSubmit (e) {
-    e.preventDefault();
-    // console.log('enter home submit', form.getValues());
+    const $submitBtn = new Button($(this).find('input[type="submit"]'));
+    $submitBtn.setDisabled(true);
+    $submitBtn.startLoading();
+
     signin(form.getValues()).fail(function (e){
       form.setError('$form', Errors(e));
+    }).always(() => {
+      $submitBtn.setDisabled(false);
+      $submitBtn.endLoading();
     });
   }
   form.$form.submit(handlerSubmit);

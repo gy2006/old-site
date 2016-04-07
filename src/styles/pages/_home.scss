@@ -87,7 +87,7 @@ $subtitle-color: $col-page-home-primary;
         transform: scale(1.1);
       }
       &[disabled='disabled'] {
-        opacity: .4;
+        opacity: 0;
       }
       svg{ display: block; }
     }

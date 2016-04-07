@@ -1,14 +1,16 @@
-.float-navbar.nav-main
-  .nav-card.nav-logo
-    a(href='/')
-      img(src=require('../static/images/logo-inline-white.svg'))
-
-
-.float-navbar.nav-right.nav-menus
-  //- .slash-split
-  //-   svg(width='12' height='60')
-  //-     line(x1='12' y1='0' x2='0' y2='60' stroke='#8D9094' stroke-width='1')
-  .nav-card.nav-signin
-    a(href='/signin.html') Sign In
-  .nav-card.nav-signup
-    a(href='/signup.html') Sign Up
+.navbar
+  .content-wrapper-270
+    .navbar-left
+      .nav-item.nav-logo
+        a(href='/')
+          img(src=require('../static/images/logo-inline-blue.svg'))
+      
+    .navbar-right
+      .nav-item
+        a(href='https://github.com/FIRHQ/flow.ci') Documents
+      .nav-item
+        a(href='/pricing.html') Pricing
+      .nav-item.nav-sign
+        a(href='/signin.html') Sign In
+        span /
+        a(href='/signup.html') Sign Up

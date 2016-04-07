@@ -1,0 +1,12 @@
+.beta-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  padding: 8px 0;
+  width: 200px;
+  background-color: $col-primary;
+  color: white;
+  text-align: center;
+  transform: translate3d(-74px,-12px,0) rotateZ(45deg);
+}

@@ -1,9 +1,13 @@
 @charset 'UTF-8';
 
 .page-signup{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  justify-content: center;
   .form-container{
     display: flex;
-    justify-content: center;
   }
 }
 
@@ -11,6 +15,7 @@
   legend{ color: $col-green; }
   input, textarea{
     border-color: $col-green;
+
     @include placeholder{ color: rgba($col-green, .5); }
   }
   input[type='submit']{ background-color: $col-green; }

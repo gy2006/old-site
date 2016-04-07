@@ -1,7 +1,22 @@
 @import './fonts';
 @import './base';
+@import './icon';
 
 @import './pages/forms';
 @import './pages/home';
+@import './pages/pricing';
 @import './pages/signin';
 @import './pages/signup';
+
+body{
+  &:after{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(0deg,hsla(0,0%,100%,0),#fff 60%);
+    content: ' ';
+  }
+}

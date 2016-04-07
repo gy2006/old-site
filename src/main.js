@@ -32,7 +32,7 @@ FormValidate.setDefaultValidators({
 });
 
 FormValidate.setDefaultRulesMap({
-  username: 'Invalid Username',
+  username: 'Invalid Username,Username may only contain alphanumeric character',
   loginname: 'Must Username or Email'
 });
 

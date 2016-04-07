@@ -4,30 +4,31 @@
 @import './variables/form';
 @import './variables/presets';
 
+@import './components/beta_bar';
 @import './components/navbar';
 @import './components/footer';
+@import './components/wrapper';
 
 html, body{
   width: 100%;
 }
 
 body{
-  padding: 140px 40px 40px 40px;
-  padding: 140px 0 40px;
   margin: 0;
   color: $col-font-gray;
-  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
   font-size: 14px;
+  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+
   -webkit-font-smoothing: antialiased;
-  // background-color: #edf0f5;
 }
 
 .page-container{
   padding: 40px;
-  // padding: 60px 40px;
-  // display: inline-flex;
-  // flex-direction: column;
-  // box-shadow: 0 26px 40px -24px rgba(0,36,100,0.3), 0 -1px 10px 0px rgba(0, 0, 0, 0.05);
-  // background-color: #fff;
-  // margin: 0 40px;
+}
+
+.text-danger{
+  color: $col-red;
+}
+.text-success{
+  color: $col-green;
 }

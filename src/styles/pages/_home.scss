@@ -7,32 +7,42 @@ $slogan-color: $col-page-home-primary;
 $subtitle-color: $col-page-home-primary;
 
 .page-home{
-  .slogan{
-    flex: 1 1 0;
-    padding-right: 40px;
-    h1{
-      font-weight: 100;
-      font-size: 40px;
-      margin: 0 0 20px 0;
-      color: $slogan-color;
-    }
-    .subtitle{
-      font-weight: 100;
-      font-size: 28px;
-      margin: 0;
-      color: $subtitle-color;
+  .banner{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    .slogan{
+      margin-bottom: 40px;
+      h1{
+        font-weight: 100;
+        font-size: 20px;
+        line-height: 20px;
+        margin: 0 0 20px 0;
+        color: $slogan-color;
+      }
+      .subtitle{
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 60px;
+        margin: 0;
+        color: $subtitle-color;
+      }
     }
   }
+
   .form-container{
-    flex: 1 1 0;
-    margin-top: 60px;
-    .text-success{
+    .text-danger{
+      margin-left: 20px;
+    }
+    .form-result{
       display: none;
-      font-size: 20px;
-      color: $col-green;
+      font-size: 18px;
+      height: 62px;
+      line-height: 62px;
     }
     &.success{
-      .text-success{
+      .form-result{
         display: block;
       }
       #apply-form{
@@ -40,14 +50,167 @@ $subtitle-color: $col-page-home-primary;
       }
     }
   }
+
+  .flow-concept, .languages{
+    h2{
+      color: $col-font-black;
+      b{
+        font-size: 70px;
+        // line-height: 80px;
+        font-weight: bold;
+        display: block;
+      }
+      small{
+        display: block;
+        font-weight: 100;
+        font-size: 22px;
+      }
+    }
+  }
+
+  .flow-concept{
+    display: flex;
+    height: 100vh;
+    padding: 120px 0;
+    flex-direction: column;
+    justify-content: center;
+    #flow-add-step{
+      margin-top: 4px;
+      background-color: $col-primary;
+      font-size: 22px;
+      padding: 19px;
+      transition: all .25s;
+      border-radius: 0;
+      &:hover{
+        transform: scale(1.1);
+        box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.2)
+      }
+      &[disabled='disabled'] {
+        opacity: .4;
+      }
+      svg{ display: block; }
+    }
+    .flow{
+      margin-top: 80px;
+      margin-bottom: 0px;
+      position: relative;
+
+      .flow-line{
+        position: absolute;
+        top: 19px;
+        left: 50%;
+        transform: translate3d(-50%,0,0);
+        height: 1px;
+        background-color: $col-hr;
+        width: 100%;
+        transition: all .5s;
+      }
+      .flow-steps{
+        text-align: center;
+        transition: all .5s;
+      }
+      .step{
+        width: 140px;
+        display: inline-block;
+        position: relative;
+        > i{
+          display: inline-block;
+          width: 36px;
+          height: 36px;
+          background-color: $col-primary;
+          border: 10px solid white;
+          box-shadow: 0 0 1px rgba($col-primary,1);
+          border-radius: 50%;
+        }
+        > p{
+          margin: 0;
+          position: absolute;
+          top: 60px;
+          font-size: 16px;
+          left: 50%;
+          transform: translate3d(-50%,0,0);
+          white-space: nowrap;
+        }
+      }
+
+      .step.new-item{
+        @include animation(appear .5s);
+        > i{
+          background-color: $col-green;
+        }
+        > p{
+          bottom: 60px;
+          top: auto;
+        }
+
+        @include keyframes(appear) {
+          0% {
+            width: 0;
+            opacity: 0;
+          }
+          100% {
+            width: 140px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .languages{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2{
+      color: $col-font-black;
+      font-weight: bold;
+      font-size: 40px;
+    }
+    .langs{
+      margin-top: 80px;
+      display: flex;
+      justify-content: space-between;
+      .lang{
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.89px;
+        font-size: 16px;
+      }
+      i{
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        border-radius: 50%;
+        background-color: $col-primary;
+        color: white;
+      }
+    }
+  }
 }
 
 #apply-form{
-  legend{ color: $col-green; }
-  input, textarea{
-    border-color: $col-green;
-    @include placeholder{ color: rgba($col-green, .5); }
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(black, .2);
+  input{
+    width: 360px;
+    padding: 19px 28px;
+    font-size: 16px;
+    border-radius: 0;
+    border-color: transparent;
   }
-  textarea{ height: 140px; }
-  input[type='submit']{ background-color: $col-green; }
+  input[type='submit']{
+    width: 120px;
+    font-size: 18px;
+    background-color: $col-primary;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  input[type='email']{
+  }
 }

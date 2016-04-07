@@ -4,16 +4,21 @@ import User from './actions/user';
 import analysis from './actions/analysis';
 import getSearch from './util/getSearch';
 import Errors from './errors';
+import Button from './button';
 
 function bindSubmit(form) {
   const search = getSearch();
   function handlerSubmit (e) {
-    e.preventDefault();
-    // console.log('enter home submit', form.getValues());
-    const fields = form.getValues();
+    const $submitBtn = new Button($(this).find('input[type="submit"]'));
+    $submitBtn.setDisabled(true);
+    $submitBtn.startLoading();
 
+    const fields = form.getValues();
     User.create(fields, !!search.project_id).fail((e)=>{
       form.setError('$form', Errors(e));
+    }).always(function () {
+      $submitBtn.setDisabled(false);
+      $submitBtn.endLoading();
     });
   }
   form.$form.submit(handlerSubmit);

@@ -8,14 +8,17 @@ function getDefaultUrl (accessToken) {
   return __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__;
 }
 
-export default function redirectToDashboard (accessToken) {
+export function getDashboardUrl (accessToken) {
   let url = getCookie(REDIRECT_KEY);
   url && clearCookie(REDIRECT_KEY);
 
   if (!url || url.indexOf(__DASHBOARD_URL__) !== 0) {
     url = getDefaultUrl(accessToken);
   }
+  return url
+}
 
-  window.location = url;
+export default function redirectToDashboard (accessToken) {
+  window.location = getDashboardUrl(accessToken);
 }
 

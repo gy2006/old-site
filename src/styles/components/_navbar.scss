@@ -5,14 +5,18 @@
   top: 0;
   left: 0;
   z-index: 999;
-  padding-top: 40px;
+  padding-top: 30px;
   width: 100%;
+  height: 90px;
+  // background-color: black;
+  // background-clip: content-box;
   .content-wrapper-60{
     @include clearfix;
   }
 
   .navbar-left{
     float: left;
+    padding: 20px 0px;
   }
   .nav-logo{
     a{
@@ -39,22 +43,52 @@
     .nav-item{
       display: inline-flex;
       margin: 0 6px;
-      padding: 0 10px;
+      padding: 20px 10px;
+      vertical-align: middle;
       text-transform: uppercase;
-      &:last-child{
+      &:last-child, &:nth-last-child(2){
         margin-right: 0;
         padding-right: 0;
       }
     }
     .nav-sign{
-      // position: relative;
+      width: 152px;
       > span{
         margin: 0 10px;
         color: $col-font-gray2;
       }
-      // a{ font-weight: bold; }
       a{
         color: $col-primary;
+      }
+    }
+    .nav-user{
+      padding: 0px;
+      width: 152px;
+      a{
+        display: flex;
+        margin-left: auto;
+        padding: 6px 10px;
+        background-color: $col-hr;
+        background-color: $col-primary;
+        color: white;
+        text-transform: none;
+
+        justify-content: center;
+        align-items: center;
+        &:hover{
+          opacity: .9;
+        }
+      }
+      &.hide{
+        display: none;
+      }
+      .avator{
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+      .text{
+        margin-left: 10px;
       }
     }
   }

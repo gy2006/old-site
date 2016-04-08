@@ -3,7 +3,7 @@ import $ from 'jquery';
 import './scripts/polyfill/assign';
 import { get as getCookie } from './scripts/util/cookies';
 import User from './scripts/actions/user';
-import redirectToDashboard from './scripts/actions/redirectToDashboard';
+import redirectToDashboard, { getDashboardUrl } from './scripts/actions/redirectToDashboard';
 
 import home from './scripts/home';
 import signin from './scripts/signin';
@@ -15,7 +15,6 @@ import FormValidate from './scripts/validate';
 import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
 analysis.init(__MIXPANEL_TOKEN__);
-
 /*
   default set validator for FormValidate;
 */
@@ -46,11 +45,17 @@ function redirectToFlow (token) {
 function bootstrap () {
   const path = location.pathname;
   const token = getCookie(COOKIE_KEY);
-  let user;
+  let userPromise;
   if (token) {
     analysis.time_event('Auto Redirect')
-    user = User.test(token);
-    user.done(function () {
+    userPromise = User.get(token);
+    userPromise.done(function (userInfo) {
+      $(".navbar .nav-sign").hide();
+      const $navUser = $(".navbar .nav-user").removeClass('hide');
+      const $navLink = $navUser.find('a');
+      const $navAvator = $navUser.find('.avator');
+      $navLink.attr('href', getDashboardUrl(token));
+      $navAvator.attr('src', userInfo.avatar);
       // analysis.track('Auto Redirect', {}, redirectToFlow(token));
     }).fail(function () {
       analysis.track('Auto Redirect', { redirect: false, getUser: 'faild' });

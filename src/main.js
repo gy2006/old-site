@@ -32,7 +32,7 @@ FormValidate.setDefaultValidators({
 });
 
 FormValidate.setDefaultRulesMap({
-  username: 'Invalid Username,Username may only contain alphanumeric character',
+  username: 'Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen',
   loginname: 'Must Username or Email'
 });
 

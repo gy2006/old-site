@@ -46,19 +46,17 @@
       padding: 20px 10px;
       vertical-align: middle;
       text-transform: uppercase;
-      // &:last-child{
-      //   margin-right: 0;
-      //   padding-right: 0;
-      // }
+      &:last-child, &:nth-last-child(2){
+        margin-right: 0;
+        padding-right: 0;
+      }
     }
     .nav-sign{
-      // position: relative;
       width: 152px;
       > span{
         margin: 0 10px;
         color: $col-font-gray2;
       }
-      // a{ font-weight: bold; }
       a:last-child{
         color: $col-primary;
       }
@@ -68,11 +66,15 @@
       width: 152px;
       a{
         display: flex;
+        margin-left: auto;
+        padding: 6px 10px;
+        background-color: $col-hr;
+        background-color: $col-primary;
+        color: white;
+        text-transform: none;
+
         justify-content: center;
         align-items: center;
-        padding: 10px;
-        border: 1px solid;
-        border-radius: 5px;
         &:hover{
           opacity: .9;
         }
@@ -81,8 +83,8 @@
         display: none;
       }
       .avator{
-        width: 36px;
-        height: 36px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
       }
       .text{

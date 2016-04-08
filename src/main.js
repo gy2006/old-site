@@ -15,7 +15,6 @@ import FormValidate from './scripts/validate';
 import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
 analysis.init(__MIXPANEL_TOKEN__);
-
 /*
   default set validator for FormValidate;
 */
@@ -54,7 +53,7 @@ function bootstrap () {
       $(".navbar .nav-sign").hide();
       const $navUser = $(".navbar .nav-user").removeClass('hide');
       const $navLink = $navUser.find('a');
-      const $navAvator = $navUser.find('img');
+      const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
       $navAvator.attr('src', userInfo.avatar);
       // analysis.track('Auto Redirect', {}, redirectToFlow(token));

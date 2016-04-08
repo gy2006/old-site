@@ -13,6 +13,7 @@
 
   .navbar-left{
     float: left;
+    padding: 10px 0px;
   }
   .nav-logo{
     a{
@@ -39,7 +40,8 @@
     .nav-item{
       display: inline-flex;
       margin: 0 6px;
-      padding: 0 10px;
+      padding: 10px 10px;
+      vertical-align: middle;
       text-transform: uppercase;
       &:last-child{
         margin-right: 0;
@@ -55,6 +57,18 @@
       // a{ font-weight: bold; }
       a:last-child{
         color: $col-primary;
+      }
+    }
+    .nav-user{
+      padding-top: 0px;
+      padding-bottom: 0px;
+      &.hide{
+        display: none;
+      }
+      img{
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
       }
     }
   }

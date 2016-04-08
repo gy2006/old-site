@@ -33,7 +33,7 @@ FormValidate.setDefaultValidators({
 
 FormValidate.setDefaultRulesMap({
   username: 'Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen',
-  loginname: 'Must Username or Email'
+  loginname: 'Incorrect email or username format'
 });
 
 function redirectToFlow (token) {

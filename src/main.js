@@ -31,8 +31,8 @@ FormValidate.setDefaultValidators({
 });
 
 FormValidate.setDefaultRulesMap({
-  username: 'Invalid Username',
-  loginname: 'Must Username or Email'
+  username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
+  loginname: 'Incorrect email or username format'
 });
 
 function redirectToFlow (token) {

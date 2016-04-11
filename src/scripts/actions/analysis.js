@@ -28,6 +28,7 @@ export default {
     }
   },
   alias: function (newId) {
+    // must only use in sign up
     const nowId = mixpanel.get_distinct_id();
     mixpanel.alias(newId, nowId);
   },

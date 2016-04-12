@@ -50,6 +50,7 @@ function bootstrap () {
     analysis.time_event('Auto Redirect')
     userPromise = User.get(token);
     userPromise.done(function (userInfo) {
+      analysis.identify(userInfo.email);
       $(".navbar .nav-sign").hide();
       const $navUser = $(".navbar .nav-user").removeClass('hide');
       const $navLink = $navUser.find('a');

@@ -118,14 +118,16 @@ $subtitle-color: $col-page-home-primary;
         width: 0%;
         height: 1px;
         background-color: $col-primary;
-        transition: width 2s ease-in;
+        transition: width 1s ease-in;
         &.active {
           width: 100%;
+          transition-delay: 1.55s;
         }
       }
       .flow-steps{
         text-align: center;
         transition: all .5s;
+        height: 40px;
       }
       .step{
         position: relative;

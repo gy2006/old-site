@@ -32,7 +32,7 @@ export default class flowAnimate {
       this.steps.forEach((step) => {
         step.animate()
       });
-    }, 300);
+    }, 10);
     this.flowLine.addClass('active');
     $(window).off('scroll');
   }

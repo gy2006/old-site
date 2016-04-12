@@ -31,8 +31,8 @@ FormValidate.setDefaultValidators({
 });
 
 FormValidate.setDefaultRulesMap({
-  username: 'Invalid Username',
-  loginname: 'Must Username or Email'
+  username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
+  loginname: 'Incorrect email or username format'
 });
 
 function redirectToFlow (token) {
@@ -50,20 +50,16 @@ function bootstrap () {
     analysis.time_event('Auto Redirect')
     userPromise = User.get(token);
     userPromise.done(function (userInfo) {
+      analysis.identify(userInfo.email);
       $(".navbar .nav-sign").hide();
       const $navUser = $(".navbar .nav-user").removeClass('hide');
       const $navLink = $navUser.find('a');
       const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
       $navAvator.attr('src', userInfo.avatar);
-      // analysis.track('Auto Redirect', {}, redirectToFlow(token));
-    }).fail(function () {
-      analysis.track('Auto Redirect', { redirect: false, getUser: 'faild' });
     });
-  } else {
-    analysis.pageView();
   }
-
+  analysis.pageView();
   if (/^\/signup(\.html)?/.test(path)) {
     // signup
     signup();

@@ -31,7 +31,7 @@ function initValidate () {
     errorElement: '#signup-form .form-email .text-danger'
   }, {
     name: 'username',
-    rules: 'required|minlength:3|maxlength:15',
+    rules: 'required|username',
     errorElement: '#signup-form .form-username .text-danger'
   }, {
     name: 'password',

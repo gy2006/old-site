@@ -35,9 +35,9 @@ export default {
   track_alias: function (newId) {
     const nowId = mixpanel.get_distinct_id();
     // old distinct_id event
-    mixpanel.track('Alias To', {
-      to_distinct_id: newId
-    });
+    // mixpanel.track('Alias To', {
+    //   to_distinct_id: newId
+    // });
     // new distinct_id event
     mixpanel.identify(newId);
     mixpanel.track('Alias', {

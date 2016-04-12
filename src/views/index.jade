@@ -5,21 +5,22 @@ block content
     .content-wrapper-270
       .banner
         .slogan
-          h1 How much time do you waste on building CI?
-          p.subtitle Just give me<br/>the time of a song.
+          h1 Keep your code flowing
+          p.subtitle flow.ci, hosted continuous integration and delivery service for innovators who shape the future
 
         .form-container
           form#apply-form(method='post' onsubmit="return false;")
             input#email(type='email', name='email', placeholder='Work email', required)
-            input(type='submit' value='Apply')
-          span.text-danger
-          div.form-result.text-success Thanks for applying, We will email you invitation code&nbsp;&nbsp;: )
+            input(type='submit' value='Apply for early access')
+          div.text-danger
+          .form-result.text-success Thanks for applying, We will email you invitation code&nbsp;&nbsp;: )
+          .apply-incentive Free, secure and we value your efforts.
 
     .flow-concept
       .content-wrapper-270
         h2
-          b Anything
-          small you can add to your flow
+          b FLOW
+          small Automate your development workflow without constraints.
         button#flow-add-step
           svg(width='22', height='22')
             line(x1='0',y1='11',x2='22',y2='11',stroke-width='4',stroke='white')
@@ -40,14 +41,68 @@ block content
             i
             p Build
 
+    .plugins
+      .content-wrapper-270
+        h2
+          b PLUGINS
+          small No configuration needed, add powerful plugins with one click.
+        .categories
+          .cate.code-analysis
+            .title Code Analysis
+            .list
+              .item 
+                i.icon-check
+                | Rubocop
+              .item 
+                i.icon-check
+                | Eslint
+              .item 
+                i.icon-check
+                | pep8
+              .item 
+                i.icon-check
+                | Codesniffer
+                .item 
+                i.icon-check
+                | Results Pretty Render
+          
+          .cate.databases
+            .title Database
+            .list
+              .item 
+                i.icon-check
+                | MongoDB
+              .item 
+                i.icon-check
+                | MySQL
+              .item 
+                i.icon-check
+                | Redis
+
+          .cate.notification
+            .title Notification
+            .list
+              .item 
+                i.icon-check
+                | Email
+              .item 
+                i.icon-check
+                | Slack
+
+          .cate.others
+            .title More
+            .list
+              .item
+                i.icon-check
+                | Custom Script
+              .item ...
+            
+
     .languages
       .content-wrapper-270
         h2
-          b Languages
-          small we support currently
-        //- h2
-        //-   b Language
-        //-   small is not the key point
+          b LANGUAGES
+          small We speak your language. Get started with language specific templates. It’s easy :&nbsp;)
         .langs
           div.lang
             i.icon-ruby
@@ -68,8 +123,8 @@ block content
     .more-things
       .content-wrapper-270
         h2
-          b More things
-          small we are buiding
+          b More to come
+          small We keep building new stuff. Stay tuned!
         .things
           div.item
             a(href='https://github.com/FIRHQ/flow.ci' target='_blank').open-source-project

@@ -15,24 +15,31 @@ $subtitle-color: $col-page-home-primary;
     justify-content: center;
     .slogan{
       margin-bottom: 40px;
+      text-align: center;
       h1{
         margin: 0 0 20px 0;
         color: $slogan-color;
-        font-weight: 100;
-        font-size: 20px;
-        line-height: 20px;
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 60px;
+        // font-size: 20px;
+        // line-height: 20px;
       }
       .subtitle{
         margin: 0;
         color: $subtitle-color;
-        font-weight: bold;
-        font-size: 50px;
-        line-height: 60px;
+        font-weight: 100;
+        font-size: 20px;
+        line-height: 40px;
+        // font-size: 50px;
+        // line-height: 60px;
       }
     }
   }
 
   .form-container{
+    margin-top: 40px;
+    text-align: center;
     .text-danger{
       margin-left: 20px;
     }
@@ -50,9 +57,18 @@ $subtitle-color: $col-page-home-primary;
         display: none;
       }
     }
+    .apply-incentive{
+      display: block;
+      margin: 4px auto 0;
+      padding-right: 12px;
+      width: 600px;
+      color: $col-gray;
+      text-align: right;
+      font-size: 12px;
+    }
   }
 
-  .flow-concept, .languages, .more-things{
+  .flow-concept, .languages, .more-things, .plugins{
     h2{
       color: $col-font-black;
       b{
@@ -94,26 +110,55 @@ $subtitle-color: $col-page-home-primary;
     .flow{
       position: relative;
       margin-top: 80px;
-      margin-bottom: 0px;
+      margin-bottom: 40px;
 
       .flow-line{
         position: absolute;
         top: 19px;
-        left: 50%;
-        width: 100%;
+        width: 0%;
         height: 1px;
-        background-color: $col-hr;
-        transition: all .5s;
-        transform: translate3d(-50%,0,0);
+        background-color: $col-primary;
+        transition: width 1s ease-in;
+        &.active {
+          width: 100%;
+          transition-delay: 1.55s;
+        }
       }
       .flow-steps{
         text-align: center;
         transition: all .5s;
+        height: 40px;
       }
       .step{
         position: relative;
         display: inline-block;
         width: 140px;
+        opacity: 1;
+        transition: all 1s;
+        &.hide{
+          opacity: 0;
+        }
+        &:nth-child(1) {
+          transition-delay: 0s;
+        }
+        &:nth-child(2) {
+          transition-delay: .05s;
+        }
+        &:nth-child(3) {
+          transition-delay: .15s;
+        }
+        &:nth-child(4) {
+          transition-delay: .25s;
+        }
+        &:nth-child(5) {
+          transition-delay: .35s;
+        }
+        &:nth-child(6) {
+          transition-delay: .45s;
+        }
+        &:nth-child(7) {
+          transition-delay: .55s;
+        }
         > i{
           display: inline-block;
           width: 36px;
@@ -121,7 +166,7 @@ $subtitle-color: $col-page-home-primary;
           border: 10px solid white;
           border-radius: 50%;
           background-color: $col-primary;
-          box-shadow: 0 0 1px rgba($col-primary,1);
+          box-shadow: 0 0 0px 1px rgba($col-primary,1);
         }
         > p{
           position: absolute;
@@ -153,6 +198,41 @@ $subtitle-color: $col-page-home-primary;
           top: auto;
           bottom: 60px;
         }
+      }
+    }
+  }
+
+  .plugins{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    justify-content: center;
+    h2{
+      color: $col-font-black;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    .categories{
+      display: flex;
+      margin-top: 80px;
+
+      align-items: flex-start;
+      .cate{
+        display: flex;
+        flex-direction: column;
+
+        flex: 1 1 0;
+        .title{
+          margin-bottom: 12px;
+          font-size: 24px;
+        }
+      }
+
+      .item{
+        margin-bottom: 6px;
+        > i{ margin-right: 6px; color: $col-green; font-size: 12px; }
       }
     }
   }
@@ -225,6 +305,7 @@ $subtitle-color: $col-page-home-primary;
   box-shadow: 0 2px 6px rgba(black, .2);
 
   align-items: center;
+  align-items: stretch;
   input{
     padding: 19px 28px;
     width: 360px;
@@ -233,12 +314,15 @@ $subtitle-color: $col-page-home-primary;
     font-size: 16px;
   }
   input[type='submit']{
-    width: 120px;
+    // width: 120px;
+    min-width: 240px;
+    width: auto;
     background-color: $col-primary;
     color: white;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: bold;
-    font-size: 18px;
+    // font-size: 18px;
+    font-size: 14px;
   }
   input[type='email']{
   }

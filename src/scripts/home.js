@@ -2,6 +2,7 @@ import FormValidate from './validate';
 import $ from 'jquery';
 import applyCI from './actions/applyForCi';
 import analysis from './actions/analysis';
+import FlowAnimate from './components/flowAnimate';
 
 function bindSubmit (form) {
   function handlerSubmit (e) {
@@ -27,6 +28,22 @@ function addStepToFlow() {
 
 }
 
+function flowAnimate () {
+  const StepArray = [
+    'Push',
+    'Clone Code',
+    'Code analysis',
+    'Testing',
+    'Build',
+    'Deploy',
+    'Slack'
+  ]
+  const flow = new FlowAnimate(StepArray, $('.flow-steps'), $('.flow-line'), {
+    bottom: 200
+  });
+  flow.render();
+}
+
 export default function bootstrap() {
   const form = initValidate();
   bindSubmit(form);
@@ -40,19 +57,6 @@ export default function bootstrap() {
       }
     });
   };
+  flowAnimate();
 
-  const flow = $('.flow-steps');
-  const steps = [
-    [2, 'Code analysis'],
-    [5, 'Deploy'],
-    [6,'Slack']
-  ];
-
-  $('#flow-add-step').click(function () {
-    const step = steps.shift();
-    $(`<span class='step new-item'><i></i><p>${step[1]}</p></span>`).insertAt(step[0], flow);
-    if (!steps.length) {
-      $(this).attr('disabled', 'disabled');
-    }
-  });
 }

@@ -12,7 +12,7 @@ export default function signIn (data) {
     saveAccessToken(accessToken);
 
     User.get(accessToken).done(function (user) {
-      analysis.identify(user.email);
+      analysis.track_alias(user.email);
       analysis.people.increment('signed_in', 1, function () {
         redirectToDashboard(accessToken);
       });

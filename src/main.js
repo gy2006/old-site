@@ -56,14 +56,9 @@ function bootstrap () {
       const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
       $navAvator.attr('src', userInfo.avatar);
-      // analysis.track('Auto Redirect', {}, redirectToFlow(token));
-    }).fail(function () {
-      analysis.track('Auto Redirect', { redirect: false, getUser: 'faild' });
     });
-  } else {
-    analysis.pageView();
   }
-
+  analysis.pageView();
   if (/^\/signup(\.html)?/.test(path)) {
     // signup
     signup();

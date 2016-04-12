@@ -26,5 +26,24 @@ export default {
     increment: function () {
       return mixpanel.people.increment.apply(mixpanel.people, arguments);
     }
+  },
+  alias: function (newId) {
+    // must only use in sign up
+    const nowId = mixpanel.get_distinct_id();
+    mixpanel.alias(newId, nowId);
+  },
+  track_alias: function (newId) {
+    const nowId = mixpanel.get_distinct_id();
+    // old distinct_id event
+    // mixpanel.track('Alias To', {
+    //   to_distinct_id: newId
+    // });
+    // new distinct_id event
+    mixpanel.identify(newId);
+    mixpanel.track('Alias', {
+      old_distinct_id: nowId
+    });
+    mixpanel.people.append({ Alias: nowId });
+    // mixpanel.alias(newId, nowId);
   }
 }

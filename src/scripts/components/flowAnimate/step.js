@@ -1,18 +1,15 @@
 import $ from 'jquery';
 
-export function randomPosition (range) {
-  let x = parseInt(Math.random() * 100);
-  let y = parseInt(Math.random() * 100);
+export function randomPosition (range = {}) {
+  let x = parseInt(Math.random() * 50);
+  let y = parseInt(Math.random() * 50);
   if (Math.random() > 0.5) {
     x = -x;
   }
   if (Math.random() > 0.5) {
     y = -y;
   }
-  if (range) {
-    x = x > range ? range + x : x;
-    y = y > range ? range + y : y;
-  }
+
   return {
     x,
     y
@@ -20,8 +17,9 @@ export function randomPosition (range) {
 }
 
 export default class Step {
-  constructor (name, position = randomPosition()) {
+  constructor (name, position = randomPosition({ y: 50 })) {
     this.position = position;
+    console.log(this.position);
     this.element = $(`<span class="step"><i></i> <p>${name}</p> </span>`);
     this.moveTo(this.position);
     this.element.addClass('hide');
@@ -37,7 +35,7 @@ export default class Step {
     this.element.removeClass('hide');
     setTimeout(() => {
       this.moveTo({ x: 0, y: 0}, withClassName);
-    }, 10);
+    }, 1000);
     return this;
   }
 

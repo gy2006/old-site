@@ -2,13 +2,14 @@ import FormValidate from './validate';
 import $ from 'jquery';
 import applyCI from './actions/applyForCi';
 import analysis from './actions/analysis';
+import User from './actions/user';
 import FlowAnimate from './components/flowAnimate';
 
 function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault();
     const fields = form.getValues();
-    applyCI(fields, () => {
+    applyCI(fields, User.getUserToken(), () => {
       $(".page-home .form-container").addClass('success');
       this.reset();
     });

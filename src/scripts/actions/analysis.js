@@ -48,7 +48,10 @@ const analysis = {
     getUserSuccess: function (user) {
       analysis.identify(user.email);
     },
-    applyCi: function (fields, callback) {
+    applyCi: function (fields, noAlias, callback) {
+      // 如果已经登录不需要alias
+      !noAlias && analysis.alias(fields.email);
+      analysis.event.getUserSuccess(fields);
       analysis.people.set_once({
         '$email': fields.email,
         'Apply_At': new Date(),
@@ -64,7 +67,6 @@ const analysis = {
       analysis.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {
-      analysis.alias(user.email);
       analysis.event.getUserSuccess(user);
       const isInvited = !!urlParams.project_id;
       const people = {

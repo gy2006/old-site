@@ -5,7 +5,6 @@ const analysis = {
     mixpanel.init(__MIXPANEL_TOKEN__);
   },
   identify: function () {
-    //必须在用户注册之后调用
     return mixpanel.identify.apply(mixpanel, arguments);
   },
   track: function () {
@@ -90,7 +89,8 @@ const analysis = {
       }, callback);
     },
     confirmEmail: function (urlParams) {
-      analysis.track('Confirm Email', { email: urlParams.email });
+      analysis.identify(urlParams.email);
+      analysis.track('Confirm Email');
     }
   }
 }

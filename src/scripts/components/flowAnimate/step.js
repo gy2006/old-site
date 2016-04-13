@@ -19,7 +19,6 @@ export function randomPosition (range = {}) {
 export default class Step {
   constructor (name, position = randomPosition({ y: 50 })) {
     this.position = position;
-    console.log(this.position);
     this.element = $(`<span class="step"><i></i> <p>${name}</p> </span>`);
     this.moveTo(this.position);
     this.element.addClass('hide');

@@ -3,6 +3,7 @@ import analysis from './analysis';
 function noop () {}
 
 export default function (fields, callback = noop) {
+  analysis.alias(fields.email);
   analysis.people.set_once({
     '$email': fields.email,
     'Apply_At': new Date(),

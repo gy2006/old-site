@@ -66,7 +66,7 @@ function bootstrap () {
   } else if (/^\/signin(\.html)?/.test(path)) {
     // signin
     signin();
-  } else {
+  } else if (path === '/') {
     // home
     home();
   }

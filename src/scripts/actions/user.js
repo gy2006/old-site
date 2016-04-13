@@ -24,7 +24,6 @@ export function create (user, isInvited) {
   }).done(function (resp) {
     const accessToken = resp.access_token;
     saveAccessToken(accessToken);
-    analysis.alias(user.email);
     analysis.identify(user.email);
     analysis.people.set({
       '$first_name': user.username,

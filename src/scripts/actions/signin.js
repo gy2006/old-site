@@ -12,8 +12,7 @@ export default function signIn (data) {
     saveAccessToken(accessToken);
 
     User.get(accessToken).done(function (user) {
-      analysis.track_alias(user.email);
-      analysis.people.increment('signed_in', 1, function () {
+      analysis.event.signIn(user, function () {
         redirectToDashboard(accessToken);
       });
     })

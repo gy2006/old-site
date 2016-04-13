@@ -14,7 +14,7 @@ import analysis from './scripts/actions/analysis';
 import FormValidate from './scripts/validate';
 import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
-analysis.init(__MIXPANEL_TOKEN__);
+analysis.init();
 /*
   default set validator for FormValidate;
 */
@@ -47,10 +47,9 @@ function bootstrap () {
   const token = getCookie(COOKIE_KEY);
   let userPromise;
   if (token) {
-    analysis.time_event('Auto Redirect')
     userPromise = User.get(token);
     userPromise.done(function (userInfo) {
-      analysis.identify(userInfo.email);
+      analysis.event.getUserSuccess(userInfo);
       $(".navbar .nav-sign").hide();
       const $navUser = $(".navbar .nav-user").removeClass('hide');
       const $navLink = $navUser.find('a');

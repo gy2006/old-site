@@ -1,10 +1,11 @@
 import mixpanel from 'mixpanel-browser';
 
-export default {
+const analysis = {
   init: function () {
-    return mixpanel.init.apply(mixpanel, arguments);
+    mixpanel.init(__MIXPANEL_TOKEN__);
   },
   identify: function () {
+    //必须在用户注册之后调用
     return mixpanel.identify.apply(mixpanel, arguments);
   },
   track: function () {
@@ -12,9 +13,6 @@ export default {
   },
   pageView: function (property) {
     return mixpanel.track('Page View', Object.assign({} ,{ path: location.pathname, protocol: location.protocol }, property));
-  },
-  time_event: function (timeName) {
-    return mixpanel.time_event.apply(mixpanel, arguments);
   },
   people:{
     set: function () {
@@ -32,7 +30,7 @@ export default {
     const nowId = mixpanel.get_distinct_id();
     mixpanel.alias(newId, nowId);
   },
-  track_alias: function (newId) {
+  trackAlias: function (newId) {
     const nowId = mixpanel.get_distinct_id();
     // old distinct_id event
     // mixpanel.track('Alias To', {
@@ -45,5 +43,47 @@ export default {
     });
     mixpanel.people.append({ Alias: nowId });
     // mixpanel.alias(newId, nowId);
+  },
+  event: {
+    getUserSuccess: function (user) {
+      analysis.identify(user.email);
+    },
+    applyCi: function (fields, callback) {
+      analysis.people.set_once({
+        '$email': fields.email,
+        'Apply_At': new Date(),
+        'Application': 'apply'
+      });
+      analysis.people.set({
+        'User_Infomation': fields.user_infomation
+      });
+      return analysis.track('Input Email', fields, callback);
+    },
+    signIn: function (user, callback) {
+      analysis.trackAlias(user.email);
+      analysis.people.increment('signed_in', 1, callback);
+    },
+    signUp: function (user, urlParams, callback) {
+      analysis.alias(user.email);
+      analysis.event.getUserSuccess(user);
+      const isInvited = !!urlParams.project_id;
+      const people = {
+        '$first_name': user.username,
+        '$created': new Date(),
+        '$email': user.email,
+        'buildtimes': 0,
+        'Application': 'Passed'
+      };
+
+      analysis.people.set(people);
+      analysis.track('Sign up', {
+        distinct_id: user.email,
+        Invited: isInvited ? 'YES' : 'NO'
+      }, callback);
+    },
+    confirmEmail: function (urlParams) {
+      analysis.track('Confirm Email', { email: urlParams.email });
+    }
   }
 }
+export default analysis;

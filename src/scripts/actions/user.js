@@ -17,27 +17,15 @@ export function test (token) {
   })
 }
 
-export function create (user, isInvited) {
+export function create (user, urlParams) {
   return $.post({
     url: SIGNUP_URL,
     data: user
   }).done(function (resp) {
     const accessToken = resp.access_token;
     saveAccessToken(accessToken);
-    analysis.identify(user.email);
-    analysis.people.set({
-      '$first_name': user.username,
-      '$created': new Date(),
-      '$email': user.email,
-      'buildtimes': 0,
-      'Application': 'Passed'
-    });
-    analysis.track('Sign up', {
-      distinct_id: user.email,
-      Invited: isInvited ? 'YES' : 'NO'
-    }, function () {
+    analysis.event.signUp(user, urlParams, function () {
       redirectToDashboard(accessToken);
-      // console.log('redirect');
     });
   });
 }

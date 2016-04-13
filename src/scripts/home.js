@@ -9,7 +9,7 @@ function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault();
     const fields = form.getValues();
-    applyCI(fields, User.getUserToken(), () => {
+    applyCI(fields, () => {
       $(".page-home .form-container").addClass('success');
       this.reset();
     });

@@ -49,8 +49,11 @@ const analysis = {
       analysis.identify(user.email);
     },
     applyCi: function (fields, noAlias, callback) {
+      const old_distinct_id = mixpanel.get_distinct_id();
+
       // 如果已经登录不需要alias
       !noAlias && analysis.alias(fields.email);
+
       analysis.event.getUserSuccess(fields);
       analysis.people.set_once({
         '$email': fields.email,
@@ -60,7 +63,10 @@ const analysis = {
       analysis.people.set({
         'User_Infomation': fields.user_infomation
       });
-      return analysis.track('Input Email', fields, callback);
+      analysis.track('Input Email', fields, callback);
+      // 如果已经登录，申请完成后，转回原来的distinct_id
+      noAlias && analysis.identify(old_distinct_id);
+
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);

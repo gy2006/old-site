@@ -7,14 +7,13 @@ import Errors from './errors';
 import Button from './button';
 
 function bindSubmit(form) {
-  const search = getSearch();
   function handlerSubmit (e) {
     const $submitBtn = new Button($(this).find('input[type="submit"]'));
     $submitBtn.setDisabled(true);
     $submitBtn.startLoading();
 
     const fields = form.getValues();
-    User.create(fields, !!search.project_id, search.inviter).fail((e)=>{
+    User.create(fields).fail((e)=>{
       form.setError('$form', Errors(e));
     }).always(function () {
       $submitBtn.setDisabled(false);

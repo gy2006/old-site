@@ -5,6 +5,7 @@ import saveAccessToken from './saveAccessToken';
 import redirectToDashboard from './redirectToDashboard';
 import Errors from '../errors';
 import { get as getCookie } from '../util/cookies';
+import getSearch from '../util/getSearch';
 
 export function getUserToken () {
   return getCookie(COOKIE_KEY);
@@ -24,7 +25,9 @@ export function test (userToken) {
   })
 }
 
-export function create (user, urlParams) {
+export function create (user) {
+  const urlParams = getSearch();
+
   return $.post({
     url: SIGNUP_URL,
     data: user

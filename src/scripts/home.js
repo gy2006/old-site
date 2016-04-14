@@ -2,6 +2,7 @@ import FormValidate from './validate';
 import $ from 'jquery';
 import applyCI from './actions/applyForCi';
 import analysis from './actions/analysis';
+import User from './actions/user';
 import FlowAnimate from './components/flowAnimate';
 
 function bindSubmit (form) {
@@ -47,7 +48,6 @@ function flowAnimate () {
 export default function bootstrap() {
   const form = initValidate();
   bindSubmit(form);
-
   $.fn.insertAt = function(index, $parent) {
     return this.each(function() {
       if (index === 0) {

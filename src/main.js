@@ -1,10 +1,8 @@
 import './styles/main.scss';
 import $ from 'jquery';
 import './scripts/polyfill/assign';
-import { get as getCookie } from './scripts/util/cookies';
 import User from './scripts/actions/user';
 import redirectToDashboard, { getDashboardUrl } from './scripts/actions/redirectToDashboard';
-
 import home from './scripts/home';
 import signin from './scripts/signin';
 import signup from './scripts/signup';
@@ -12,9 +10,9 @@ import signup from './scripts/signup';
 import analysis from './scripts/actions/analysis';
 
 import FormValidate from './scripts/validate';
-import { COOKIE_KEY, EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import { EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
-analysis.init(__MIXPANEL_TOKEN__);
+analysis.init();
 /*
   default set validator for FormValidate;
 */
@@ -44,19 +42,20 @@ function redirectToFlow (token) {
 
 function bootstrap () {
   const path = location.pathname;
-  const token = getCookie(COOKIE_KEY);
+  const token = User.getUserToken();
   let userPromise;
   if (token) {
-    analysis.time_event('Auto Redirect')
     userPromise = User.get(token);
     userPromise.done(function (userInfo) {
-      analysis.identify(userInfo.email);
+      analysis.event.getUserSuccess(userInfo);
       $(".navbar .nav-sign").hide();
       const $navUser = $(".navbar .nav-user").removeClass('hide');
       const $navLink = $navUser.find('a');
       const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
       $navAvator.attr('src', userInfo.avatar);
+    }).fail(function () {
+      User.removeUserToken();
     });
   }
   analysis.pageView();

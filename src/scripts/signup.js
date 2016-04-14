@@ -7,14 +7,13 @@ import Errors from './errors';
 import Button from './button';
 
 function bindSubmit(form) {
-  const search = getSearch();
   function handlerSubmit (e) {
     const $submitBtn = new Button($(this).find('input[type="submit"]'));
     $submitBtn.setDisabled(true);
     $submitBtn.startLoading();
 
     const fields = form.getValues();
-    User.create(fields, !!search.project_id).fail((e)=>{
+    User.create(fields).fail((e)=>{
       form.setError('$form', Errors(e));
     }).always(function () {
       $submitBtn.setDisabled(false);
@@ -55,9 +54,7 @@ function injectSeach () {
     $("#sign").val(params.sign);
   }
   if (params.email && params.sign) {
-    analysis.track('Confirm Email ', {
-      distinct_id: params.email
-    });
+    analysis.event.confirmEmail(params);
   }
 }
 export default function bootstrap () {

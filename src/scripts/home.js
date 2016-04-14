@@ -46,9 +46,6 @@ function flowAnimate () {
 }
 
 export default function bootstrap() {
-  if (!User.getUserToken()) {
-    $(".page-home .form-container").addClass('show');
-  }
   const form = initValidate();
   bindSubmit(form);
   $.fn.insertAt = function(index, $parent) {

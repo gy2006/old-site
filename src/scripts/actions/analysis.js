@@ -74,10 +74,19 @@ const analysis = {
         'Apply_At': new Date(),
         'Application': 'apply'
       });
-      analysis.people.set({
-        'User_Infomation': fields.user_infomation
+      analysis.track('Input Email', fields, callback);
+    },
+    applyCiWithIsLoggedIn: function (fields, callback) {
+      const now_distinct_id = mixpanel.get_distinct_id();
+
+      analysis.identify(fields.email);
+      analysis.people.set_once({
+        '$email': fields.email,
+        'Apply_At': new Date(),
+        'Application': 'apply'
       });
       analysis.track('Input Email', fields, callback);
+      analysis.identify(now_distinct_id);
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);

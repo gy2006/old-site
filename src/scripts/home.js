@@ -48,7 +48,6 @@ function flowAnimate () {
 export default function bootstrap() {
   const form = initValidate();
   bindSubmit(form);
-
   $.fn.insertAt = function(index, $parent) {
     return this.each(function() {
       if (index === 0) {

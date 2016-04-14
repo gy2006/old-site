@@ -4,11 +4,15 @@ import analysis from './analysis';
 import saveAccessToken from './saveAccessToken';
 import redirectToDashboard from './redirectToDashboard';
 import Errors from '../errors';
-import { get as getCookie } from '../util/cookies';
+import { get as getCookie, clear as clearCookie } from '../util/cookies';
 import getSearch from '../util/getSearch';
 
 export function getUserToken () {
   return getCookie(COOKIE_KEY);
+}
+
+export function removeUserToken () {
+  return clearCookie(COOKIE_KEY);
 }
 
 export function get (userToken) {
@@ -44,5 +48,6 @@ export default {
   get: get,
   test: test,
   create: create,
-  getUserToken
+  getUserToken,
+  removeUserToken
 }

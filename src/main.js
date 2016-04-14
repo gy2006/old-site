@@ -54,6 +54,8 @@ function bootstrap () {
       const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
       $navAvator.attr('src', userInfo.avatar);
+    }).fail(function () {
+      User.removeUserToken();
     });
   }
   analysis.pageView();

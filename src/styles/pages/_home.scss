@@ -40,6 +40,10 @@ $subtitle-color: $col-page-home-primary;
   .form-container{
     margin-top: 40px;
     text-align: center;
+    visibility: hidden;
+    &.show{
+      visibility: visible;
+    }
     .text-danger{
       margin-left: 20px;
     }

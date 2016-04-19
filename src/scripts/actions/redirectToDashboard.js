@@ -15,7 +15,7 @@ export function getDashboardUrl (accessToken) {
   if (!url || url.indexOf(__DASHBOARD_URL__) !== 0) {
     url = getDefaultUrl(accessToken);
   }
-  return url
+  return url;
 }
 
 export default function redirectToDashboard (accessToken) {

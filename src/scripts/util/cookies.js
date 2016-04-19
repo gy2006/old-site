@@ -1,4 +1,4 @@
-const COOKIE_MAXAGE = 7*24*60*60;
+const COOKIE_MAXAGE = 7 * 24 * 60 * 60;
 const COOKIE_DOMAIN = { local: 'localhost', lyon: '.lyon.flow.ci', production: '.flow.ci' }[__TARGET__];
 
 export function save (name, value, maxAge) {
@@ -22,4 +22,4 @@ export default {
   save,
   get,
   clear
-}
+};

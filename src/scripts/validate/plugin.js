@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 const isArray = Array.isArray || function (value) {
   return toString.call(value) === '[object Array]';
-}
+};
 
 export default class AliasPlugin {
 
@@ -33,11 +33,11 @@ export default class AliasPlugin {
   setText (name, text) {
     const alias = this.getAlias(name);
     if (alias) {
-      const $alias = $(alias)
+      const $alias = $(alias);
       this._clear($alias);
       if (isArray(text)) {
         const max = text.length - 1;
-        text.map((t, index)=>{
+        text.map((t, index) => {
           const span = $('<span></span>');
           span.text(t);
           $alias.append(span);
@@ -57,7 +57,7 @@ export default class AliasPlugin {
   }
 
   _clearAll () {
-    const aliases = this.aliases
+    const aliases = this.aliases;
     for (let name in aliases) {
       const alias = aliases[name];
       this._clear(alias);

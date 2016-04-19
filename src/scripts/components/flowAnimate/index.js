@@ -30,7 +30,7 @@ export default class flowAnimate {
     this.isAnimate = true;
     setTimeout(() => {
       this.steps.forEach((step) => {
-        step.animate()
+        step.animate();
       });
     }, 10);
     this.flowLine.addClass('active');

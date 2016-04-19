@@ -1,11 +1,11 @@
 function createValidator (regexp) {
   return function (value) {
     return regexp.test(value);
-  }
+  };
 }
 
 const EMAIL_REG = /^[a-zA-Z0-9_+.-]+\@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,6}/i;
-const NUMBER_REG =  /^[0-9]+$/i;
+const NUMBER_REG = /^[0-9]+$/i;
 const URL_REG = /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
 
 const defaultRules = {
@@ -23,8 +23,6 @@ const defaultRules = {
     min = min ? parseInt(min) : min;
     return value.length >= min;
   }
-}
+};
 
-
-
-export default defaultRules
+export default defaultRules;

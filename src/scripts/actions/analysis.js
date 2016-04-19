@@ -12,9 +12,9 @@ const analysis = {
     return mixpanel.track.apply(mixpanel, arguments);
   },
   pageView: function (property) {
-    return mixpanel.track('Page View', Object.assign({} ,{ path: location.pathname, protocol: location.protocol }, property));
+    return mixpanel.track('Page View', Object.assign({}, { path: location.pathname, protocol: location.protocol }, property));
   },
-  people:{
+  people: {
     set: function () {
       return mixpanel.people.set.apply(mixpanel.people, arguments);
     },
@@ -66,7 +66,6 @@ const analysis = {
       analysis.identify(user.email);
     },
     applyCi: function (fields, callback) {
-      const old_distinct_id = mixpanel.get_distinct_id();
       analysis.alias(fields.email);
       analysis.event.getUserSuccess(fields);
       analysis.people.set_once({
@@ -77,7 +76,7 @@ const analysis = {
       analysis.track('Input Email', fields, callback);
     },
     applyCiWithIsLoggedIn: function (fields, callback) {
-      const now_distinct_id = mixpanel.get_distinct_id();
+      const nowDistinctId = mixpanel.get_distinct_id();
 
       analysis.identify(fields.email);
       analysis.people.set_once({
@@ -86,7 +85,7 @@ const analysis = {
         'Application': 'apply'
       });
       analysis.track('Input Email', fields, callback);
-      analysis.identify(now_distinct_id);
+      analysis.identify(nowDistinctId);
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);
@@ -114,5 +113,5 @@ const analysis = {
       analysis.track('Confirm Email');
     }
   }
-}
+};
 export default analysis;

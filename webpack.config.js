@@ -66,6 +66,19 @@ if (nconf.get('TARGET') === 'local') {
     "webpack/hot/dev-server"
   ].concat(webpackConfig.entry.app);
 }
+if (nconf.get('NODE_ENV') === 'production') {
+  webpackConfig.plugins.push(
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false
+      }
+    })
+  );
+}
 // ------------------------------------
 // Plugins
 // ------------------------------------

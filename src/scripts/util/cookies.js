@@ -3,7 +3,7 @@ export function save (name, value, options = {}) {
   for (const key in options) {
     cookie += `${key}=${options[key]};`;
   }
-  console.log(cookie);
+  // console.log(cookie);
   document.cookie = cookie;
 }
 

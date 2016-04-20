@@ -52,8 +52,7 @@ const webpackConfig = {
   },
   plugins: [
     new ExtractTextPlugin('main.[contenthash].css'),
-    new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local'),
-    new webpack.NoErrorsPlugin()
+    new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local')
   ],
   sassLoader: {
     includePaths: Bourbon.includePaths
@@ -78,6 +77,8 @@ if (nconf.get('NODE_ENV') === 'production') {
       }
     })
   );
+} else {
+  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 }
 // ------------------------------------
 // Plugins

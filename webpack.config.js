@@ -17,13 +17,43 @@ const webpackConfig = {
     vendor: config.vendor
   },
   module: {
-    loaders: []
+    loaders: [
+      {
+        test: /\.jade$/,
+        loader: 'jade',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.js$/,
+        loaders: ['babel', 'eslint'],
+        exclude: '/node_modules/'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json',
+        exclude: '/node_modules/'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
+      },
+      { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
+      { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
+      { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
+      { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
+      { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
+      { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
+      { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
+    ]
   },
   output: {
     path: './dist',
     filename: '[name].[hash].js'
   },
-  plugins: [],
+  plugins: [
+    new ExtractTextPlugin('main.[contenthash].css'),
+    new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local')
+  ],
   sassLoader: {
     includePaths: Bourbon.includePaths
   }
@@ -35,50 +65,24 @@ if (nconf.get('TARGET') === 'local') {
     "webpack/hot/dev-server"
   ].concat(webpackConfig.entry.app);
 }
-
-// ------------------------------------
-// Loaders
-// ------------------------------------
-webpackConfig.module.loaders.push({
-  test: /\.jade$/,
-  loader: 'jade',
-  exclude: /node_modules/
-});
-
-webpackConfig.module.loaders.push({
-  test: /\.js$/,
-  loader: 'babel',
-  exclude: '/node_modules/'
-});
-
-webpackConfig.module.loaders.push({
-  test: /\.json$/,
-  loader: 'json',
-  exclude: '/node_modules/'
-});
-
-webpackConfig.module.loaders.push({
-  test: /\.scss$/,
-  loader: ExtractTextPlugin.extract('style', 'css!sass')
-});
-
-webpackConfig.module.loaders.push(
-  { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
-  { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
-  { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
-  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
-  { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-  { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
-);
-
+if (nconf.get('NODE_ENV') === 'production') {
+  webpackConfig.plugins.push(
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false
+      }
+    })
+  );
+} else {
+  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
+}
 // ------------------------------------
 // Plugins
 // ------------------------------------
-webpackConfig.plugins.push(new ExtractTextPlugin('main.[contenthash].css'));
-
-
-webpackConfig.plugins.push(new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local'));
 
 glob.sync('./src/views/**/*.jade').map(file => {
   webpackConfig.plugins.push(

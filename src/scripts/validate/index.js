@@ -49,13 +49,13 @@ function noop () {};
 */
 function parseRule (ruleStr) {
   ruleStr = ruleStr.trim();
-  const sequence = ruleStr.split(":");
+  const sequence = ruleStr.split(':');
   const name = sequence[0];
   const params = sequence.slice(1);
   return {
     name,
     params
-  }
+  };
 }
 
 /*
@@ -70,7 +70,7 @@ function parseRules (rulesStr) {
   // not has required
   let requiredIndex = -1;
   let newRules = rules.reduce((prev, current, index) => {
-    if ( current.name !== REQUIRED){
+    if (current.name !== REQUIRED) {
       prev.push(current);
     } else {
       requiredIndex = index;
@@ -83,12 +83,11 @@ function parseRules (rulesStr) {
 function getForm ($formElement) {
   const formElement = $formElement[0];
   let dForm;
-  Array.prototype.some.call(document.forms, (form) =>{
+  Array.prototype.some.call(document.forms, (form) => {
     if (form === formElement) {
       dForm = form;
       return true;
     }
-
   });
   return dForm;
 }
@@ -96,6 +95,7 @@ function getForm ($formElement) {
 export function isEmpty (obj) {
   let result = true;
   for (let key in obj) {
+    !!key; // do nothing.
     result = false;
     break;
   }
@@ -149,7 +149,7 @@ export default class FormValidator {
     this.validators = Object.assign({}, FormValidator.getDefaultValidators(),
       options.validators);
     this.fieldToRules = this._analyticsFields(fields);
-    const aliases = [ ...fields];
+    const aliases = [...fields];
     options.errorElement && aliases.push({ name: '$form', errorElement: options.errorElement });
     this.aliasPlugin = new AliasPlugin(aliases);
 
@@ -162,7 +162,7 @@ export default class FormValidator {
       fieldName: rulesArray
     }
   */
-  _analyticsFields(fields) {
+  _analyticsFields (fields) {
     const fieldToRules = {};
     fields.reduce((prev, field) => {
       const rulesArray = parseRules(field.rules);
@@ -192,7 +192,7 @@ export default class FormValidator {
       const field = {
         name: fieldName,
         value: values[fieldName]
-      }
+      };
       // 如果为空，则需要判断是否有require 规则
       if (!field.value) {
         const firstRule = fieldRules[0];
@@ -204,7 +204,7 @@ export default class FormValidator {
           const r = this.validateByRule(field.value, rule, values);
           !r && setError(field, rule);
           return r;
-        })
+        });
       }
     }
     this.errors = errors;
@@ -212,7 +212,7 @@ export default class FormValidator {
   }
 
   validateByRule (value, rule, values) {
-    const validator = this.validators[rule.name]
+    const validator = this.validators[rule.name];
     const params = [value, ...rule.params];
     return validator && validator.apply(values, params);
   }
@@ -221,7 +221,7 @@ export default class FormValidator {
     if (!reflesh && this.values) {
       return this.values;
     }
-    const values = this.fields.reduce((values, field)=>{
+    const values = this.fields.reduce((values, field) => {
       values[field.name] = this.getValue(field.name);
       return values;
     }, {});

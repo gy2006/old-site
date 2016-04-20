@@ -1,0 +1,22 @@
+{
+  "parser"  : "babel-eslint",
+  "extends" : [
+    "standard"
+  ],
+  "env"     : {
+    "browser" : true
+  },
+  "globals" : {
+    "__TARGET__": true,
+    "__API__": true,
+    "__DASHBOARD_URL__": true,
+    "__MIXPANEL_TOKEN__": true
+  },
+  "rules": {
+    "semi" : [2, "always"],
+    "camelcase": [2, { "properties": "never" }],
+    "no-return-assign": 0,
+    "arrow-parens": 0,
+    "standard/object-curly-even-spacing": [2, "always"]
+  }
+}

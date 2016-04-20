@@ -6,7 +6,6 @@ import analysis from './analysis';
 import User from './user';
 
 export default function signIn (data) {
-
   return $.post(SIGNIN_URL, data).done((resp) => {
     const accessToken = resp.access_token;
     saveAccessToken(accessToken);
@@ -15,7 +14,7 @@ export default function signIn (data) {
       analysis.event.signIn(user, function () {
         redirectToDashboard(accessToken);
       });
-    })
+    });
 
     // redirect to dashboard;
   });

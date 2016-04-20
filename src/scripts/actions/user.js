@@ -3,7 +3,6 @@ import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL } from '../constant';
 import analysis from './analysis';
 import saveAccessToken from './saveAccessToken';
 import redirectToDashboard from './redirectToDashboard';
-import Errors from '../errors';
 import { get as getCookie, clear as clearCookie } from '../util/cookies';
 import getSearch from '../util/getSearch';
 
@@ -26,7 +25,7 @@ export function test (userToken) {
   const token = userToken || getUserToken();
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
     method: 'head'
-  })
+  });
 }
 
 export function create (user) {
@@ -50,4 +49,4 @@ export default {
   create: create,
   getUserToken,
   removeUserToken
-}
+};

@@ -28,9 +28,9 @@ export default class Button {
       loop++;
       const length = loop % 4;
       this.$element.val(this.value + fill(' .', length));
-    }
+    };
     loopFn();
-    this.timer = setInterval(loopFn, TIME_INTERVAL)
+    this.timer = setInterval(loopFn, TIME_INTERVAL);
   }
 
   endLoading () {
@@ -40,6 +40,4 @@ export default class Button {
       this.$element.val(this.value);
     }
   }
-
-
 }

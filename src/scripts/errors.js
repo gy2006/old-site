@@ -7,7 +7,7 @@ const CODE_MAPPING = {
   100008: 'Email/Username/Password not correct',
   100009: 'Email occupied',
   100010: 'User not found'
-}
+};
 
 const FIELD_CODE_MAPPING = {
   '00': 'unknown',
@@ -20,7 +20,7 @@ const FIELD_CODE_MAPPING = {
   '50': 'is not legal eg : ${example}', // with
   '51': 'is not legal eg : ${example}',  // without
   '60': 'is not legal eg : ${example}', // inclusion
-  '70': 'is not legal eg : ${example}', //wrong length
+  '70': 'is not legal eg : ${example}', // wrong length
   '71': 'too short, must greater than ${min} length',
   '72': 'too long, must less than ${max} length',
   '80': 'not a number,',
@@ -34,7 +34,7 @@ const FIELD_CODE_MAPPING = {
   '88': 'even',
   '89': 'other than ${param}',
   '90': 'is empty'
-}
+};
 
 const FIELD_CODE_PARAM_MAPPING = {
   username: {
@@ -47,14 +47,14 @@ const FIELD_CODE_PARAM_MAPPING = {
     'min': 6,
     'default': 'must greater than 6'
   }
-}
+};
 
 const FIELD_MAPPING = {
   username: 'Username',
   password: 'Password',
   sign: 'Invite Code',
   login: 'Email or Username'
-}
+};
 
 function isObject (value) {
   return value != null && typeof value === 'object';
@@ -65,9 +65,10 @@ function getFieldName (field) {
 }
 
 function getExtendParam (field, name) {
-  const mapping = FIELD_CODE_PARAM_MAPPING[field]
-  if (!mapping)
+  const mapping = FIELD_CODE_PARAM_MAPPING[field];
+  if (!mapping) {
     return '';
+  }
   const param = mapping[name] || mapping['default'] || '';
   return param;
 }
@@ -86,7 +87,7 @@ function getFieldMessage (field, code) {
   matches && matches.forEach((match) => {
     const paramName = match.match(wordReg)[0];
     message = message.replace(match, getExtendParam(field, paramName));
-  })
+  });
   return message;
 }
 
@@ -94,9 +95,9 @@ function getFieldErrorMessage (errors) {
   const errorMessage = [];
   for (let field in errors) {
     const codes = errors[field];
-    const ms = codes.map((code)=>{
+    const ms = codes.map((code) => {
       return getFieldMessage(field, code);
-    }).filter((m)=> m);
+    }).filter((m) => m);
     const message = getFieldName(field) + ': ' + ms.join(', ');
     errorMessage.push(message);
   }
@@ -106,7 +107,7 @@ function getFieldErrorMessage (errors) {
 export default function getErrorMessage (resp) {
   const data = resp.responseJSON;
   if (!data) {
-    return `HTTP STATUS: ${resp.status}`
+    return `HTTP STATUS: ${resp.status}`;
   }
 
   if (data.code) {

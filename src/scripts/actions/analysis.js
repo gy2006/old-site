@@ -186,8 +186,4 @@ const analysis = {
   }
 };
 
-window.mixpanelVariables = mixpanelVariables;
-window.mixpanel = mixpanel;
-window.analysis = analysis;
-
 export default analysis;

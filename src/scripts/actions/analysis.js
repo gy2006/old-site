@@ -1,5 +1,5 @@
 import mixpanel from 'mixpanel-browser';
-import { EMAIL_REG } from '../constant';
+import { EMAIL_REG, UTM_LIST } from '../constant';
 import cookies from '../util/cookies';
 
 function getDomain () {
@@ -119,23 +119,39 @@ const analysis = {
       analysis.identify(user.email);
     },
     applyCi: function (fields, callback) {
-      analysis.alias(fields.email);
-      analysis.event.getUserSuccess(fields);
-      mixpanel.people.set_once({
+      const utm = {};
+      UTM_LIST.forEach((key) => {
+        const value = mixpanelVariables.getValue(key);
+        if (value) {
+          utm[key] = value;
+        }
+      });
+      const people = {
         '$email': fields.email,
         'Apply_At': new Date(),
         'Application': 'apply'
-      });
+      };
+      analysis.alias(fields.email);
+      analysis.event.getUserSuccess(fields);
+      mixpanel.people.set_once(Object.assign({}, people, utm));
       mixpanel.track('Input Email', fields, callback);
     },
     applyCiWithIsLoggedIn: function (fields, callback) {
+      const utm = {};
+      UTM_LIST.forEach((key) => {
+        const value = mixpanelVariables.getValue(key);
+        if (value) {
+          utm[key] = value;
+        }
+      });
+      const people = {
+        '$email': fields.email,
+        'Apply_At': new Date(),
+        'Application': 'apply'
+      };
       analysis.common.runWithDistinctId(fields.email, function () {
-        mixpanel.people.set_once({
-          '$email': fields.email,
-          'Apply_At': new Date(),
-          'Application': 'apply'
-        });
-        analysis.track('Input Email', fields, callback);
+        mixpanel.people.set_once(Object.assign({}, people, utm));
+        mixpanel.track('Input Email', fields, callback);
       });
     },
     signIn: function (user, callback) {
@@ -143,9 +159,9 @@ const analysis = {
       mixpanel.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {
+      const Inviter = mixpanelVariables.getValue('Inviter');
       analysis.event.getUserSuccess(user);
       const isInvited = !!urlParams.project_id;
-      const Inviter = mixpanelVariables.getValue('Inviter');
       const people = {
         '$first_name': user.username,
         '$created': new Date(),

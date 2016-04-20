@@ -112,6 +112,21 @@ const analysis = {
       analysis.identify(id);
       callFn && callFn();
       analysis.identify(nowDistinctId);
+    },
+    getCreatePeopleProperty: function (fields) {
+      const utm = {};
+      UTM_LIST.forEach((key) => {
+        const value = mixpanelVariables.getValue(key);
+        if (value) {
+          utm[key] = value;
+        }
+      });
+      const people = {
+        '$email': fields.email,
+        'Apply_At': new Date(),
+        'Application': 'apply'
+      };
+      return Object.assign({}, people, utm);
     }
   },
   event: {
@@ -119,38 +134,16 @@ const analysis = {
       analysis.identify(user.email);
     },
     applyCi: function (fields, callback) {
-      const utm = {};
-      UTM_LIST.forEach((key) => {
-        const value = mixpanelVariables.getValue(key);
-        if (value) {
-          utm[key] = value;
-        }
-      });
-      const people = {
-        '$email': fields.email,
-        'Apply_At': new Date(),
-        'Application': 'apply'
-      };
+      const people = analysis.common.getCreatePeopleProperty(fields);
       analysis.alias(fields.email);
       analysis.event.getUserSuccess(fields);
-      mixpanel.people.set_once(Object.assign({}, people, utm));
+      mixpanel.people.set_once(people);
       mixpanel.track('Input Email', fields, callback);
     },
     applyCiWithIsLoggedIn: function (fields, callback) {
-      const utm = {};
-      UTM_LIST.forEach((key) => {
-        const value = mixpanelVariables.getValue(key);
-        if (value) {
-          utm[key] = value;
-        }
-      });
-      const people = {
-        '$email': fields.email,
-        'Apply_At': new Date(),
-        'Application': 'apply'
-      };
+      const people = analysis.common.getCreatePeopleProperty(fields);
       analysis.common.runWithDistinctId(fields.email, function () {
-        mixpanel.people.set_once(Object.assign({}, people, utm));
+        mixpanel.people.set_once(people);
         mixpanel.track('Input Email', fields, callback);
       });
     },

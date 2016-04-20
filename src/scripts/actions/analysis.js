@@ -10,8 +10,7 @@ function getDomain () {
 }
 
 const cookieConfig = {
-  'domain': getDomain(),
-  'max-age': 7 * 24 * 60 * 60
+  'domain': getDomain()
 };
 class MixpanelVariables {
   init (token) {

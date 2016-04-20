@@ -58,9 +58,11 @@ const analysis = {
     mixpanel.init(__MIXPANEL_TOKEN__);
     mixpanelVariables.init(__MIXPANEL_TOKEN__);
   },
-  identify: function () {
-    mixpanelVariables.clear();
-    return mixpanel.identify.apply(mixpanel, arguments);
+  identify: function (id) {
+    if (id !== mixpanel.get_distinct_id()) {
+      mixpanelVariables.clear();
+    }
+    return mixpanel.identify(id);
   },
   pageView: function (property) {
     return mixpanel.track('Page View', Object.assign({}, { path: location.pathname, protocol: location.protocol }, property));
@@ -134,7 +136,7 @@ const analysis = {
           'Application': 'apply'
         });
         analysis.track('Input Email', fields, callback);
-      })
+      });
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);
@@ -153,12 +155,11 @@ const analysis = {
       };
       if (Inviter) {
         people.Inviter = Inviter;
-
-        analysis.identify(Inviter);
-        mixpanel.people.union({
-          'Invitee Signup': user.email
+        analysis.common.runWithDistinctId(Inviter, function () {
+          mixpanel.people.union({
+            'Invitee Signup': user.email
+          });
         });
-
       }
       mixpanel.people.set(people);
       mixpanel.track('Sign up', {

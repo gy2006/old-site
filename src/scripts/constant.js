@@ -21,3 +21,9 @@ export const REDIRECT_KEY = __TARGET__ === 'production' ? 'flow_previous_url' : 
 export const SIGNIN_URL = `${__API__}/login`;
 export const SIGNUP_URL = `${__API__}/signup`;
 export const GETUSER_URL = `${__API__}/user`;
+
+export const UTM_LIST = [
+  'utm_source',
+  'utm_medium',
+  'utm_content'
+];

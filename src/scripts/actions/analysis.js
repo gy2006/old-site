@@ -1,29 +1,69 @@
 import mixpanel from 'mixpanel-browser';
 import { EMAIL_REG } from '../constant';
+import cookies from '../util/cookies';
+
+function getDomain () {
+  const matches = document.location.hostname.match(/[a-z0-9][a-z0-9\-]+\.[a-z\.]{2,6}$/i);
+  const domain = matches ? matches[0] : '';
+  const cdomain = ((domain) ? '; domain=.' + domain : '');
+  return cdomain;
+}
+
+const cookieConfig = {
+  'domain': getDomain(),
+  'max-age': 7 * 24 * 60 * 60
+};
+class MixpanelVariables {
+  init (token) {
+    this.cookieName = this._getCookieName(token);
+    this.cookieConfig = cookieConfig;
+    this.values = this._getValues();
+  }
+
+  _getCookieName (token) {
+    return `flow_mp_${token}_variables`;
+  }
+
+  _getValues () {
+    return JSON.parse(cookies.get(this.cookieName) || '{}');
+  }
+
+  _saveValues () {
+    cookies.save(this.cookieName, JSON.stringify(this.values), this.cookieConfig);
+  }
+
+  getValue (key) {
+    return key ? this.values[key] : this.values;
+  }
+
+  setValue (map) {
+    this.values = Object.assign(this.values, map);
+    this._saveValues();
+  }
+
+  clear (key) {
+    if (key) {
+      delete this.values[key];
+    } else {
+      this.values = {};
+    }
+    this._saveValues();
+  }
+}
+
+const mixpanelVariables = new MixpanelVariables();
 
 const analysis = {
   init: function () {
     mixpanel.init(__MIXPANEL_TOKEN__);
+    mixpanelVariables.init(__MIXPANEL_TOKEN__);
   },
   identify: function () {
+    mixpanelVariables.clear();
     return mixpanel.identify.apply(mixpanel, arguments);
-  },
-  track: function () {
-    return mixpanel.track.apply(mixpanel, arguments);
   },
   pageView: function (property) {
     return mixpanel.track('Page View', Object.assign({}, { path: location.pathname, protocol: location.protocol }, property));
-  },
-  people: {
-    set: function () {
-      return mixpanel.people.set.apply(mixpanel.people, arguments);
-    },
-    set_once: function () {
-      return mixpanel.people.set_once.apply(mixpanel.people, arguments);
-    },
-    increment: function () {
-      return mixpanel.people.increment.apply(mixpanel.people, arguments);
-    }
   },
   alias: function (newId) {
     // must only use create mixpanel people
@@ -61,6 +101,17 @@ const analysis = {
     mixpanel.people.append({ Alias: oldId });
     // mixpanel.alias(newId, oldId);
   },
+  register: function (property) {
+    mixpanelVariables.setValue(property);
+  },
+  common: {
+    runWithDistinctId: function (id, callFn) {
+      const nowDistinctId = mixpanel.get_distinct_id();
+      analysis.identify(id);
+      callFn && callFn();
+      analysis.identify(nowDistinctId);
+    }
+  },
   event: {
     getUserSuccess: function (user) {
       analysis.identify(user.email);
@@ -68,32 +119,31 @@ const analysis = {
     applyCi: function (fields, callback) {
       analysis.alias(fields.email);
       analysis.event.getUserSuccess(fields);
-      analysis.people.set_once({
+      mixpanel.people.set_once({
         '$email': fields.email,
         'Apply_At': new Date(),
         'Application': 'apply'
       });
-      analysis.track('Input Email', fields, callback);
+      mixpanel.track('Input Email', fields, callback);
     },
     applyCiWithIsLoggedIn: function (fields, callback) {
-      const nowDistinctId = mixpanel.get_distinct_id();
-
-      analysis.identify(fields.email);
-      analysis.people.set_once({
-        '$email': fields.email,
-        'Apply_At': new Date(),
-        'Application': 'apply'
-      });
-      analysis.track('Input Email', fields, callback);
-      analysis.identify(nowDistinctId);
+      analysis.common.runWithDistinctId(fields.email, function () {
+        mixpanel.people.set_once({
+          '$email': fields.email,
+          'Apply_At': new Date(),
+          'Application': 'apply'
+        });
+        analysis.track('Input Email', fields, callback);
+      })
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);
-      analysis.people.increment('signed_in', 1, callback);
+      mixpanel.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {
       analysis.event.getUserSuccess(user);
       const isInvited = !!urlParams.project_id;
+      const Inviter = mixpanelVariables.getValue('Inviter');
       const people = {
         '$first_name': user.username,
         '$created': new Date(),
@@ -101,17 +151,33 @@ const analysis = {
         'buildtimes': 0,
         'Application': 'Passed'
       };
+      if (Inviter) {
+        people.Inviter = Inviter;
 
-      analysis.people.set(people);
-      analysis.track('Sign up', {
+        analysis.identify(Inviter);
+        mixpanel.people.union({
+          'Invitee Signup': user.email
+        });
+
+      }
+      mixpanel.people.set(people);
+      mixpanel.track('Sign up', {
         distinct_id: user.email,
         Invited: isInvited ? 'YES' : 'NO'
       }, callback);
     },
     confirmEmail: function (urlParams) {
       analysis.identify(urlParams.email);
-      analysis.track('Confirm Email');
+      if (urlParams.inviter_email) {
+        mixpanelVariables.setValue({ Inviter: urlParams.inviter_email });
+      }
+      mixpanel.track('Confirm Email');
     }
   }
 };
+
+window.mixpanelVariables = mixpanelVariables;
+window.mixpanel = mixpanel;
+window.analysis = analysis;
+
 export default analysis;

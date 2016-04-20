@@ -10,7 +10,8 @@
     "__TARGET__": true,
     "__API__": true,
     "__DASHBOARD_URL__": true,
-    "__MIXPANEL_TOKEN__": true
+    "__MIXPANEL_TOKEN__": true,
+    "__BUGHD_TOKEN__": true
   },
   "rules": {
     "semi" : [2, "always"],

@@ -65,5 +65,6 @@ function bootstrap () {
 }
 
 $(bootstrap);
+window.bughd('create', { key: __BUGHD_TOKEN__ });
 
 export default {};

@@ -91,7 +91,8 @@ glob.sync('./src/views/**/*.jade').map(file => {
     new HtmlWebpackPlugin({
       template: file,
       filename: path.basename(file, '.jade') + '.html',
-      inject: 'body'
+      inject: 'body',
+      bughd_token: targetConfig['__BUGHD_TOKEN__']
     })
   );
 });

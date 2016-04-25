@@ -36,13 +36,13 @@ FormValidate.setDefaultRulesMap({
 
 function bootstrap () {
   const path = location.pathname;
-  const UNSUPPORTED = '/unsupported.html';
+  const UNSUPPORTED_PATH = '/unsupported.html';
 
-  if (browser.isIE && path !== UNSUPPORTED) {
-    window.location = UNSUPPORTED;
+  if (browser.isIE && path !== UNSUPPORTED_PATH) {
+    window.location = UNSUPPORTED_PATH;
     return;
   }
-  if (path === UNSUPPORTED) {
+  if (path === UNSUPPORTED_PATH) {
     if (browser.isIE) {
       analysis.pageView();
     } else {

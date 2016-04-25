@@ -35,6 +35,12 @@ $subtitle-color: $col-page-home-primary;
         // line-height: 60px;
       }
     }
+    .unsupported{
+      color: $slogan-color;
+      font-weight: bold;
+      text-align: center;
+      font-weight: normal;
+    }
   }
 
   .form-container{

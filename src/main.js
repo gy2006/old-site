@@ -11,7 +11,9 @@ import analysis from './scripts/actions/analysis';
 import getSearch from './scripts/util/getSearch';
 
 import FormValidate from './scripts/validate';
+
 import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import browser from './scripts/util/browser';
 
 analysis.init();
 /*
@@ -50,11 +52,27 @@ function getUtm () {
 
 function bootstrap () {
   const path = location.pathname;
+  const UNSUPPORTED_PATH = '/unsupported.html';
+
+  if (browser.isIE && path !== UNSUPPORTED_PATH) {
+    window.location = UNSUPPORTED_PATH;
+    return;
+  }
+  if (path === UNSUPPORTED_PATH) {
+    if (browser.isIE) {
+      analysis.pageView();
+    } else {
+      window.location = '/';
+    }
+    return;
+  }
+  const utms = getUtm();
+  utms && analysis.register(utms);
+  analysis.pageView();
+
   const token = User.getUserToken();
-  let userPromise;
   if (token) {
-    userPromise = User.get(token);
-    userPromise.done(function (userInfo) {
+    User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo);
       $('.navbar .nav-sign').hide();
       const $navUser = $('.navbar .nav-user').removeClass('hide');
@@ -66,17 +84,12 @@ function bootstrap () {
       User.removeUserToken();
     });
   }
-  const utms = getUtm();
-  utms && analysis.register(utms);
-  analysis.pageView();
+
   if (/^\/signup(\.html)?/.test(path)) {
-    // signup
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
-    // signin
     signin();
   } else if (path === '/') {
-    // home
     home();
   }
 }

@@ -12,6 +12,7 @@ import analysis from './scripts/actions/analysis';
 import FormValidate from './scripts/validate';
 import { EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
+window.bughd('create', { key: __BUGHD_TOKEN__ });
 analysis.init();
 /*
   default set validator for FormValidate;
@@ -65,6 +66,5 @@ function bootstrap () {
 }
 
 $(bootstrap);
-window.bughd('create', { key: __BUGHD_TOKEN__ });
 
 export default {};

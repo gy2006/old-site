@@ -36,8 +36,23 @@ FormValidate.setDefaultRulesMap({
 
 function bootstrap () {
   const path = location.pathname;
+  const UNSUPPORTED = '/unsupported.html';
+
+  if (browser.isIE && path !== UNSUPPORTED) {
+    window.location = UNSUPPORTED;
+    return;
+  }
+  if (path === UNSUPPORTED) {
+    if (browser.isIE) {
+      analysis.pageView();
+    } else {
+      window.location = '/';
+    }
+    return;
+  }
+  analysis.pageView();
+
   const token = User.getUserToken();
-  const UNSPPORT_IE = 'IE is not supported, try using Chrome or Safari.';
   if (token) {
     User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo);
@@ -51,25 +66,12 @@ function bootstrap () {
       User.removeUserToken();
     });
   }
-  analysis.pageView();
-
-  let shouldAlert = false;
   if (/^\/signup(\.html)?/.test(path)) {
-    // signup
-    browser.isIE ? (shouldAlert = true) : signup();
+    signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
-    // signin
-    browser.isIE ? (shouldAlert = true) : signin();
+    signin();
   } else if (path === '/') {
-    // home
-    browser.isIE ? (shouldAlert = true) : home();
-  }
-  if (shouldAlert) {
-    alert(UNSPPORT_IE);
-    $('form input[type="submit"]').click(() => {
-      alert(UNSPPORT_IE);
-    });
-    return;
+    home();
   }
 }
 

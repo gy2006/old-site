@@ -6,20 +6,23 @@
     "NODE_ENV": "'development'",
     "__API__": "'//api-lyon.flow.ci'",
     "__DASHBOARD_URL__": "'//localhost:3000'",
-    "__MIXPANEL_TOKEN__": "'2b1e930ff88661ec1804746b8f80d0cf'"
+    "__MIXPANEL_TOKEN__": "'2b1e930ff88661ec1804746b8f80d0cf'",
+    "__BUGHD_TOKEN__":"'5bb557f47ec7d8eec20e45466cdfc70b'"
   },
   "lyon": {
     "__TARGET__" : "'lyon'",
     "NODE_ENV": "'production'",
     "__API__": "'//api-lyon.flow.ci'",
     "__DASHBOARD_URL__": "'//dashboard.lyon.flow.ci'",
-    "__MIXPANEL_TOKEN__": "'2b1e930ff88661ec1804746b8f80d0cf'"
+    "__MIXPANEL_TOKEN__": "'2b1e930ff88661ec1804746b8f80d0cf'",
+    "__BUGHD_TOKEN__":"'e9afd28ba1727f6114547d8b7bbd5955'"
   },
   "production": {
     "__TARGET__" : "'production'",
     "NODE_ENV": "'production'",
     "__API__": "'//api.flow.ci'",
     "__DASHBOARD_URL__": "'//dashboard.flow.ci'",
-    "__MIXPANEL_TOKEN__": "'93d9c73a0460039b443438a2d646efd1'"
+    "__MIXPANEL_TOKEN__": "'93d9c73a0460039b443438a2d646efd1'",
+    "__BUGHD_TOKEN__":"'e24809f6f6789481ee4508a5830e56fd'"
   }
 }

@@ -9,6 +9,8 @@ var config = require('./config');
 var nconf = require('nconf');
 nconf.env().argv();
 
+const targetConfig = config[nconf.get('TARGET') || 'local'];
+
 const webpackConfig = {
   entry: {
     app: [
@@ -52,7 +54,7 @@ const webpackConfig = {
   },
   plugins: [
     new ExtractTextPlugin('main.[contenthash].css'),
-    new webpack.DefinePlugin(config[nconf.get('TARGET')] || 'local')
+    new webpack.DefinePlugin(targetConfig)
   ],
   sassLoader: {
     includePaths: Bourbon.includePaths
@@ -89,7 +91,8 @@ glob.sync('./src/views/**/*.jade').map(file => {
     new HtmlWebpackPlugin({
       template: file,
       filename: path.basename(file, '.jade') + '.html',
-      inject: 'body'
+      inject: 'body',
+      bughd_token: targetConfig['__BUGHD_TOKEN__']
     })
   );
 });

@@ -11,6 +11,7 @@ import analysis from './scripts/actions/analysis';
 
 import FormValidate from './scripts/validate';
 import { EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import browser from './scripts/util/browser';
 
 analysis.init();
 /*
@@ -36,10 +37,9 @@ FormValidate.setDefaultRulesMap({
 function bootstrap () {
   const path = location.pathname;
   const token = User.getUserToken();
-  let userPromise;
+  const UNSPPORT_IE = 'Unspport IE, Please replace the browser.';
   if (token) {
-    userPromise = User.get(token);
-    userPromise.done(function (userInfo) {
+    User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo);
       $('.navbar .nav-sign').hide();
       const $navUser = $('.navbar .nav-user').removeClass('hide');
@@ -52,15 +52,24 @@ function bootstrap () {
     });
   }
   analysis.pageView();
+
+  let shouldAlert = false;
   if (/^\/signup(\.html)?/.test(path)) {
     // signup
-    signup();
+    browser.isIE ? (shouldAlert = true) : signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
     // signin
-    signin();
+    browser.isIE ? (shouldAlert = true) : signin();
   } else if (path === '/') {
     // home
-    home();
+    browser.isIE ? (shouldAlert = true) : home();
+  }
+  if (shouldAlert) {
+    alert(UNSPPORT_IE);
+    $('form input[type="submit"]').click(() => {
+      alert(UNSPPORT_IE);
+    });
+    return;
   }
 }
 

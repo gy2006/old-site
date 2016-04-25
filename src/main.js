@@ -37,7 +37,7 @@ FormValidate.setDefaultRulesMap({
 function bootstrap () {
   const path = location.pathname;
   const token = User.getUserToken();
-  const UNSPPORT_IE = 'Unspport IE, Please replace the browser.';
+  const UNSPPORT_IE = 'IE is not supported, try using Chrome or Safari.';
   if (token) {
     User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo);

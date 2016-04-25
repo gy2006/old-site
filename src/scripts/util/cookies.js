@@ -1,11 +1,10 @@
-const COOKIE_MAXAGE = 7 * 24 * 60 * 60;
-const COOKIE_DOMAIN = { local: 'localhost', lyon: '.lyon.flow.ci', production: '.flow.ci' }[__TARGET__];
-
-export function save (name, value, maxAge) {
-  if (!maxAge) {
-    maxAge = COOKIE_MAXAGE;
+export function save (name, value, options = {}) {
+  let cookie = `${name}=${value};`;
+  for (const key in options) {
+    cookie += `${key}=${options[key]};`;
   }
-  document.cookie = `${name}=${value}; domain=${COOKIE_DOMAIN}; path='/'; max-age=${maxAge}`;
+  // console.log(cookie);
+  document.cookie = cookie;
 }
 
 export function get (name) {
@@ -14,8 +13,9 @@ export function get (name) {
   return match && match.length ? match[1] : undefined;
 }
 
-export function clear (name) {
-  document.cookie = `${name}=; domain=${COOKIE_DOMAIN}; path='/'; max-age=0`;
+export function clear (name, options = {}) {
+  options['max-age'] = 0;
+  save(name, '', options);
 }
 
 export default {

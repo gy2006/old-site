@@ -8,9 +8,10 @@ import signin from './scripts/signin';
 import signup from './scripts/signup';
 
 import analysis from './scripts/actions/analysis';
+import getSearch from './scripts/util/getSearch';
 
 import FormValidate from './scripts/validate';
-import { EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant';
 
 analysis.init();
 /*
@@ -33,6 +34,20 @@ FormValidate.setDefaultRulesMap({
   loginname: 'Incorrect email or username format'
 });
 
+function getUtm () {
+  const value = {};
+  let hasUtm = false;
+  const urlParams = getSearch();
+  UTM_LIST.forEach((key) => {
+    const v = urlParams[key];
+    if (v) {
+      hasUtm = true;
+      value[key] = v;
+    }
+  });
+  return hasUtm ? value : null;
+}
+
 function bootstrap () {
   const path = location.pathname;
   const token = User.getUserToken();
@@ -51,6 +66,8 @@ function bootstrap () {
       User.removeUserToken();
     });
   }
+  const utms = getUtm();
+  utms && analysis.register(utms);
   analysis.pageView();
   if (/^\/signup(\.html)?/.test(path)) {
     // signup

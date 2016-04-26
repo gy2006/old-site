@@ -151,27 +151,9 @@ const analysis = {
       mixpanel.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {
-      const Inviter = mixpanelVariables.getValue('Inviter');
       analysis.event.getUserSuccess(user);
       const isInvited = !!urlParams.project_id;
-      const people = {
-        '$first_name': user.username,
-        '$created': new Date(),
-        '$email': user.email,
-        'buildtimes': 0,
-        'Application': 'Passed'
-      };
-      if (Inviter) {
-        people.Inviter = Inviter;
-        analysis.common.runWithDistinctId(Inviter, function () {
-          mixpanel.people.union({
-            'Invitee Signup': user.email
-          });
-        });
-      }
-      mixpanel.people.set(people);
       mixpanel.track('Sign up', {
-        distinct_id: user.email,
         Invited: isInvited ? 'YES' : 'NO'
       }, callback);
     },

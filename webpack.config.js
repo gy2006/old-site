@@ -92,6 +92,7 @@ glob.sync('./src/views/**/*.jade').map(file => {
       template: file,
       filename: path.basename(file, '.jade') + '.html',
       inject: 'body',
+      favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
       bughd_token: targetConfig['__BUGHD_TOKEN__']
     })
   );

@@ -4,13 +4,13 @@ import signin from './actions/signin';
 import Errors from './errors';
 import Button from './button';
 
-function bindSubmit(form) {
+function bindSubmit (form) {
   function handlerSubmit (e) {
     const $submitBtn = new Button($(this).find('input[type="submit"]'));
     $submitBtn.setDisabled(true);
     $submitBtn.startLoading();
 
-    signin(form.getValues()).fail(function (e){
+    signin(form.getValues()).fail(function (e) {
       form.setError('$form', Errors(e));
     }).always(() => {
       $submitBtn.setDisabled(false);
@@ -21,7 +21,7 @@ function bindSubmit(form) {
 }
 
 function initValidate () {
-  return new FormValidate("#signin-form", [{
+  return new FormValidate('#signin-form', [{
     name: 'login',
     rules: 'required|loginname',
     errorElement: '#signin-form .form-loginname .text-danger'
@@ -34,9 +34,9 @@ function initValidate () {
   });
 }
 
-export default function bootstrap() {
+export default function bootstrap () {
   $('body').addClass('page-signin');
   // console.log('bootstrap signin');
-  const form = initValidate()
+  const form = initValidate();
   bindSubmit(form);
 }

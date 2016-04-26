@@ -2,15 +2,18 @@ import './styles/main.scss';
 import $ from 'jquery';
 import './scripts/polyfill/assign';
 import User from './scripts/actions/user';
-import redirectToDashboard, { getDashboardUrl } from './scripts/actions/redirectToDashboard';
+import { getDashboardUrl } from './scripts/actions/redirectToDashboard';
 import home from './scripts/home';
 import signin from './scripts/signin';
 import signup from './scripts/signup';
 
 import analysis from './scripts/actions/analysis';
+import getSearch from './scripts/util/getSearch';
 
 import FormValidate from './scripts/validate';
-import { EMAIL_REG, USERNAME_REG } from './scripts/constant';
+
+import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant';
+import browser from './scripts/util/browser';
 
 analysis.init();
 /*
@@ -33,23 +36,46 @@ FormValidate.setDefaultRulesMap({
   loginname: 'Incorrect email or username format'
 });
 
-function redirectToFlow (token) {
-  return function (){
-    // console.log('redirect to flow');
-    redirectToDashboard(token);
-  }
+function getUtm () {
+  const value = {};
+  let hasUtm = false;
+  const urlParams = getSearch();
+  UTM_LIST.forEach((key) => {
+    const v = urlParams[key];
+    if (v) {
+      hasUtm = true;
+      value[key] = v;
+    }
+  });
+  return hasUtm ? value : null;
 }
 
 function bootstrap () {
   const path = location.pathname;
+  const UNSUPPORTED_PATH = '/unsupported.html';
+
+  if (browser.isIE && path !== UNSUPPORTED_PATH) {
+    window.location = UNSUPPORTED_PATH;
+    return;
+  }
+  if (path === UNSUPPORTED_PATH) {
+    if (browser.isIE) {
+      analysis.pageView();
+    } else {
+      window.location = '/';
+    }
+    return;
+  }
+  const utms = getUtm();
+  utms && analysis.register(utms);
+  analysis.pageView();
+
   const token = User.getUserToken();
-  let userPromise;
   if (token) {
-    userPromise = User.get(token);
-    userPromise.done(function (userInfo) {
+    User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo);
-      $(".navbar .nav-sign").hide();
-      const $navUser = $(".navbar .nav-user").removeClass('hide');
+      $('.navbar .nav-sign').hide();
+      const $navUser = $('.navbar .nav-user').removeClass('hide');
       const $navLink = $navUser.find('a');
       const $navAvator = $navUser.find('.avator');
       $navLink.attr('href', getDashboardUrl(token));
@@ -58,20 +84,15 @@ function bootstrap () {
       User.removeUserToken();
     });
   }
-  analysis.pageView();
+
   if (/^\/signup(\.html)?/.test(path)) {
-    // signup
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
-    // signin
     signin();
   } else if (path === '/') {
-    // home
     home();
   }
 }
-
-
 
 $(bootstrap);
 

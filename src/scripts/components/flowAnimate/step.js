@@ -13,7 +13,7 @@ export function randomPosition (range = {}) {
   return {
     x,
     y
-  }
+  };
 }
 
 export default class Step {
@@ -25,7 +25,7 @@ export default class Step {
   }
 
   moveTo (position, withClassName) {
-    this.element.css({left: position.x, top: position.y});
+    this.element.css({ left: position.x, top: position.y });
     withClassName && this.element.addClass(withClassName);
     return this;
   }
@@ -33,7 +33,7 @@ export default class Step {
   animate (withClassName) {
     this.element.removeClass('hide');
     setTimeout(() => {
-      this.moveTo({ x: 0, y: 0}, withClassName);
+      this.moveTo({ x: 0, y: 0 }, withClassName);
     }, 1000);
     return this;
   }

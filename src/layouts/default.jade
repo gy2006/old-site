@@ -1,3 +1,4 @@
+- bughd_token = htmlWebpackPlugin.options.bughd_token
 doctype html
 html
   head
@@ -7,7 +8,7 @@ html
     script(type="text/javascript", src="https://dn-bughd-web.qbox.me/bughd.min.js", crossOrigin="anonymous")
     script(type="text/javascript").
       window.bughd = window.bughd || function(){};
-      bughd("create",{key:"e24809f6f6789481ee4508a5830e56fd"});
+      bughd("create",{key: #{bughd_token}});
   body
     include ../includes/beta_bar
     include ../includes/navbar

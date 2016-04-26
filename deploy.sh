@@ -27,7 +27,7 @@ if [ ! -z ${TARGET} ]; then
   fi;
   # FIXME: other target should support here
 else
-  TARGET=production npm run compile
+  TARGET=production NODE_ENV=production npm run compile
   USER=ubuntu
   HOST="10.0.0.136"
 fi;

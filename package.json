@@ -8,7 +8,7 @@
     "start": "TARGET=local webpack-dev-server --hot --inline --content-base dist/ --host 0.0.0.0",
     "compile": "npm run clean && webpack && npm run copy",
     "clean": "rm -rf dist",
-    "copy": "cp -r ./src/static/ ./dist"
+    "copy": "cp -r ./src/static/* ./dist"
   },
   "repository": {
     "type": "git",

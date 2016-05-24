@@ -1,6 +1,7 @@
 import mixpanel from 'mixpanel-browser';
 import { EMAIL_REG, UTM_LIST } from '../constant';
 import cookies from '../util/cookies';
+import browser from './analysis';
 
 function getDomain () {
   const matches = document.location.hostname.match(/[a-z0-9][a-z0-9\-]+\.[a-z\.]{2,6}$/i);
@@ -126,6 +127,7 @@ const analysis = {
   init: function () {
     mixpanel.init(__MIXPANEL_TOKEN__);
     mixpanelVariables.init(__MIXPANEL_TOKEN__);
+    mixpanel.register({ 'Browser Language': browser.locale });
   },
   identify: function (id) {
     if (id !== mixpanel.get_distinct_id()) {

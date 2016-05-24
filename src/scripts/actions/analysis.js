@@ -1,7 +1,7 @@
 import mixpanel from 'mixpanel-browser';
 import { EMAIL_REG, UTM_LIST } from '../constant';
 import cookies from '../util/cookies';
-import browser from './analysis';
+import browser from '../util/browser';
 
 function getDomain () {
   const matches = document.location.hostname.match(/[a-z0-9][a-z0-9\-]+\.[a-z\.]{2,6}$/i);

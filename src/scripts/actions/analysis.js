@@ -12,6 +12,7 @@ function getDomain () {
 const cookieConfig = {
   'domain': getDomain()
 };
+
 class MixpanelVariables {
   init (token) {
     this.cookieName = this._getCookieName(token);
@@ -52,6 +53,75 @@ class MixpanelVariables {
 
 const mixpanelVariables = new MixpanelVariables();
 
+function getIncrementName (eventName) {
+  return `# of ${eventName}`;
+}
+function getLastName (eventName) {
+  return `Last ${eventName}`;
+}
+
+function getFirstName (eventName) {
+  return `First ${eventName}`;
+}
+
+function increment (property, number = 1) {
+  let v = 0;
+  try {
+    v = parseInt(mixpanel.get_property(property)) || 0;
+  } catch (e) { v = 0; }
+  mixpanel.register({ [property]: (v + number) });
+  mixpanel.people.increment(property, number);
+}
+
+function getPropertys (names) {
+  const props = {};
+  names && names.forEach(function (name) {
+    props[name] = mixpanel.get_property(name);
+  });
+  return props;
+}
+
+function track (eventName, props, callback) {
+  const now = new Date().toISOString();
+  mixpanel.register({
+    [getLastName(eventName)]: now
+  });
+  registerOnce(getFirstName(eventName), now);
+
+  mixpanel.track(eventName, props, callback);
+}
+
+function setPeople (eventName, names, callback) {
+  names = names || [];
+  names.push('Previous Event Name');
+  names.push('Browser Language');
+  names.push(getLastName(eventName));
+
+  const p = getPropertys(names);
+  mixpanel.people.set(p);
+  mixpanel.people.set_once(getPropertys([getFirstName(eventName)]), callback);
+}
+
+function registerOnce (propName, value) {
+  if (!mixpanel.get_property(propName)) {
+    mixpanel.register({ [propName]: value });
+  }
+}
+
+function incrementEvent (eventName) {
+  increment(getIncrementName(eventName));
+}
+
+function trackFullEvent (eventName, props, peoplePropsName, options = {}, callback) {
+  incrementEvent(eventName);
+  track(eventName, props);
+  setPeople(eventName, peoplePropsName, callback);
+
+  !options.noPrevious && mixpanel.register({
+    'Previous Event Name': eventName
+  });
+}
+
 const analysis = {
   init: function () {
     mixpanel.init(__MIXPANEL_TOKEN__);
@@ -63,8 +133,10 @@ const analysis = {
     }
     return mixpanel.identify(id);
   },
-  pageView: function (property) {
-    return mixpanel.track('Page View', Object.assign({}, { path: location.pathname, protocol: location.protocol }, property));
+  pageView: function () {
+    const eventName = 'Page View';
+    const props = { path: location.pathname, protocol: location.protocol };
+    trackFullEvent(eventName, props, [], { noPrevious: true });
   },
   alias: function (newId) {
     // must only use create mixpanel people
@@ -137,7 +209,7 @@ const analysis = {
       analysis.alias(fields.email);
       analysis.event.getUserSuccess(fields);
       mixpanel.people.set_once(people);
-      mixpanel.track('Input Email', fields, callback);
+      trackFullEvent('Input Email', fields, [], {}, callback);
     },
     applyCiWithIsLoggedIn: function (fields, callback) {
       const people = analysis.common.getCreatePeopleProperty(fields);
@@ -148,14 +220,15 @@ const analysis = {
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);
+      mixpanel.register({ 'email': user.email });
       mixpanel.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {
       analysis.event.getUserSuccess(user);
       const isInvited = !!urlParams.project_id;
-      mixpanel.track('Sign up', {
+      trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'
-      }, callback);
+      }, [], {}, callback);
     },
     confirmEmail: function (urlParams) {
       analysis.identify(urlParams.email);

@@ -50,6 +50,21 @@ function getUtm () {
   return hasUtm ? value : null;
 }
 
+function bootstrapNavbar () {
+  const $enterprise = $('#nav-enterprise');
+  const locale = browser.locale;
+  let href;
+  switch (locale) {
+    case 'zh':
+      href = 'http://form.mikecrm.com/l1PsnQ';
+      break;
+    default:
+      href = 'http://form.mikecrm.com/47gD6I';
+      break;
+  }
+  $enterprise.attr('href', href);
+}
+
 function bootstrap () {
   const path = location.pathname;
   const UNSUPPORTED_PATH = '/unsupported.html';
@@ -85,6 +100,7 @@ function bootstrap () {
     });
   }
 
+  bootstrapNavbar();
   if (/^\/signup(\.html)?/.test(path)) {
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {

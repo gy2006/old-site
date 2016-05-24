@@ -220,6 +220,7 @@ const analysis = {
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email);
+      mixpanel.register({ 'email': user.email });
       mixpanel.people.increment('signed_in', 1, callback);
     },
     signUp: function (user, urlParams, callback) {

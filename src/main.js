@@ -6,6 +6,7 @@ import { getDashboardUrl } from './scripts/actions/redirectToDashboard';
 import home from './scripts/home';
 import signin from './scripts/signin';
 import signup from './scripts/signup';
+import forgetPassword from './scripts/password';
 
 import analysis from './scripts/actions/analysis';
 import getSearch from './scripts/util/getSearch';
@@ -105,6 +106,8 @@ function bootstrap () {
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
     signin();
+  } else if (/^\/password_reset(\.html)?/.test(path)) {
+    forgetPassword();
   } else if (path === '/') {
     home();
   }

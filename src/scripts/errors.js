@@ -111,7 +111,7 @@ export default function getErrorMessage (resp) {
   }
 
   if (data.code) {
-    return CODE_MAPPING[data.code];
+    return CODE_MAPPING[data.code] || 'Unknow error';
   }
   const errors = data.errors;
   if (isObject(errors)) {

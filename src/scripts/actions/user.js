@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL } from '../constant';
+import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL } from '../constant';
 import analysis from './analysis';
 import saveAccessToken from './saveAccessToken';
 import redirectToDashboard from './redirectToDashboard';
@@ -43,10 +43,19 @@ export function create (user) {
   });
 }
 
+export function forgetPassword (email) {
+  return $.post({
+    url: FORGET_PASSWORD_URL,
+    data: {
+      email
+    }
+  });
+}
 export default {
   get: get,
   test: test,
   create: create,
   getUserToken,
-  removeUserToken
+  removeUserToken,
+  forgetPassword
 };

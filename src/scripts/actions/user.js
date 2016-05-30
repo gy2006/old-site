@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL } from '../constant';
+import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL } from '../constant';
 import analysis from './analysis';
 import saveAccessToken from './saveAccessToken';
 import redirectToDashboard from './redirectToDashboard';
@@ -43,10 +43,35 @@ export function create (user) {
   });
 }
 
+export function forgetPassword (email) {
+  return $.post({
+    url: FORGET_PASSWORD_URL,
+    data: {
+      email
+    },
+    dataType: 'text'
+  });
+}
+
+export function resetPassword (token, password) {
+  return $.ajax({
+    url: RESET_PASSWORD_URL,
+    method: 'PATCH',
+    data: {
+      reset_password_token: token,
+      password,
+      confirm_password: password
+    },
+    dataType: 'text'
+  });
+}
+
 export default {
   get: get,
   test: test,
   create: create,
   getUserToken,
-  removeUserToken
+  removeUserToken,
+  forgetPassword,
+  resetPassword
 };

@@ -55,6 +55,7 @@ function bindResetSubmit (sign, id, form) {
 
     User.resetPassword(sign, fields.password).done(() => {
       $(`#${id}`).addClass('success');
+      window.location.href = '/signin.html';
       this.reset();
     }).fail((e) => {
       form.setError('$form', Errors(e));
@@ -82,14 +83,19 @@ function initResetValidate (id) {
 
 function bootstrapReset (sign) {
   $('#reset-password').show();
+  const params = getSearch();
+
   const id = 'reset-password-form';
+  if (params.email) {
+    $(`#${id} legend`).text(`Change password for ${params.email}`);
+  }
   const form = initResetValidate(id);
   bindResetSubmit(sign, id, form);
 }
 
 export default function bootstrap () {
   const params = getSearch();
-  if (params.sign) {
+  if (params.reset_token) {
     bootstrapReset(params.sign);
   } else {
     bootstrapForget();

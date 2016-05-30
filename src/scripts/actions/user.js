@@ -58,7 +58,7 @@ export function resetPassword (token, password) {
     url: RESET_PASSWORD_URL,
     method: 'PATCH',
     data: {
-      reset_token: token,
+      reset_password_token: token,
       password,
       confirm_password: password
     },

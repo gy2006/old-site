@@ -13,11 +13,9 @@ function bindForgetSubmit (id, form) {
 
     const fields = form.getValues();
     User.forgetPassword(fields.email).done(() => {
-      console.log('done');
       $(`#${id}`).addClass('success');
       this.reset();
     }).fail(function (e) {
-      console.log(arguments);
       form.setError('$form', Errors(e));
     }).always(function () {
       $submitBtn.setDisabled(false);
@@ -54,8 +52,8 @@ function bindResetSubmit (sign, id, form) {
     const fields = form.getValues();
 
     User.resetPassword(sign, fields.password).done(() => {
-      $(`#${id}`).addClass('success');
-      window.location.href = '/signin.html';
+      const params = getSearch();
+      window.location.href = `/signin.html?email=${params.email}&reset_password=1`;
       this.reset();
     }).fail((e) => {
       form.setError('$form', Errors(e));
@@ -95,8 +93,8 @@ function bootstrapReset (sign) {
 
 export default function bootstrap () {
   const params = getSearch();
-  if (params.reset_token) {
-    bootstrapReset(params.reset_token);
+  if (params.reset_password_token) {
+    bootstrapReset(params.reset_password_token);
   } else {
     bootstrapForget();
   }

@@ -96,7 +96,7 @@ function bootstrapReset (sign) {
 export default function bootstrap () {
   const params = getSearch();
   if (params.reset_token) {
-    bootstrapReset(params.sign);
+    bootstrapReset(params.reset_token);
   } else {
     bootstrapForget();
   }

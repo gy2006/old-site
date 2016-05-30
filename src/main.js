@@ -6,6 +6,7 @@ import { getDashboardUrl } from './scripts/actions/redirectToDashboard';
 import home from './scripts/home';
 import signin from './scripts/signin';
 import signup from './scripts/signup';
+import resetPassword from './scripts/password';
 
 import analysis from './scripts/actions/analysis';
 import getSearch from './scripts/util/getSearch';
@@ -28,12 +29,16 @@ FormValidate.setDefaultValidators({
   },
   loginname: function (value) {
     return EMAIL_REG.test(value) || USERNAME_REG.test(value);
+  },
+  confirm: function (value, name) {
+    return value === this[name];
   }
 });
 
 FormValidate.setDefaultRulesMap({
   username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
-  loginname: 'Incorrect email or username format'
+  loginname: 'Incorrect email or username format',
+  confirm: 'Password doesn\'t match the confirmation'
 });
 
 function getUtm () {
@@ -105,6 +110,8 @@ function bootstrap () {
     signup();
   } else if (/^\/signin(\.html)?/.test(path)) {
     signin();
+  } else if (/^\/password_reset(\.html)?/.test(path)) {
+    resetPassword();
   } else if (path === '/') {
     home();
   }

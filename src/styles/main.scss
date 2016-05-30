@@ -5,8 +5,9 @@
 @import './pages/forms';
 @import './pages/home';
 @import './pages/pricing';
-@import './pages/signin';
 @import './pages/signup';
+@import './pages/signin';
+@import './pages/password';
 
 body{
   &:after{
@@ -19,4 +20,10 @@ body{
     background: linear-gradient(0deg,hsla(0,0%,100%,0),#fff 60%);
     content: ' ';
   }
+}
+.pull-left{
+  float: left;
+}
+.pull-right{
+  float: right;
 }

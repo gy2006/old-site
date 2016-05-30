@@ -1,6 +1,6 @@
 @import 'bourbon';
 
-#signin-form, #signup-form{
+#signin-form, #signup-form, .form{
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -13,6 +13,7 @@
 
   .form-control{
     margin-bottom: 12px;
+    position: relative;
     input{
       margin-bottom: 4px;
     }

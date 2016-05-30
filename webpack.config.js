@@ -97,14 +97,5 @@ glob.sync('./src/views/**/*.jade').map(file => {
     })
   );
 });
-glob.sync('./src/views/**/*.html').map(file => {
-  webpackConfig.plugins.push(
-    new HtmlWebpackPlugin({
-      template: file,
-      filename: path.basename(file),
-      inject: false
-    })
-  );
-});
 module.exports = webpackConfig;
 

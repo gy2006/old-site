@@ -3,6 +3,7 @@ import FormValidate from './validate';
 import signin from './actions/signin';
 import Errors from './errors';
 import Button from './button';
+import getSearch from './util/getSearch';
 
 function bindSubmit (form) {
   function handlerSubmit (e) {
@@ -36,7 +37,16 @@ function initValidate () {
 
 export default function bootstrap () {
   $('body').addClass('page-signin');
-  // console.log('bootstrap signin');
+
   const form = initValidate();
   bindSubmit(form);
+
+  const params = getSearch();
+  if (params.reset_password) {
+    $('#signin-form legend').text('Password change successful');
+    const email = params.email;
+    if (email) {
+      $('#signin-form #login').val(email);
+    }
+  }
 }

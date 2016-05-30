@@ -333,3 +333,11 @@ $subtitle-color: $col-page-home-primary;
   input[type='email']{
   }
 }
+.mixpanel-footer{
+  width: 880px;
+  margin: 0px auto;
+  >a {
+    margin-bottom: 12px;
+    float: right;
+  }
+}

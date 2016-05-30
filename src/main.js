@@ -29,12 +29,16 @@ FormValidate.setDefaultValidators({
   },
   loginname: function (value) {
     return EMAIL_REG.test(value) || USERNAME_REG.test(value);
+  },
+  confirm: function (value, name) {
+    return value === this[name];
   }
 });
 
 FormValidate.setDefaultRulesMap({
   username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
-  loginname: 'Incorrect email or username format'
+  loginname: 'Incorrect email or username format',
+  confirm: 'Password doesn\'t match the confirmation'
 });
 
 function getUtm () {

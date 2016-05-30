@@ -6,7 +6,8 @@ const CODE_MAPPING = {
   100007: 'Invite code invalid',
   100008: 'Email/Username/Password not correct',
   100009: 'Email occupied',
-  100010: 'User not found'
+  100010: 'User not found',
+  100013: 'Reset password token not found'
 };
 
 const FIELD_CODE_MAPPING = {
@@ -105,7 +106,13 @@ function getFieldErrorMessage (errors) {
 }
 
 export default function getErrorMessage (resp) {
-  const data = resp.responseJSON;
+  const text = resp.responseText;
+  let data = resp.responseJSON;
+  if (!data && text) {
+    try {
+      data = JSON.parse(text);
+    } catch (e) {}
+  }
   if (!data) {
     return `HTTP STATUS: ${resp.status}`;
   }

@@ -28,8 +28,8 @@ if [ ! -z ${TARGET} ]; then
   # FIXME: other target should support here
 else
   TARGET=production NODE_ENV=production npm run compile
-  USER=ubuntu
-  HOST="10.0.0.136"
+  USER=deploy
+  HOST="192.168.10.1"
 fi;
 
 echo "########## Build success ##########"

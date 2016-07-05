@@ -1,8 +1,9 @@
 - bughd_token = htmlWebpackPlugin.options.bughd_token
 doctype html
-html
+html(xmlns:wb="http://open.weibo.com/wb")
   head
     meta(charset='utf-8')
+    meta(property="wb:webmaster", content="977ca36fa31b75c1")
     block title
       title flow.ci | Hosted Continuous Integration and Delivery Service
     script(type="text/javascript", src="https://dn-bughd-web.qbox.me/bughd.min.js", crossOrigin="anonymous")
@@ -16,6 +17,7 @@ html
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-43616652-7', 'auto');
       ga('send', 'pageview');
+    script(src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js", type="text/javascript",charset="utf-8")
   body
     include ../includes/beta_bar
     include ../includes/navbar

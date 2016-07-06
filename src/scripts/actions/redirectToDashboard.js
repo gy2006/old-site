@@ -10,15 +10,18 @@ function getDefaultUrl (accessToken) {
 
 export function getDashboardUrl (accessToken) {
   let url = getCookie(REDIRECT_KEY);
-  url && clearCookie(REDIRECT_KEY, BASE_COOKIE_CONFIG);
-
-  if (!url || url.indexOf(__DASHBOARD_URL__) !== 0) {
+  if (url) {
+    clearCookie(REDIRECT_KEY, BASE_COOKIE_CONFIG);
+    url = decodeURIComponent(url);
+  }
+  const reg = new RegExp(`^(http|https)\:${__DASHBOARD_URL__}`);
+  if (!url || !reg.test(url)) {
     url = getDefaultUrl(accessToken);
   }
   return url;
 }
 
 export default function redirectToDashboard (accessToken) {
-  window.location = getDashboardUrl(accessToken);
+  window.location.href = getDashboardUrl(accessToken);
 }
 

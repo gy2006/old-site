@@ -1,6 +1,6 @@
 - bughd_token = htmlWebpackPlugin.options.bughd_token
 doctype html
-html(xmlns:wb="http://open.weibo.com/wb")
+html
   head
     meta(charset='utf-8')
     meta(property="wb:webmaster", content="977ca36fa31b75c1")
@@ -17,7 +17,6 @@ html(xmlns:wb="http://open.weibo.com/wb")
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-43616652-7', 'auto');
       ga('send', 'pageview');
-    script(src="//tjs.sjs.sinajs.cn/open/api/js/wb.js", type="text/javascript",charset="utf-8")
   body
     include ../includes/beta_bar
     include ../includes/navbar

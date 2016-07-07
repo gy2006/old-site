@@ -7,10 +7,12 @@ $slogan-color: $col-page-home-primary;
 $subtitle-color: $col-page-home-primary;
 
 .page-home{
+  overflow: hidden;
+  width: 100%;
   .banner{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     justify-content: center;
     .slogan{
@@ -94,7 +96,7 @@ $subtitle-color: $col-page-home-primary;
     display: flex;
     flex-direction: column;
     padding: 120px 0;
-    height: 100vh;
+    min-height: 100vh;
 
     justify-content: center;
     #flow-add-step{
@@ -211,7 +213,7 @@ $subtitle-color: $col-page-home-primary;
   .plugins{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     justify-content: center;
     h2{
@@ -246,7 +248,7 @@ $subtitle-color: $col-page-home-primary;
   .languages{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     justify-content: center;
     h2{
@@ -283,7 +285,7 @@ $subtitle-color: $col-page-home-primary;
   .more-things{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     justify-content: center;
     .things{
@@ -334,8 +336,6 @@ $subtitle-color: $col-page-home-primary;
   }
 }
 .footer-wrap{
-  width: 880px;
-  margin: 0px auto;
   text-align: right;
   .mixpanel-footer {
     margin-bottom: 12px;
@@ -345,5 +345,19 @@ $subtitle-color: $col-page-home-primary;
     float: right;
     margin-top: 8px;
     margin-right: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .page-home{
+    .plugins{
+      .categories{
+        flex-wrap: wrap;
+        .cate{
+          flex-direction: column;
+          flex: 1 1 100%;
+          margin-bottom: 8px;
+        }
+      }
+    }
   }
 }

@@ -15,6 +15,7 @@ import FormValidate from './scripts/validate'
 
 import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant'
 import browser from './scripts/util/browser'
+import './scripts/components/navbar'
 
 analysis.init()
 /*
@@ -55,21 +56,6 @@ function getUtm () {
   return hasUtm ? value : null
 }
 
-function bootstrapNavbar () {
-  const $enterprise = $('#nav-enterprise')
-  const locale = browser.locale
-  let href
-  switch (locale) {
-    case 'zh':
-      href = 'http://form.mikecrm.com/l1PsnQ'
-      break
-    default:
-      href = 'http://form.mikecrm.com/47gD6I'
-      break
-  }
-  $enterprise.attr('href', href)
-}
-
 function bootstrap () {
   const path = location.pathname
   const UNSUPPORTED_PATH = '/unsupported.html'
@@ -91,6 +77,7 @@ function bootstrap () {
   analysis.pageView()
 
   const token = User.getUserToken()
+  console.log(token)
   if (token) {
     User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo)
@@ -105,7 +92,6 @@ function bootstrap () {
     })
   }
 
-  bootstrapNavbar()
   if (/^\/signup(\.html)?/.test(path)) {
     signup()
   } else if (/^\/signin(\.html)?/.test(path)) {

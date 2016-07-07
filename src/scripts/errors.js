@@ -8,7 +8,7 @@ const CODE_MAPPING = {
   100009: 'Email occupied',
   100010: 'User not found',
   100013: 'Reset password token not found'
-};
+}
 
 const FIELD_CODE_MAPPING = {
   '00': 'unknown',
@@ -35,7 +35,7 @@ const FIELD_CODE_MAPPING = {
   '88': 'even',
   '89': 'other than ${param}',
   '90': 'is empty'
-};
+}
 
 const FIELD_CODE_PARAM_MAPPING = {
   username: {
@@ -48,82 +48,82 @@ const FIELD_CODE_PARAM_MAPPING = {
     'min': 6,
     'default': 'must greater than 6'
   }
-};
+}
 
 const FIELD_MAPPING = {
   username: 'Username',
   password: 'Password',
   sign: 'Invite Code',
   login: 'Email or Username'
-};
+}
 
 function isObject (value) {
-  return value != null && typeof value === 'object';
+  return value != null && typeof value === 'object'
 }
 
 function getFieldName (field) {
-  return FIELD_MAPPING[field] || field;
+  return FIELD_MAPPING[field] || field
 }
 
 function getExtendParam (field, name) {
-  const mapping = FIELD_CODE_PARAM_MAPPING[field];
+  const mapping = FIELD_CODE_PARAM_MAPPING[field]
   if (!mapping) {
-    return '';
+    return ''
   }
-  const param = mapping[name] || mapping['default'] || '';
-  return param;
+  const param = mapping[name] || mapping['default'] || ''
+  return param
 }
 
 function getFieldMessage (field, code) {
-  let message = FIELD_CODE_MAPPING[code];
+  let message = FIELD_CODE_MAPPING[code]
   // const reg = /\$\{\s*param\s*\}/;
   // if (!reg.test(message)){
   //   return message;
   // }
   // return message.replace(reg, getExtendParam(field, code));
   // get ${something};
-  const paramReg = /\$\{\s*\w+\s*\}/g;
-  const wordReg = /\w+/;
-  let matches = message.match(paramReg);
+  const paramReg = /\$\{\s*\w+\s*\}/g
+  const wordReg = /\w+/
+  let matches = message.match(paramReg)
   matches && matches.forEach((match) => {
-    const paramName = match.match(wordReg)[0];
-    message = message.replace(match, getExtendParam(field, paramName));
-  });
-  return message;
+    const paramName = match.match(wordReg)[0]
+    message = message.replace(match, getExtendParam(field, paramName))
+  })
+  return message
 }
 
 function getFieldErrorMessage (errors) {
-  const errorMessage = [];
+  const errorMessage = []
   for (let field in errors) {
-    const codes = errors[field];
+    const codes = errors[field]
     const ms = codes.map((code) => {
-      return getFieldMessage(field, code);
-    }).filter((m) => m);
-    const message = getFieldName(field) + ': ' + ms.join(', ');
-    errorMessage.push(message);
+      return getFieldMessage(field, code)
+    }).filter((m) => m)
+    const message = getFieldName(field) + ': ' + ms.join(', ')
+    errorMessage.push(message)
   }
-  return errorMessage;
+  return errorMessage
 }
 
 export default function getErrorMessage (resp) {
-  const text = resp.responseText;
-  let data = resp.responseJSON;
+  const text = resp.responseText
+  let data = resp.responseJSON
   if (!data && text) {
     try {
-      data = JSON.parse(text);
+      data = JSON.parse(text)
     } catch (e) {}
   }
   if (!data) {
-    return `HTTP STATUS: ${resp.status}`;
+    return `HTTP STATUS: ${resp.status}`
   }
 
   if (data.code) {
-    return CODE_MAPPING[data.code] || 'Unknow error';
+    return CODE_MAPPING[data.code] || 'Unknow error'
   }
-  const errors = data.errors;
+  const errors = data.errors
   if (isObject(errors)) {
-    return getFieldErrorMessage(errors);
+    return getFieldErrorMessage(errors)
   } else {
-    return 'System is busy';
+    return 'System is busy'
   }
 }

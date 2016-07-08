@@ -6,6 +6,7 @@ $navbar-height: 60px;
   top:0px;
   width: 100%;
   z-index: 999;
+  background-color: #fff;
   .content-wrapper-270{
     padding: 0px;
   }
@@ -49,9 +50,11 @@ $navbar-height: 60px;
     }
   }
 }
-@media (min-width: 480px) {
+@media (min-width: 768px) {
   .navbar{
-    top: 30px;
+    top: 0px;
+    padding-top: 30px;
+    background-color: transparent;
     .content-wrapper-270{
       display: flex;
       .navbar-collpase{
@@ -94,134 +97,5 @@ $navbar-height: 60px;
     >.avator{
       margin-right: 12px;
     }
-  }
-}
-.navbarx{
-  position: fixed;
-  top: 30px;
-  left: 0;
-  z-index: 999;
-  width: 100%;
-  min-height: 90px;
-  padding: 16px 0px;
-  // background-color: black;
-  // background-clip: content-box;
-  .content-wrapper-60{
-    @include clearfix;
-  }
-
-  .navbar-left{
-    float: left;
-    margin-bottom: 16px;
-  }
-  .nav-logo{
-    a{
-      position: relative;
-      display: block;
-      img{
-        display: block;
-        height: 20px;
-      }
-      .icon-beta{
-        position: absolute;
-        right: -14px;
-        bottom: -20px;
-        color: $col-primary;
-        font-size: 12px;
-        transform: scale(.75);
-      }
-    }
-  }
-
-  .navbar-right{
-    float: right;
-
-    .nav-item{
-      display: inline-flex;
-      margin: 0 6px;
-      padding: 20px 10px;
-      vertical-align: middle;
-      text-transform: uppercase;
-      &:last-child, &:nth-last-child(2){
-        margin-right: 0;
-        padding-right: 0;
-      }
-    }
-    .nav-sign{
-      width: 152px;
-      > span{
-        margin: 0 10px;
-        color: $col-font-gray2;
-      }
-      a{
-        color: $col-primary;
-      }
-    }
-    .nav-condensed{
-      padding: 0px;
-      width: 152px;
-      a{
-        display: flex;
-        margin-left: auto;
-        padding: 6px 10px;
-        text-transform: none;
-        justify-content: center;
-        align-items: center;
-        &:hover{
-          opacity: .9;
-        }
-      }
-      &.hide{
-        display: none;
-      }
-    }
-    .nav-user{
-      a{
-        background-color: $col-primary;
-        color: white;
-      }
-      .avator{
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-      }
-      .text{
-        margin-left: 10px;
-      }
-    }
-    .nav-enterprise{
-      a{
-        background-color: #81bf15;
-        color: white;
-        box-shadow: 0px 3px 10px rgba(108,170,0,0.3);
-      }
-    }
-  }
-}
-@media (max-width: 480px) {
-  .navbarx{
-    top: 0px;
-    .navbar-toggle{
-      background-color: #fff;
-    }
-    .navbar-left,.navbar-right{
-      float: none;
-    }
-    .navbar-right{
-      margin-left: -15px;
-      margin-right: -15px;
-      .nav-item{
-        margin: 0px 2px 0px 0px;
-        padding: 0px 10px;
-      }
-      .nav-condensed{
-        width: auto;
-        padding: 0px;
-        margin: 0px;
-      }
-    }
-  }
-  .navx-enterprise{
-    display: none!important;
   }
 }

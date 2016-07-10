@@ -77,7 +77,6 @@ function bootstrap () {
   analysis.pageView()
 
   const token = User.getUserToken()
-  console.log(token)
   if (token) {
     User.get(token).done(function (userInfo) {
       analysis.event.getUserSuccess(userInfo)

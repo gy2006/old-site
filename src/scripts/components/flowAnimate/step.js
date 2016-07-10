@@ -17,11 +17,16 @@ export function randomPosition (range = {}) {
 }
 
 export default class Step {
-  constructor (name, position = randomPosition({ y: 50 })) {
-    this.position = position
-    this.element = $(`<span class="step"><i></i> <p>${name}</p> </span>`)
-    this.moveTo(this.position)
-    this.element.addClass('hide')
+  constructor (name) {
+    this.element = $(`<div class="step"><div class="step_wrap"><span class="step_info"><i></i> <p>${name}</p></span></div></div>`)
+    // const position = randomPosition()
+    // this.step = this.element.find('.step_info')
+    // console.log(`position: ${position.x}`)
+    // this.step.css('transform', `translateX(${position.x}px)`)
+  }
+
+  getOffset () {
+    return this.element.offset()
   }
 
   moveTo (position, withClassName) {
@@ -31,10 +36,11 @@ export default class Step {
   }
 
   animate (withClassName) {
-    this.element.removeClass('hide')
-    setTimeout(() => {
-      this.moveTo({ x: 0, y: 0 }, withClassName)
-    }, 1000)
+    // this.element.removeClass('hide')
+    // setTimeout(() => {
+    this.element.addClass('animate')
+    // this.step.css('transform', '')
+    // }, 1000)
     return this
   }
 

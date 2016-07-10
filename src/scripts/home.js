@@ -33,10 +33,10 @@ function flowAnimate () {
     'Deploy',
     'Slack'
   ]
-  const flow = new FlowAnimate(StepArray, $('.flow-steps'), $('.flow-line'), {
-    bottom: 200
+  const f = new FlowAnimate(StepArray, $('.flow-steps'), $('.flow-line'), {
+    bottom: 50
   })
-  flow.render()
+  f
 }
 
 export default function bootstrap () {

@@ -1,18 +1,18 @@
 .navbar
   .content-wrapper-270
-    .navbar-left
-      .nav-item.nav-logo
-        a(href='/')
-          img(src=require('../static/images/logo-inline-blue.svg'))
-
-    .navbar-right
-      .nav-item.nav-condensed.nav-enterprise
-        a(href='http://form.mikecrm.com/l1PsnQ' target='_blank' id='nav-enterprise') flow.ci Enterprise?
+    .navbar-header
+      a.navbar-banner(href="/")
+        img.logo(src=require('../static/images/logo-inline-blue.svg'))
+      button.navbar-toggle
+        i.icon-menu
+    .navbar-collpase
+      .nav-item
+        a(href='http://blog.flow.ci/') Blog
       .nav-item
         a(href='https://github.com/FIRHQ/flow.ci') Documents
       .nav-item
         a(href='/pricing.html') Pricing
-      .nav-item.nav-sign
+      .nav-item.nav-multi-item.nav-sign
         a(href='/signin.html') Sign In
         span /
         a(href='/signup.html') Sign Up

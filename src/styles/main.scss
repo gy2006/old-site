@@ -16,9 +16,12 @@ body{
     left: 0;
     z-index: 99;
     width: 100%;
-    height: 200px;
+    height: 100px;
     background: linear-gradient(0deg,hsla(0,0%,100%,0),#fff 60%);
     content: ' ';
+  }
+  .logo{
+    height: 20px;
   }
 }
 .pull-left{
@@ -26,4 +29,20 @@ body{
 }
 .pull-right{
   float: right;
+}
+.hide{
+  display: none!important;
+}
+@media (min-width: 768px) {
+  body{
+    &:after{
+      height: 200px;
+    }
+  }
+}
+
+// reset
+h1,h2,h3,h4,h5 {
+  margin: 0px;
+  padding: 0px;
 }

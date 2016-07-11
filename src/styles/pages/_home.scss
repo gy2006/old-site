@@ -50,6 +50,7 @@ $subtitle-color: $col-page-home-primary;
         border-radius: 0;
         box-shadow: 0 2px 6px rgba(0,0,0,.2);
         margin-bottom: 12px;
+        -webkit-appearance: none;
       }
       input[type='submit'], input[type='button'] {
         background-color: #556af8;

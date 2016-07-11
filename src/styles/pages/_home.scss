@@ -176,7 +176,7 @@ $subtitle-color: $col-page-home-primary;
   position: relative;
   margin-bottom: 40px;
   min-height: 550px;
-  overflow: hidden;
+  overflow: hidden visible;
   .flow-line{
     position: absolute;
     top: 0px;

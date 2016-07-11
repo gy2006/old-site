@@ -66,7 +66,6 @@ export default class flowAnimate {
     const determined = []
     this.animates.every((animate, i) => {
       if (animate.top < bottom) {
-        console.log('animate index:', animate.index)
         determined.push(animate)
         begin++
         return true

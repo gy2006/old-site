@@ -27,10 +27,12 @@ $navbar-height: 60px;
   }
   .navbar-collpase{
     background-color: #fff;
+    height: 0px;
     height: 0vh;
     overflow: hidden;
     transition: height .35s;
     &.collpase{
+      height: 600px;
       height: 100vh;
     }
     >.nav-item{

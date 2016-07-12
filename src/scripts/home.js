@@ -1,18 +1,18 @@
-import FormValidate from './validate';
-import $ from 'jquery';
-import applyCI from './actions/applyForCi';
-import FlowAnimate from './components/flowAnimate';
+import FormValidate from './validate'
+import $ from 'jquery'
+import applyCI from './actions/applyForCi'
+import FlowAnimate from './components/flowAnimate'
 
 function bindSubmit (form) {
   function handlerSubmit (e) {
-    e.preventDefault();
-    const fields = form.getValues();
+    e.preventDefault()
+    const fields = form.getValues()
     applyCI(fields, () => {
-      $('.page-home .form-container').addClass('success');
-      this.reset();
-    });
+      $('.page-home .form-container').addClass('success')
+      this.reset()
+    })
   }
-  form.$form.submit(handlerSubmit);
+  form.$form.submit(handlerSubmit)
 }
 
 function initValidate () {
@@ -20,7 +20,7 @@ function initValidate () {
     name: 'email',
     rules: 'required|email',
     errorElement: '.page-home .text-danger'
-  }]);
+  }])
 }
 
 function flowAnimate () {
@@ -32,24 +32,24 @@ function flowAnimate () {
     'Build',
     'Deploy',
     'Slack'
-  ];
-  const flow = new FlowAnimate(StepArray, $('.flow-steps'), $('.flow-line'), {
-    bottom: 200
-  });
-  flow.render();
+  ]
+  const f = new FlowAnimate(StepArray, $('.flow-steps'), $('.flow-line'), {
+    bottom: 50
+  })
+  f
 }
 
 export default function bootstrap () {
-  const form = initValidate();
-  bindSubmit(form);
+  const form = initValidate()
+  bindSubmit(form)
   $.fn.insertAt = function (index, $parent) {
     return this.each(function () {
       if (index === 0) {
-        $parent.prepend(this);
+        $parent.prepend(this)
       } else {
-        $($parent.children()).eq(index - 1).after(this);
+        $($parent.children()).eq(index - 1).after(this)
       }
-    });
-  };
-  flowAnimate();
+    })
+  }
+  flowAnimate()
 }

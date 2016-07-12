@@ -1,104 +1,105 @@
 @import 'bourbon';
-
+@import 'avatar';
+$navbar-height: 60px;
 .navbar{
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  padding-top: 30px;
+  top:0px;
   width: 100%;
-  height: 90px;
-  // background-color: black;
-  // background-clip: content-box;
-  .content-wrapper-60{
-    @include clearfix;
+  z-index: 999;
+  background-color: #fff;
+  .content-wrapper-270{
+    padding: 0px;
   }
+  .navbar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $navbar-height;
+    border-bottom: 1px solid #eee;
+    .navbar-toggle{
+      background-color: #fff;
 
-  .navbar-left{
-    float: left;
-    padding: 20px 0px;
-  }
-  .nav-logo{
-    a{
-      position: relative;
-      display: block;
-      img{
-        display: block;
-        height: 20px;
-      }
-      .icon-beta{
-        position: absolute;
-        right: -14px;
-        bottom: -20px;
-        color: $col-primary;
-        font-size: 12px;
-        transform: scale(.75);
-      }
+    }
+    .navbar-banner{
+      padding: 15px;
     }
   }
-
-  .navbar-right{
-    float: right;
-
-    .nav-item{
-      display: inline-flex;
-      margin: 0 6px;
-      padding: 20px 10px;
-      vertical-align: middle;
+  .navbar-collpase{
+    background-color: #fff;
+    height: 0px;
+    height: 0vh;
+    overflow: hidden;
+    transition: height .35s;
+    &.collpase{
+      height: 600px;
+      height: 100vh;
+    }
+    >.nav-item{
       text-transform: uppercase;
-      &:last-child, &:nth-last-child(2){
-        margin-right: 0;
-        padding-right: 0;
+      >a{
+        padding: 10px 15px;
+        display: block;
       }
-    }
-    .nav-sign{
-      width: 152px;
-      > span{
-        margin: 0 10px;
-        color: $col-font-gray2;
-      }
-      a{
-        color: $col-primary;
-      }
-    }
-    .nav-condensed{
-      padding: 0px;
-      width: 152px;
-      a{
-        display: flex;
-        margin-left: auto;
-        padding: 6px 10px;
-        text-transform: none;
-        justify-content: center;
-        align-items: center;
-        &:hover{
-          opacity: .9;
+      &.nav-multi-item{
+        >a{
+          display: inline-block;
         }
       }
-      &.hide{
+      &:last-child{
+        margin-right: 0px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .navbar{
+    top: 0px;
+    padding-top: 30px;
+    background-color: transparent;
+    .content-wrapper-270{
+      display: flex;
+      .navbar-collpase{
+        flex: 1 1 auto;
+        &.collpase{
+          height: auto!important;
+        }
+      }
+    }
+    .content-wrapper-270{
+      padding: 0px 15px;
+    }
+    .navbar-header{
+      border: none;
+      margin-bottom: 0px;
+      .navbar-toggle{
         display: none;
       }
     }
-    .nav-user{
-      a{
-        background-color: $col-primary;
-        color: white;
-      }
-      .avator{
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-      }
-      .text{
-        margin-left: 10px;
+    .navbar-collpase{
+      margin: 0px;
+      height: $navbar-height;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      >.nav-item{
+        margin-right: 6px;
+        margin-bottom: 0px;
+        >a{
+          padding: 6px 10px;
+          display: inline-block;
+        }
       }
     }
-    .nav-enterprise{
-      a{
-        background-color: #81bf15;
-        color: white;
-        box-shadow: 0px 3px 10px rgba(108,170,0,0.3);
-      }
+  }
+}
+.nav-user{
+  >a{
+    background-color: #556af8;
+    color: #fff;
+    display: flex!important;
+    align-items: center;
+    >.avator{
+      margin-right: 12px;
     }
   }
 }

@@ -1,122 +1,107 @@
-import './styles/main.scss';
-import $ from 'jquery';
-import './scripts/polyfill/assign';
-import User from './scripts/actions/user';
-import { getDashboardUrl } from './scripts/actions/redirectToDashboard';
-import home from './scripts/home';
-import signin from './scripts/signin';
-import signup from './scripts/signup';
-import resetPassword from './scripts/password';
+import './styles/main.scss'
+import $ from 'jquery'
+import './scripts/polyfill/assign'
+import User from './scripts/actions/user'
+import { getDashboardUrl } from './scripts/actions/redirectToDashboard'
+import home from './scripts/home'
+import signin from './scripts/signin'
+import signup from './scripts/signup'
+import resetPassword from './scripts/password'
 
-import analysis from './scripts/actions/analysis';
-import getSearch from './scripts/util/getSearch';
+import analysis from './scripts/actions/analysis'
+import getSearch from './scripts/util/getSearch'
 
-import FormValidate from './scripts/validate';
+import FormValidate from './scripts/validate'
 
-import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant';
-import browser from './scripts/util/browser';
+import { UTM_LIST, EMAIL_REG, USERNAME_REG } from './scripts/constant'
+import browser from './scripts/util/browser'
+import './scripts/components/navbar'
 
-analysis.init();
+analysis.init()
 /*
   default set validator for FormValidate;
 */
 FormValidate.setDefaultValidators({
   email: function (value) {
-    return EMAIL_REG.test(value);
+    return EMAIL_REG.test(value)
   },
   username: function (value) {
-    return USERNAME_REG.test(value);
+    return USERNAME_REG.test(value)
   },
   loginname: function (value) {
-    return EMAIL_REG.test(value) || USERNAME_REG.test(value);
+    return EMAIL_REG.test(value) || USERNAME_REG.test(value)
   },
   confirm: function (value, name) {
-    return value === this[name];
+    return value === this[name]
   }
-});
+})
 
 FormValidate.setDefaultRulesMap({
   username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
   loginname: 'Incorrect email or username format',
   confirm: 'Password doesn\'t match the confirmation'
-});
+})
 
 function getUtm () {
-  const value = {};
-  let hasUtm = false;
-  const urlParams = getSearch();
+  const value = {}
+  let hasUtm = false
+  const urlParams = getSearch()
   UTM_LIST.forEach((key) => {
-    const v = urlParams[key];
+    const v = urlParams[key]
     if (v) {
-      hasUtm = true;
-      value[key] = v;
+      hasUtm = true
+      value[key] = v
     }
-  });
-  return hasUtm ? value : null;
-}
-
-function bootstrapNavbar () {
-  const $enterprise = $('#nav-enterprise');
-  const locale = browser.locale;
-  let href;
-  switch (locale) {
-    case 'zh':
-      href = 'http://form.mikecrm.com/l1PsnQ';
-      break;
-    default:
-      href = 'http://form.mikecrm.com/47gD6I';
-      break;
-  }
-  $enterprise.attr('href', href);
+  })
+  return hasUtm ? value : null
 }
 
 function bootstrap () {
-  const path = location.pathname;
-  const UNSUPPORTED_PATH = '/unsupported.html';
+  const path = location.pathname
+  const UNSUPPORTED_PATH = '/unsupported.html'
 
   if (browser.isIE && path !== UNSUPPORTED_PATH) {
-    window.location = UNSUPPORTED_PATH;
-    return;
+    window.location = UNSUPPORTED_PATH
+    return
   }
   if (path === UNSUPPORTED_PATH) {
     if (browser.isIE) {
-      analysis.pageView();
+      analysis.pageView()
     } else {
-      window.location = '/';
+      window.location = '/'
     }
-    return;
+    return
   }
-  const utms = getUtm();
-  utms && analysis.register(utms);
-  analysis.pageView();
+  const utms = getUtm()
+  utms && analysis.register(utms)
+  analysis.pageView()
 
-  const token = User.getUserToken();
+  const token = User.getUserToken()
   if (token) {
     User.get(token).done(function (userInfo) {
-      analysis.event.getUserSuccess(userInfo);
-      $('.navbar .nav-sign').hide();
-      const $navUser = $('.navbar .nav-user').removeClass('hide');
-      const $navLink = $navUser.find('a');
-      const $navAvator = $navUser.find('.avator');
-      $navLink.attr('href', getDashboardUrl(token));
-      $navAvator.attr('src', userInfo.avatar);
+      analysis.event.getUserSuccess(userInfo)
+      $('.navbar .nav-sign').hide()
+      const $navUser = $('.navbar .nav-user').removeClass('hide')
+      const $navLink = $navUser.find('a')
+      const $navAvator = $navUser.find('.avator')
+      $navLink.attr('href', getDashboardUrl(token))
+      $navAvator.attr('src', userInfo.avatar)
     }).fail(function () {
-      User.removeUserToken();
-    });
+      User.removeUserToken()
+    })
   }
 
-  bootstrapNavbar();
   if (/^\/signup(\.html)?/.test(path)) {
-    signup();
+    signup()
   } else if (/^\/signin(\.html)?/.test(path)) {
-    signin();
+    signin()
   } else if (/^\/password_reset(\.html)?/.test(path)) {
-    resetPassword();
+    resetPassword()
   } else if (path === '/') {
-    home();
+    home()
   }
 }
 
-$(bootstrap);
+$(bootstrap)
 
-export default {};
+export default {}

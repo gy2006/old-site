@@ -2,37 +2,36 @@ extends ../layouts/default
 
 block content
   .page-home
-    .content-wrapper-270
-      .banner
-        .slogan
+    .section.banner
+      .content-wrapper-270
+        header.slogan
           h1 Keep your code flowing
-          p.subtitle flow.ci, hosted continuous integration and delivery service for innovators who shape the future.
+          h3 flow.ci, hosted continuous integration and delivery service for innovators who shape the future.
 
         .form-container
+          div.text-danger
           form#apply-form(method='post' onsubmit="return false;")
             input#email(type='email', name='email', placeholder='Work email', required)
             input(type='submit' value='Apply for early access')
-          div.text-danger
           .form-result.text-success Thanks for applying. We will email you invitation code.&nbsp;&nbsp;: )
           .apply-incentive Free, secure and we value your efforts.
-
-    .flow-concept
+    .section.flow-concept
       .content-wrapper-270
-        h2
-          b FLOW
-          small Automate your development workflow without constraints.
+        header
+          h2 FLOW
+          h3 Automate your development workflow without constraints.
       .flow
         .flow-line
         .flow-steps
 
-    .plugins
+    .section.plugins
       .content-wrapper-270
-        h2
-          b PLUGINS
-          small No configuration needed, add powerful plugins with one click.
+        header
+          h2 PLUGINS
+          h3 No configuration needed, add powerful plugins with one click.
         .categories
           .cate.code-analysis
-            .title Code Analysis
+            h4.title Code Analysis
             .list
               .item
                 i.icon-check
@@ -51,7 +50,7 @@ block content
                 | Pretty Result
 
           .cate.databases
-            .title Database
+            h4.title Database
             .list
               .item
                 i.icon-check
@@ -64,7 +63,7 @@ block content
                 | Redis
 
           .cate.notification
-            .title Notification
+            h4.title Notification
             .list
               .item
                 i.icon-check
@@ -74,19 +73,17 @@ block content
                 | Slack
 
           .cate.others
-            .title More
+            h4.title More
             .list
               .item
                 i.icon-check
                 | Custom Scripts
               .item ...
-
-
-    .languages
+    .section.languages
       .content-wrapper-270
-        h2
-          b LANGUAGES
-          small We speak your language. Get started with language specific templates. It’s easy :&nbsp;)
+        header
+          h2 LANGUAGES
+          h3 We speak your language. Get started with language specific templates. It’s easy :&nbsp;)
         .langs
           div.lang
             i.icon-ruby
@@ -104,11 +101,11 @@ block content
             i.icon-android
             p Android
 
-    .more-things
+    .section.more-things
       .content-wrapper-270
-        h2
-          b More to come
-          small We keep building new stuff. Stay tuned!
+        header
+          h2 More to come
+          h3 We keep building new stuff. Stay tuned!
         .things
           div.item
             a(href='https://github.com/FIRHQ/flow.ci' target='_blank').open-source-project
@@ -118,5 +115,5 @@ block content
             a(href='https://gitter.im/FIRHQ/flow.ci' target='_blank').contact
               i.icon-comments-o
               span Chat with other users through Gitter
-  div.footer-wrap
+  div.footer-wrap.content-wrapper-270
     <a href="https://mixpanel.com/f/partner" class="mixpanel-footer" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>

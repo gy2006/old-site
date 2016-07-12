@@ -16,7 +16,6 @@ $navbar-height: 60px;
     justify-content: space-between;
     height: $navbar-height;
     border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
     .navbar-toggle{
       background-color: #fff;
 
@@ -61,6 +60,9 @@ $navbar-height: 60px;
       display: flex;
       .navbar-collpase{
         flex: 1 1 auto;
+        &.collpase{
+          height: auto!important;
+        }
       }
     }
     .content-wrapper-270{

@@ -23,7 +23,7 @@ if [ ! -z ${TARGET} ]; then
   elif [ "${TARGET}" == "lyon" ]; then
     # 从外部部署lyon
     HOSTS=('123.57.79.141')
-    PORT=8022
+    PORT=22
   fi;
   # FIXME: other target should support here
 else

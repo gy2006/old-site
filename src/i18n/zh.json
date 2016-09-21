@@ -1,0 +1,27 @@
+{
+  "slogan": "代码，自由流动",
+  "slogn_desc": "托管型持续集成和持续交付服务，为软件变革者领航。",
+  "apply_placeholder": "工作邮箱",
+  "apply_btn": "现在就开始",
+  "apply_success": "感谢申请，稍后我们将发送邀请码.&nbsp;&nbsp;: )",
+  "apply_incentive": "免费且安全 ，flow.ci 值得托付",
+
+  "section_flow": "工作流",
+  "section_flow_desc": "更高效地自动化你的开发流程",
+
+  "section_plugin": "插件",
+  "section_plugin_desc": "无需配置，一键自由集成你想要的插件",
+  "section_plugin_analysis": "代码分析",
+  "section_plugin_database": "数据库",
+  "section_plugin_notification": "通知集成",
+  "section_plugin_more": "更多",
+
+  "section_languages": "支持语言",
+  "section_languages_desc": "We speak your language. 我们为每种语言做好了支持环境，马上就能使用 :&nbsp;)",
+
+  "section_more": "还有更多",
+  "section_more_desc": "我们还在持续推出新功能，和我们一起前进吧！",
+
+  "view_github": "我们在GitHub",
+  "chat_gitter": "我们在Gitter"
+}

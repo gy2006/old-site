@@ -5,6 +5,14 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var glob = require('glob');
 var Bourbon = require('bourbon');
 var config = require('./config');
+var En = require('./src/i18n/en');
+var Zh = require('./src/i18n/zh');
+
+var i18n = {
+  en: En,
+  zh: Zh
+}
+var defaultLanguage = 'zh'
 
 var nconf = require('nconf');
 nconf.env().argv();
@@ -86,14 +94,45 @@ if (nconf.get('NODE_ENV') === 'production') {
 // Plugins
 // ------------------------------------
 
+// glob.sync('./src/views/**/*.jade').map(file => {
+//   webpackConfig.plugins.push(
+//     new HtmlWebpackPlugin({
+//       template: file,
+//       filename: path.basename(file, '.jade') + '.html',
+//       inject: 'body',
+//       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
+//       bughd_token: targetConfig['__BUGHD_TOKEN__'],
+//       locale: defaultLanguage,
+//       language: i18n[defaultLanguage]
+//     })
+//   );
+// });
+
 glob.sync('./src/views/**/*.jade').map(file => {
+  const baseName = path.basename(file, '.jade')
+  var supports = Object.keys(i18n)
+  supports.map((locale) => {
+    webpackConfig.plugins.push(
+      new HtmlWebpackPlugin({
+        template: file,
+        filename: locale + '/' + baseName + '.html',
+        inject: 'body',
+        favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
+        bughd_token: targetConfig['__BUGHD_TOKEN__'],
+        locale: locale,
+        language: i18n[locale]
+      })
+    );
+  })
   webpackConfig.plugins.push(
     new HtmlWebpackPlugin({
       template: file,
-      filename: path.basename(file, '.jade') + '.html',
+      filename: baseName + '.html',
       inject: 'body',
       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-      bughd_token: targetConfig['__BUGHD_TOKEN__']
+      bughd_token: targetConfig['__BUGHD_TOKEN__'],
+      locale: defaultLanguage,
+      language: i18n[defaultLanguage]
     })
   );
 });

@@ -5,21 +5,21 @@ block content
     .section.banner
       .content-wrapper-270
         header.slogan
-          h1 Keep your code flowing
-          h3 flow.ci, hosted continuous integration and delivery service for innovators who shape the future.
+          h1 #{language.slogan}
+          h3 #{language.slogn_desc}
 
         .form-container
           div.text-danger
           form#apply-form(method='post' onsubmit="return false;")
-            input#email(type='email', name='email', placeholder='Work email', required)
-            input(type='submit' value='Apply for early access')
-          .form-result.text-success Thanks for applying. We will email you invitation code.&nbsp;&nbsp;: )
-          .apply-incentive Free, secure and we value your efforts.
+            input#email(type='email', name='email', placeholder='#{language.apply_placeholder}', required)
+            input(type='submit' value='#{language.apply_btn}')
+          .form-result.text-success #{language.apply_success}
+          .apply-incentive #{language.apply_incentive}
     .section.flow-concept
       .content-wrapper-270
         header
-          h2 FLOW
-          h3 Automate your development workflow without constraints.
+          h2 #{language.section_flow}
+          h3 #{language.section_flow_desc}
       .flow
         .flow-line
         .flow-steps
@@ -27,11 +27,11 @@ block content
     .section.plugins
       .content-wrapper-270
         header
-          h2 PLUGINS
-          h3 No configuration needed, add powerful plugins with one click.
+          h2 #{language.section_plugin}
+          h3 #{language.section_plugin_desc}
         .categories
           .cate.code-analysis
-            h4.title Code Analysis
+            h4.title #{language.section_plugin_analysis}
             .list
               .item
                 i.icon-check
@@ -50,7 +50,7 @@ block content
                 | Pretty Result
 
           .cate.databases
-            h4.title Database
+            h4.title #{language.section_plugin_database}
             .list
               .item
                 i.icon-check
@@ -63,7 +63,7 @@ block content
                 | Redis
 
           .cate.notification
-            h4.title Notification
+            h4.title #{language.section_plugin_notification}
             .list
               .item
                 i.icon-check
@@ -73,7 +73,7 @@ block content
                 | Slack
 
           .cate.others
-            h4.title More
+            h4.title #{language.section_plugin_more}
             .list
               .item
                 i.icon-check
@@ -82,8 +82,8 @@ block content
     .section.languages
       .content-wrapper-270
         header
-          h2 LANGUAGES
-          h3 We speak your language. Get started with language specific templates. It’s easy :&nbsp;)
+          h2 #{language.section_languages}
+          h3 #{language.section_languages_desc}
         .langs
           div.lang
             i.icon-ruby
@@ -104,16 +104,16 @@ block content
     .section.more-things
       .content-wrapper-270
         header
-          h2 More to come
-          h3 We keep building new stuff. Stay tuned!
+          h2 #{language.section_more}
+          h3 #{language.section_more_desc}
         .things
           div.item
             a(href='https://github.com/FIRHQ/flow.ci' target='_blank').open-source-project
               i.icon-github
-              span View our open-source project
+              span #{language.view_github}
           div.item
             a(href='https://gitter.im/FIRHQ/flow.ci' target='_blank').contact
               i.icon-comments-o
-              span Chat with other users through Gitter
+              span #{language.chat_gitter}
   div.footer-wrap.content-wrapper-270
     <a href="https://mixpanel.com/f/partner" class="mixpanel-footer" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>

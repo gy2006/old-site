@@ -1,4 +1,11 @@
 {
+  "navbar_blog": "博客",
+  "navbar_doc": "文档",
+  "navbar_pricing": "定价",
+  "navbar_signin": "登录",
+  "navbar_signup": "免费注册",
+  "navbar_dashboard": "Dashboard",
+
   "slogan": "代码，自由流动",
   "slogn_desc": "托管型持续集成和持续交付服务，为软件变革者领航。",
   "apply_placeholder": "工作邮箱",

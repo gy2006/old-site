@@ -22,7 +22,7 @@ if [ ! -z ${TARGET} ]; then
     HOSTS=("192.168.1.249")
   elif [ "${TARGET}" == "lyon" ]; then
     # 从外部部署lyon
-    HOSTS=('123.57.79.141')
+    HOSTS=('123.57.70.253')
   fi;
   # FIXME: other target should support here
 else

@@ -211,6 +211,7 @@ const analysis = {
       analysis.alias(fields.email)
       analysis.event.getUserSuccess(fields)
       mixpanel.people.set_once(people)
+      ga('send', 'event', 'Apply For Early Release', 'apply', 'homepage')
       trackFullEvent('Input Email', fields, [], {}, callback)
     },
     applyCiWithIsLoggedIn: function (fields, callback) {

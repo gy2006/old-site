@@ -12,7 +12,7 @@ var i18n = {
   en: En,
   zh: Zh
 }
-var defaultLanguage = 'zh'
+var defaultLanguage = 'en'
 
 var nconf = require('nconf');
 nconf.env().argv();

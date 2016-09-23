@@ -30,5 +30,19 @@
   "section_more_desc": "We keep building new stuff. Stay tuned!",
 
   "view_github": "View our open-source project",
-  "chat_gitter": "Chat with other users through Gitter"
+  "chat_gitter": "Chat with other users through Gitter",
+
+  "signin_title": "Sign in to flow.ci",
+  "signin_login_name": "Email or Username",
+  "signin_password": "Password",
+  "signin_button": "Sign In",
+
+  "signup_title": "Join flow.ci",
+  "signup_email": "Job Email",
+  "signup_username": "Username",
+  "signup_password": "Password",
+  "signup_invite_code": "Invite Code",
+  "signin_button": "Create an account",
+
+  "pricing_desc": "flow.ci is <b>free</b> until the end of beta."
 }

@@ -5,13 +5,13 @@ block content
     .content-wrapper-270
       .form-container
         form#signin-form(method='post' onsubmit="return false;")
-          legend Sign in to flow.ci
+          legend #{language.signin_title}
           div.form-control.form-loginname
-            input#login(placeholder='Email or Username', name='login', type='user', required)
+            input#login(placeholder='#{language.signin_login_name}', name='login', type='user', required)
             span.text-danger
           div.form-control.form-password
-            input#password(placeholder='Password', name='password', type='password', required)
+            input#password(placeholder='#{language.signin_password}', name='password', type='password', required)
             a.pull-right(href='/password_reset.html' id='password_reset' title='Forgot password' style='display: none') ?
             span.text-danger.pull-left
           div.text-danger.form-error
-          input(type='submit', value='Sign In')
+          input(type='submit', value='#{language.signin_button}')

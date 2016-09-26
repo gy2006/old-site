@@ -18,7 +18,7 @@ var nconf = require('nconf');
 nconf.env().argv();
 
 const targetConfig = config[nconf.get('TARGET') || 'local'];
-
+const __DEV__ = nconf.get('NODE_ENV') !== 'production'
 const webpackConfig = {
   entry: {
     app: [
@@ -66,6 +66,9 @@ const webpackConfig = {
   ],
   sassLoader: {
     includePaths: Bourbon.includePaths
+  },
+  eslint: {
+    emitWarning: __DEV__
   }
 };
 
@@ -110,20 +113,22 @@ if (nconf.get('NODE_ENV') === 'production') {
 
 glob.sync('./src/views/**/*.jade').map(file => {
   const baseName = path.basename(file, '.jade')
-  var supports = Object.keys(i18n)
-  supports.map((locale) => {
-    webpackConfig.plugins.push(
-      new HtmlWebpackPlugin({
-        template: file,
-        filename: locale + '/' + baseName + '.html',
-        inject: 'body',
-        favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-        bughd_token: targetConfig['__BUGHD_TOKEN__'],
-        locale: locale,
-        language: i18n[locale]
-      })
-    );
-  })
+  if (!__DEV__) {
+    var supports = Object.keys(i18n)
+    supports.map((locale) => {
+      webpackConfig.plugins.push(
+        new HtmlWebpackPlugin({
+          template: file,
+          filename: locale + '/' + baseName + '.html',
+          inject: 'body',
+          favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
+          bughd_token: targetConfig['__BUGHD_TOKEN__'],
+          locale: locale,
+          language: i18n[locale]
+        })
+      );
+    })
+  }
   webpackConfig.plugins.push(
     new HtmlWebpackPlugin({
       template: file,

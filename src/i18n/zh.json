@@ -16,15 +16,15 @@
   "section_flow": "告别繁琐",
   "section_flow_desc": "1分钟，连接分散重复的工作，让流程自动运行",
 
-  "section_plugin": "自由连接",
-  "section_plugin_desc": "无需配置，一键集成你想要的插件，灵活设置触发条件",
+  "section_plugin": "自由集成",
+  "section_plugin_desc": "无需配置，一键添加你想要的插件，灵活设置触发条件",
   "section_plugin_analysis": "代码静态分析",
   "section_plugin_database": "数据库",
   "section_plugin_notification": "通知",
   "section_plugin_more": "更多",
 
   "section_languages": "支持语言",
-  "section_languages_desc": "我们为每种语言做好了支持环境，并预设了流程模板，马上就能使用 :&nbsp;)",
+  "section_languages_desc": "我们为每种语言做好了支持环境，并提供流程模版，马上就能使用 :&nbsp;)",
 
   "section_more": "还有更多",
   "section_more_desc": "正在持续推出新功能，和我们一起前进吧！",

@@ -10,7 +10,7 @@
   "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build，Test ,Deploy 间轻盈灵动",
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
-  "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.&nbsp;&nbsp;: )",
+  "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.: )",
   "apply_incentive": "免费且安全 ，flow.ci 值得托付",
 
   "section_flow": "告别繁琐",
@@ -24,7 +24,7 @@
   "section_plugin_more": "更多",
 
   "section_languages": "支持语言",
-  "section_languages_desc": "我们为每种语言做好了支持环境，并提供流程模版，马上就能使用 :&nbsp;)",
+  "section_languages_desc": "我们为每种语言做好了支持环境，并提供流程模版，马上就能使用 :)",
 
   "section_more": "还有更多",
   "section_more_desc": "正在持续推出新功能，和我们一起前进吧！",

@@ -4,35 +4,35 @@
   "navbar_pricing": "定价",
   "navbar_signin": "登录",
   "navbar_signup": "免费注册",
-  "navbar_dashboard": "Dashboard",
+   "navbar_dashboard": "控制台",
 
-  "slogan": "代码，自由流动",
-  "slogn_desc": "托管型持续集成和持续交付服务，为软件变革者领航。",
+  "slogan": "未来不远，就在你眼前",
+  "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build，Test ,Deploy 间轻盈灵动",
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
-  "apply_success": "感谢申请，稍后我们将发送邀请码.  : )",
+  "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.&nbsp;&nbsp;: )",
   "apply_incentive": "免费且安全 ，flow.ci 值得托付",
 
-  "section_flow": "工作流",
-  "section_flow_desc": "更高效地自动化你的开发流程",
+  "section_flow": "告别繁琐",
+  "section_flow_desc": "1分钟，连接分散重复的工作，让流程自动运行",
 
-  "section_plugin": "插件",
-  "section_plugin_desc": "无需配置，一键自由集成你想要的插件",
-  "section_plugin_analysis": "代码分析",
+  "section_plugin": "自由连接",
+  "section_plugin_desc": "无需配置，一键集成你想要的插件，灵活设置触发条件",
+  "section_plugin_analysis": "代码静态分析",
   "section_plugin_database": "数据库",
-  "section_plugin_notification": "通知集成",
+  "section_plugin_notification": "通知",
   "section_plugin_more": "更多",
 
   "section_languages": "支持语言",
-  "section_languages_desc": "We speak your language. 我们为每种语言做好了支持环境，马上就能使用 : )",
+  "section_languages_desc": "我们为每种语言做好了支持环境，并预设了流程模板，马上就能使用 :&nbsp;)",
 
   "section_more": "还有更多",
-  "section_more_desc": "我们还在持续推出新功能，和我们一起前进吧！",
+  "section_more_desc": "正在持续推出新功能，和我们一起前进吧！",
 
-  "view_github": "我们在GitHub",
-  "chat_gitter": "我们在Gitter",
+  "view_github": "我们在 GitHub",
+  "chat_gitter": "我们在 Gitter"
 
-  "signin_title": "登录到 flow.ci",
+  "signin_title": "登录 flow.ci",
   "signin_login_name": "邮箱或用户名",
   "signin_password": "密码",
   "signin_button": "登录",
@@ -42,7 +42,7 @@
   "signup_username": "用户名",
   "signup_password": "密码",
   "signup_invite_code": "邀请码",
-  "signin_button": "创建账号",
+  "signup_button": "创建账号",
 
-  "pricing_desc": "flow.ci is <b>free</b> until the end of beta."
+  "pricing_desc": "flow.ci 在内测期间完全免费"
 }

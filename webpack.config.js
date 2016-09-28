@@ -13,7 +13,7 @@ var i18n = {
   zh: Zh
 }
 var defaultLanguage = 'en'
-
+var timeStamp = new Date()
 var nconf = require('nconf');
 nconf.env().argv();
 
@@ -124,6 +124,7 @@ glob.sync('./src/views/**/*.jade').map(file => {
           favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
           bughd_token: targetConfig['__BUGHD_TOKEN__'],
           locale: locale,
+          last_modify: timeStamp.toISOString(),
           language: i18n[locale]
         })
       );
@@ -137,6 +138,7 @@ glob.sync('./src/views/**/*.jade').map(file => {
       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
       bughd_token: targetConfig['__BUGHD_TOKEN__'],
       locale: defaultLanguage,
+      last_modify: timeStamp.toISOString(),
       language: i18n[defaultLanguage]
     })
   );

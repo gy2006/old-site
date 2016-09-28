@@ -42,7 +42,7 @@
   "signup_username": "Username",
   "signup_password": "Password",
   "signup_invite_code": "Invite Code",
-  "signin_button": "Create an account",
+  "signup_button": "Create an account",
 
   "pricing_desc": "flow.ci is <b>free</b> until the end of beta."
 }

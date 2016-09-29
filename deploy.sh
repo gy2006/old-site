@@ -14,7 +14,7 @@ echo "########## Deploy to ${TARGET} ##########"
 
 # BUILD & Choose server
 if [ ! -z ${TARGET} ]; then
-  TARGET=${TARGET} npm run compile
+  TARGET=${TARGET} NODE_ENV=production npm run compile
   USER=deploy
 
   if [ "${TARGET}" == "local" ]; then

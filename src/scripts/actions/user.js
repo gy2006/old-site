@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL } from '../constant'
+import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
 import analysis from './analysis'
 import saveAccessToken from './saveAccessToken'
 import redirectToDashboard from './redirectToDashboard'
@@ -11,7 +11,7 @@ export function getUserToken () {
 }
 
 export function removeUserToken () {
-  return clearCookie(COOKIE_KEY)
+  return clearCookie(COOKIE_KEY, SESSION_COOKIE_CONFIG)
 }
 
 export function get (userToken) {

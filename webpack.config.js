@@ -19,6 +19,7 @@ nconf.env().argv();
 
 const targetConfig = config[nconf.get('TARGET') || 'local'];
 const __DEV__ = nconf.get('NODE_ENV') !== 'production'
+const __PROD__ = nconf.get('NODE_ENV') === 'production'
 const webpackConfig = {
   entry: {
     app: [
@@ -113,7 +114,7 @@ if (nconf.get('NODE_ENV') === 'production') {
 
 glob.sync('./src/views/**/*.jade').map(file => {
   const baseName = path.basename(file, '.jade')
-  if (!__DEV__) {
+  if (__PROD__) {
     var supports = Object.keys(i18n)
     supports.map((locale) => {
       webpackConfig.plugins.push(

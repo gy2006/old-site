@@ -11,7 +11,7 @@
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
   "apply_success": "感谢申请，稍后我们将发送邀请码.&nbsp;&nbsp;: )",
-  "apply_incentive": "免费且安全 ，flow.ci 值得托付",
+  "apply_incentive": "",
 
   "section_flow": "工作流",
   "section_flow_desc": "更高效地自动化你的开发流程",

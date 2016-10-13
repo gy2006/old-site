@@ -4,7 +4,7 @@ export const USERNAME_REG = /^\w{3,15}$/ // /^[0-9a-zA-Z]{3,15}$/;
 
 // set default cookie config
 let host = location.hostname.split('.')
-let domain = host
+let domain = `.${host}`
 // 子域名取上层域名
 if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}/.test(host) && host.length > 2) {
   host[0] = ''

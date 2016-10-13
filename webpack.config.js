@@ -12,13 +12,14 @@ var i18n = {
   en: En,
   zh: Zh
 }
-var defaultLanguage = 'zh'
-
+var defaultLanguage = 'en'
+var timeStamp = new Date()
 var nconf = require('nconf');
 nconf.env().argv();
 
 const targetConfig = config[nconf.get('TARGET') || 'local'];
-
+const __DEV__ = nconf.get('NODE_ENV') !== 'production'
+const __PROD__ = nconf.get('NODE_ENV') === 'production'
 const webpackConfig = {
   entry: {
     app: [
@@ -66,6 +67,9 @@ const webpackConfig = {
   ],
   sassLoader: {
     includePaths: Bourbon.includePaths
+  },
+  eslint: {
+    emitWarning: __DEV__
   }
 };
 
@@ -110,20 +114,23 @@ if (nconf.get('NODE_ENV') === 'production') {
 
 glob.sync('./src/views/**/*.jade').map(file => {
   const baseName = path.basename(file, '.jade')
-  var supports = Object.keys(i18n)
-  supports.map((locale) => {
-    webpackConfig.plugins.push(
-      new HtmlWebpackPlugin({
-        template: file,
-        filename: locale + '/' + baseName + '.html',
-        inject: 'body',
-        favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-        bughd_token: targetConfig['__BUGHD_TOKEN__'],
-        locale: locale,
-        language: i18n[locale]
-      })
-    );
-  })
+  if (__PROD__) {
+    var supports = Object.keys(i18n)
+    supports.map((locale) => {
+      webpackConfig.plugins.push(
+        new HtmlWebpackPlugin({
+          template: file,
+          filename: locale + '/' + baseName + '.html',
+          inject: 'body',
+          favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
+          bughd_token: targetConfig['__BUGHD_TOKEN__'],
+          locale: locale,
+          last_modify: timeStamp.toISOString(),
+          language: i18n[locale]
+        })
+      );
+    })
+  }
   webpackConfig.plugins.push(
     new HtmlWebpackPlugin({
       template: file,
@@ -132,6 +139,7 @@ glob.sync('./src/views/**/*.jade').map(file => {
       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
       bughd_token: targetConfig['__BUGHD_TOKEN__'],
       locale: defaultLanguage,
+      last_modify: timeStamp.toISOString(),
       language: i18n[defaultLanguage]
     })
   );

@@ -10,6 +10,7 @@ import resetPassword from './scripts/password'
 
 import analysis from './scripts/actions/analysis'
 import getSearch from './scripts/util/getSearch'
+import setLocale from './scripts/actions/setLocale'
 
 import FormValidate from './scripts/validate'
 
@@ -75,7 +76,12 @@ function bootstrap () {
   const utms = getUtm()
   utms && analysis.register(utms)
   analysis.pageView()
-
+  // set language
+  const languagesSelect = $('#languages')
+  languagesSelect.val(browser.locale)
+  languagesSelect.on('change', function () {
+    setLocale(languagesSelect.val())
+  })
   const token = User.getUserToken()
   if (token) {
     User.get(token).done(function (userInfo) {

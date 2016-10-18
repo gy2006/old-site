@@ -13,6 +13,9 @@ $subtitle-color: $col-page-home-primary;
     // min-height: 500px;
     padding-top: 120px;
     padding-bottom: 60px;
+    &.banner{
+      height: 100vh;
+    }
     h1{
       font-weight: 700;
       font-size: 44px;
@@ -34,13 +37,16 @@ $subtitle-color: $col-page-home-primary;
     }
   }
   .banner{
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .slogan{
       margin-bottom: 32px;
     }
     form{
       width: 100%;
       max-width: 600px;
-      margin: 0px auto;
       margin-bottom: 8px;
       input, button{
         width: 100%;
@@ -98,9 +104,9 @@ $subtitle-color: $col-page-home-primary;
         color: #8d9094;
         >i{
           display: flex;
-          width: 100px;
-          height: 100px;
-          margin: 0px auto;
+          width: 120px;
+          height: 120px;
+          margin: 0px auto 36px;
           border-radius: 50%;
           background-color: #556af8;
           color: #fff;
@@ -171,7 +177,7 @@ $subtitle-color: $col-page-home-primary;
     left: 50%;
     left: calc(50% - 1px);
     background-color: #556AF8;
-    transition: height .4s ease-in, width .4s ease-in;
+    transition: height .4s ease-in;
     &.active{
       height: 100%!important;
     }
@@ -301,17 +307,16 @@ $subtitle-color: $col-page-home-primary;
     }
   }
 }
-
-@media(min-width: 600px) {
+@media(min-width: 840px) {
   .page-home{
     .section {
-      min-height: 100vh;
+      height: 700px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 0px;
       header{
-        margin-bottom: 80px;
+        margin-bottom: 110px;
       }
       h1{
         font-size: 50px;
@@ -335,6 +340,7 @@ $subtitle-color: $col-page-home-primary;
         }
       }
       form{
+        margin: 0px auto;
         input {
           width: 60%;
           height: 64px;
@@ -362,7 +368,7 @@ $subtitle-color: $col-page-home-primary;
         flex-wrap: nowrap;
         justify-content: space-between;
         .lang{
-          width: auto;
+          width: 15%;
         }
       }
     }
@@ -386,12 +392,15 @@ $subtitle-color: $col-page-home-primary;
       height: 1px;
       left: 0px;
       top: 41px;
+      transition: width .4s ease-in;
       &.active{
         width: 100%;
         height: 1px!important;
       }
     }
     .flow-steps{
+      max-width: 1100px;
+      margin: 0px auto;
       .step{
         display: inline-block;
         vertical-align: middle;

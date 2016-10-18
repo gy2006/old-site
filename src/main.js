@@ -80,7 +80,9 @@ function bootstrap () {
   const languagesSelect = $('#languages')
   languagesSelect.val(browser.locale)
   languagesSelect.on('change', function () {
-    setLocale(languagesSelect.val())
+    const l = languagesSelect.val()
+    setLocale(l)
+    analysis.event.setLocale(l)
   })
   const token = User.getUserToken()
   if (token) {

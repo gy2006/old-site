@@ -36,7 +36,8 @@ echo "########## Build success ##########"
 for HOST in ${HOSTS[@]}; do
 # DEPLOY
 ssh ${USER}@${HOST} -p ${PORT} "mkdir -p ${DEPLOY_DIR}"
-scp -P ${PORT}  -r ./dist/* ${USER}@${HOST}:${DEPLOY_DIR}
+ssh ${USER}@${HOST} -p ${PORT} "find ${LATEST_DIR}/ -mtime -1 | xargs -i cp -fv  {} ${DEPLOY_DIR}/"
+scp -P ${PORT}  -rv ./dist/* ${USER}@${HOST}:${DEPLOY_DIR}
 
 ssh ${USER}@${HOST} -p ${PORT}  <<EOF
 if [ -d ${LATEST_DIR} ]; then

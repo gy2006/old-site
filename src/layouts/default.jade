@@ -23,7 +23,7 @@ html
       })(window,document,'script','//dn-firweb.qbox.me/analytics.js','ga');
       ga('create', 'UA-43616652-7', 'auto');
       ga('send', 'pageview');
-  body
+  body(class='#{htmlWebpackPlugin.options.locale}')
     include ../includes/beta_bar
     include ../includes/navbar
     block content

@@ -239,6 +239,10 @@ const analysis = {
         mixpanelVariables.setValue({ Inviter: urlParams.inviter_email })
       }
       mixpanel.track('Confirm Email')
+    },
+    setLocale: function (locale) {
+      mixpanel.track('Switch Language')
+      mixpanel.people.set({ 'Language Selected': locale })
     }
   }
 }

@@ -1,4 +1,4 @@
-{
+module.exports = {
   "navbar_blog": "BLOG",
   "navbar_doc": "DOCUMENT",
   "navbar_pricing": "Pricing",

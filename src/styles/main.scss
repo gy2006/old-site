@@ -1,6 +1,6 @@
 @import './fonts';
 @import './base';
-@import './icon';
+// @import './icon';
 
 @import './pages/forms';
 @import './pages/home';
@@ -21,7 +21,7 @@ body{
     content: ' ';
   }
   .logo{
-    height: 20px;
+    height: 25px;
   }
 }
 .pull-left{

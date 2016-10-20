@@ -19,10 +19,10 @@ $navbar-height: 60px;
     }
     .navbar-banner{
       padding: 15px;
+      font-size: 0;
     }
   }
   .navbar-collpase{
-    background-color: #fff;
     height: 0px;
     height: 0vh;
     overflow: hidden;
@@ -54,7 +54,7 @@ $navbar-height: 60px;
 @media (min-width: 768px) {
   .navbar{
     top: 0px;
-    padding-top: 30px;
+    padding-top: 45px;
     background-color: transparent;
     .content-wrapper-270{
       display: flex;
@@ -80,7 +80,7 @@ $navbar-height: 60px;
       align-items: center;
       justify-content: flex-end;
       >.nav-item{
-        margin-right: 6px;
+        margin-right: 12px;
         margin-bottom: 0px;
         >a{
           padding: 6px 10px;

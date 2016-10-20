@@ -1,4 +1,4 @@
-{
+module.exports = {
   "navbar_blog": "博客",
   "navbar_doc": "文档",
   "navbar_pricing": "定价",
@@ -6,29 +6,29 @@
   "navbar_signup": "免费注册",
   "navbar_dashboard": "控制台",
 
-  "slogan": "未来不远，就在你眼前",
-  "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build，Test ,Deploy 间轻盈灵动",
+  "slogan": "", // 中文版不显示 slogan
+  "slogn_desc": "融入 Workflow 机制的持续集成，<br/>让代码在 Build, Test, Deploy 间<br class='visiable-xs'/>轻盈灵动",
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
   "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.: )",
 
-  "section_flow": "告别繁琐",
-  "section_flow_desc": "1分钟，连接分散重复的工作，让流程自动运行",
+  "section_flow": "", // 中文版 不使用
+  "section_flow_desc": "连接分散重复的工作<br/>一分钟让流程自动运行",
 
-  "section_plugin": "自由集成",
-  "section_plugin_desc": "无需配置，一键添加你想要的插件，灵活设置触发条件",
+  "section_plugin": "", // 中文版 不使用
+  "section_plugin_desc": "配置简单<br/>一键添加你想要的插件",
   "section_plugin_analysis": "代码静态分析",
   "section_plugin_database": "数据库",
   "section_plugin_notification": "通知",
   "section_plugin_more": "更多",
 
-  "section_languages": "支持语言",
-  "section_languages_desc": "我们为每种语言做好了支持环境，并提供流程模版，马上就能使用 :)",
-  "section_more": "还有更多",
-  "section_more_desc": "正在持续推出新功能，和我们一起前进吧！",
+  "section_languages": "", // 中文版 不使用
+  "section_languages_desc": "每种开发语言<br/>都有适合的流程模板",
+  "section_more": "", // 中文版 不使用
+  "section_more_desc": "更多功能将持续推出",
 
-  "view_github": "我们在 GitHub",
-  "chat_gitter": "我们在 Gitter",
+  "view_github": "flow.ci 在线文档",
+  "chat_gitter": "Gitter 在线沟通",
 
   "signin_title": "登录 flow.ci",
   "signin_login_name": "邮箱或用户名",

@@ -5,21 +5,24 @@ block content
     .section.banner
       .content-wrapper-270
         header.slogan
-          h1 #{language.slogan}
-          h3 #{language.slogn_desc}
-
+          if locale !== 'zh'
+            h1 #{language.slogan}
+          h3 !{language.slogn_desc}
         .form-container
           div.text-danger
           form#apply-form(method='post' onsubmit="return false;")
             input#email(type='email', name='email', placeholder='#{language.apply_placeholder}', required)
             input(type='submit' value='#{language.apply_btn}')
           .form-result.text-success #{language.apply_success}
-          .apply-incentive #{language.apply_incentive}
     .section.flow-concept
       .content-wrapper-270
         header
-          h2 #{language.section_flow}
-          h3 #{language.section_flow_desc}
+          if locale !== 'zh'
+            h2 !{language.section_flow}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/time.svg'))
+          h3 !{language.section_flow_desc}
       .flow
         .flow-line
         .flow-steps
@@ -27,10 +30,15 @@ block content
     .section.plugins
       .content-wrapper-270
         header
-          h2 #{language.section_plugin}
-          h3 #{language.section_plugin_desc}
+          if locale !== 'zh'
+            h2 !{language.section_plugin}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/stack.svg'))
+          h3 !{language.section_plugin_desc}
         .categories
           .cate.code-analysis
+            i.icon.icon-analysis
             h4.title #{language.section_plugin_analysis}
             .list
               .item
@@ -45,11 +53,12 @@ block content
               .item
                 i.icon-check
                 | Codesniffer
-                .item
+              .item
                 i.icon-check
                 | Pretty Result
 
           .cate.databases
+            i.icon.icon-database
             h4.title #{language.section_plugin_database}
             .list
               .item
@@ -63,6 +72,7 @@ block content
                 | Redis
 
           .cate.notification
+            i.icon.icon-chat
             h4.title #{language.section_plugin_notification}
             .list
               .item
@@ -73,6 +83,7 @@ block content
                 | Slack
 
           .cate.others
+            i.icon.icon-inbox
             h4.title #{language.section_plugin_more}
             .list
               .item
@@ -82,8 +93,12 @@ block content
     .section.languages
       .content-wrapper-270
         header
-          h2 #{language.section_languages}
-          h3 #{language.section_languages_desc}
+          if locale !== 'zh'
+            h2 !{language.section_languages}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/coffee.svg'))
+          h3 !{language.section_languages_desc}
         .langs
           div.lang
             i.icon-ruby
@@ -104,14 +119,15 @@ block content
     .section.more-things
       .content-wrapper-270
         header
-          h2 #{language.section_more}
-          h3 #{language.section_more_desc}
+          if locale !== 'zh'
+            h2 !{language.section_more}
+          h3 !{language.section_more_desc}
         .things
           div.item
             a(href='https://github.com/FIRHQ/flow.ci' target='_blank').open-source-project
-              i.icon-github
+              i.icon-gitbook
               span #{language.view_github}
           div.item
             a(href='https://gitter.im/FIRHQ/flow.ci' target='_blank').contact
-              i.icon-comments-o
+              i.icon-gitter
               span #{language.chat_gitter}

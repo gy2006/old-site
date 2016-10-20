@@ -3,7 +3,7 @@ input:not([type='submit']), textarea{
   border: 1px solid $col-font-gray;
   padding: 8px 12px;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
 }
 
@@ -19,7 +19,7 @@ button, input[type='submit']{
   background-color: $col-font-gray;
   padding: 10px 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
   -webkit-appearance: none;
 }

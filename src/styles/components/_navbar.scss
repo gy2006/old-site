@@ -7,9 +7,6 @@ $navbar-height: 60px;
   width: 100%;
   z-index: 999;
   background-color: #fff;
-  .content-wrapper-270{
-    padding: 0px;
-  }
   .navbar-header{
     display: flex;
     align-items: center;
@@ -22,10 +19,10 @@ $navbar-height: 60px;
     }
     .navbar-banner{
       padding: 15px;
+      font-size: 0;
     }
   }
   .navbar-collpase{
-    background-color: #fff;
     height: 0px;
     height: 0vh;
     overflow: hidden;
@@ -50,23 +47,24 @@ $navbar-height: 60px;
       }
     }
   }
+  .content-wrapper-270{
+    padding: 0px;
+  }
 }
 @media (min-width: 768px) {
   .navbar{
     top: 0px;
-    padding-top: 30px;
+    padding-top: 45px;
     background-color: transparent;
     .content-wrapper-270{
       display: flex;
+      padding: 0px 15px;
       .navbar-collpase{
         flex: 1 1 auto;
         &.collpase{
           height: auto!important;
         }
       }
-    }
-    .content-wrapper-270{
-      padding: 0px 15px;
     }
     .navbar-header{
       border: none;
@@ -82,7 +80,7 @@ $navbar-height: 60px;
       align-items: center;
       justify-content: flex-end;
       >.nav-item{
-        margin-right: 6px;
+        margin-right: 12px;
         margin-bottom: 0px;
         >a{
           padding: 6px 10px;

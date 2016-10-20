@@ -1,4 +1,4 @@
-{
+module.exports = {
   "navbar_blog": "BLOG",
   "navbar_doc": "DOCUMENT",
   "navbar_changelog": "Changelog",
@@ -12,7 +12,6 @@
   "apply_placeholder": "Work email",
   "apply_btn": "Apply for early access",
   "apply_success": "Thanks for applying. We will email you invitation code.  : )",
-  "apply_incentive": "",
 
   "section_flow": "FLOW",
   "section_flow_desc": "Automate your development workflow without constraints.",

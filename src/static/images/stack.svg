@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="106px" height="90px" viewBox="0 0 106 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>stack</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Flowci-Home" transform="translate(-501.000000, -1653.000000)">
+            <g id="stack" transform="translate(501.000000, 1653.000000)">
+                <path d="M52.8769531,59.5214844 L101.753906,28.3203125 L52.8769531,0 L4,28.3203125 L52.8769531,59.5214844 Z M18.9902344,28.6621094 L52.8769531,9.03320312 L86.7148438,28.6621094 L52.8769531,50.2929688 L18.9902344,28.6621094 Z" id="layers" fill="#53575C"></path>
+                <polygon id="Path" fill="#556AF9" points="80.9394278 51.1180733 89.3816106 56.0250921 52.8164062 79.3993858 16.1984383 56.0250921 24.6933847 51.1180733 16.6733111 46 0 55.7085102 52.8164062 89.4244779 105.632812 55.7085102 88.9067378 46"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

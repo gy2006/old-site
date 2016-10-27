@@ -10,21 +10,14 @@
     margin-right: 16px;
     font-size: 0px;
   }
-  select{
-    display: inline-block;
-    vertical-align: top;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    padding: 10px 16px;
-    background-color: transparent;
-    color: #8D9094;
-    text-align-last:center;
-    border: 1px solid #9298A1;
-    border-radius: 3px;
+  .language{
     width: 110px;
+    border: 1px solid #9298A1;
+    color: #9298A1;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 3px;
     font-size: 14px;
-    &:focus,&:hover{
-      outline: none;
-    }
+    padding: 0;
   }
 }

@@ -384,6 +384,12 @@ $color-flow-line: $color-grey;
     .plugins{
       .categories{
         padding-left: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+        .cate{
+          width: auto;
+        }
       }
     }
     .more-things{

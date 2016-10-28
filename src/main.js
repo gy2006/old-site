@@ -80,7 +80,7 @@ function bootstrap () {
   const languageBtn = $('button.language')
   languageBtn.click(function () {
     const $ele = $(this)
-    const l = $ele.attr('data-switcher-language')
+    const l = $ele.val()
     setLocale(l)
     analysis.event.setLocale(l)
   })

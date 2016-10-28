@@ -11,13 +11,14 @@
 
 html, body{
   width: 100%;
+  overflow-x: hidden;
 }
 
 body{
   margin: 0;
   color: $col-font-gray;
   font-size: 16px;
-  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
 
   -webkit-font-smoothing: antialiased;
 }

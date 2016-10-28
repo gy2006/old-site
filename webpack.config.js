@@ -64,8 +64,9 @@ const webpackConfig = {
     ]
   },
   output: {
-    path: './dist',
-    filename: '[name].[hash].js'
+    path: 'dist',
+    filename: '[name].[hash].js',
+    publicPath: __PROD__ ? '/' : 'http://localhost:8080/'
   },
   plugins: [
     new webpack.DefinePlugin(targetConfig)

@@ -130,7 +130,7 @@ if (nconf.get('NODE_ENV') === 'production') {
 //     })
 //   );
 // });
-if (__DEV__) {
+if (!__DEV__) {
   webpackConfig.module.loaders.filter((loader) =>
     loader.loaders && loader.loaders.find((name) => /css/.test(name.split('?')[0]))
   ).forEach((loader) => {

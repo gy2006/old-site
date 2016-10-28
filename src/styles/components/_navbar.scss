@@ -4,7 +4,7 @@
 $navbar-height: 60px;
 .navbar{
   position: fixed;
-  top: 60px;
+  top: 50px;
   left: 0px;
   right: 0px;
   z-index: 1000;
@@ -17,7 +17,7 @@ $navbar-height: 60px;
   .navbar-header{
     .navbar-banner{
       display: block;
-      padding-bottom: 4px;
+      padding-bottom: 6px;
       .logo{
         vertical-align: bottom;
       }
@@ -28,10 +28,35 @@ $navbar-height: 60px;
   }
   .navbar-collpase{
     display: flex;
+    align-items: center;
     .nav-item{
-      padding: 4px 15px;
-      a:hover{
-        color: $col-blue;
+      line-height: 24px;
+      margin-left: 10px;
+      &.nav-user{
+        a{
+          background-color: $col-blue;
+          color: #fff;
+          display: flex!important;
+          align-items: center;
+          >.avator{
+            margin-right: 12px;
+          }
+          &:hover{
+            color: #fff;
+          }
+        }
+      }
+      &.nav-multi-item{
+        a{
+          display: inline-block;
+        }
+      }
+      a{
+        padding: 6px 10px;
+        display: block;
+        &:hover{
+          color: $col-blue;
+        }
       }
       .text-primary{
         &:hover{
@@ -69,19 +94,11 @@ $navbar-height: 60px;
         height: 100vh;
       }
       .nav-item{
-        padding: 10px 15px;
+        margin-left: 0px;
+        a{
+          padding: 10px 15px;
+        }
       }
-    }
-  }
-}
-.nav-user{
-  >a{
-    background-color: #556af8;
-    color: #fff;
-    display: flex!important;
-    align-items: center;
-    >.avator{
-      margin-right: 12px;
     }
   }
 }

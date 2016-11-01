@@ -8,7 +8,7 @@
   "navbar_dashboard": "控制台",
 
   "slogan": "未来不远，就在你眼前",
-  "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build，Test ,Deploy 间轻盈灵动",
+  "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build, Test, Deploy 间轻盈灵动",
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
   "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.: )",

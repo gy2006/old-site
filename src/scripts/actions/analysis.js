@@ -206,28 +206,13 @@ const analysis = {
     getUserSuccess: function (user) {
       analysis.identify(user.email)
     },
-    applyCi: function (fields, callback) {
-      const people = analysis.common.getCreatePeopleProperty(fields)
-      analysis.alias(fields.email)
-      analysis.event.getUserSuccess(fields)
-      mixpanel.people.set_once(people)
-      window.ga('send', 'event', 'Apply For Early Release', 'apply', 'homepage')
-      trackFullEvent('Input Email', fields, [], {}, callback)
-    },
-    applyCiWithIsLoggedIn: function (fields, callback) {
-      const people = analysis.common.getCreatePeopleProperty(fields)
-      analysis.common.runWithDistinctId(fields.email, function () {
-        mixpanel.people.set_once(people)
-        mixpanel.track('Input Email', fields, callback)
-      })
-    },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email)
       mixpanel.register({ 'email': user.email })
       mixpanel.people.increment('signed_in', 1, callback)
     },
     signUp: function (user, urlParams, callback) {
-      analysis.event.getUserSuccess(user)
+      analysis.alias(user.email)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'

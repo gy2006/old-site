@@ -41,7 +41,10 @@ module.exports = {
   "signup_email": "Job Email",
   "signup_username": "Username",
   "signup_password": "Password",
-  "signup_invite_code": "Invite Code",
+  "signup_company": "Company",
+  "signup_job": "Job",
+  "signup_telephone": "Telephone",
+  "signup_company_size": "Choose Size of development team",
   "signup_button": "Create an account",
 
   "pricing_desc": "flow.ci is <b>free</b> until the end of beta."

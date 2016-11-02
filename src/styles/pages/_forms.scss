@@ -28,7 +28,7 @@
   .form-error{
     margin-bottom: 12px;
   }
-  input, textarea{
+  input, textarea, select{
     width: 100%;
     border-color: $col-primary;
     @include placeholder {

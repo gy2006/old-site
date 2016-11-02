@@ -37,9 +37,21 @@ function initValidate () {
     rules: 'required|minlength:6',
     errorElement: '#signup-form .form-password .text-danger'
   }, {
-    name: 'sign',
+    name: 'company_name',
     rules: 'required',
-    errorElement: '#signup-form .form-sign .text-danger'
+    errorElement: '#signup-form .form-company .text-danger'
+  }, {
+    name: 'job',
+    rules: 'required',
+    errorElement: '#signup-form .form-job .text-danger'
+  }, {
+    name: 'telephone',
+    rules: 'required',
+    errorElement: '#signup-form .form-telephone .text-danger'
+  }, {
+    name: 'company_scale',
+    rules: 'required',
+    errorElement: '#signup-form .form-company-scale .text-danger'
   }], {
     errorElement: '#signup-form .form-error'
   })
@@ -58,7 +70,7 @@ function injectSeach () {
   }
 }
 export default function bootstrap () {
-  $('body').addClass('page-signup')
+  // $('body').addClass('page-signup')
   // console.log('bootstrap signup');
   injectSeach()
   const form = initValidate()

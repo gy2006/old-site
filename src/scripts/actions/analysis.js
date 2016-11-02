@@ -1,5 +1,5 @@
 import mixpanel from 'mixpanel-browser'
-import { EMAIL_REG, UTM_LIST } from '../constant'
+import { UTM_LIST } from '../constant'
 import cookies from '../util/cookies'
 import browser from '../util/browser'
 
@@ -189,7 +189,7 @@ const analysis = {
     },
     signUp: function (user, urlParams, callback) {
       mixpanel.alias(user.email)
-      const people = analysis.common.getCreatePeopleProperty(fields)
+      const people = analysis.common.getCreatePeopleProperty(user)
       mixpanel.people.set_once(people)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {

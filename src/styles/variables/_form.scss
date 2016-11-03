@@ -18,9 +18,12 @@ select{
   border-radius: 0;
   border: 1px solid $col-font-gray;
   background: none;
-  padding: 8px 12px;
+  padding: 8px 30px 8px 12px;
   font-size: 16px;
   font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
+  background-repeat: no-repeat;
+  background-image: url('../static/images/down.svg');
+  background-position: calc(100% - 10px) center;
   &:focus, &:hover{
     outline: none;
   }

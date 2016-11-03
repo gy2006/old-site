@@ -36,7 +36,7 @@ function initValidate () {
 }
 
 export default function bootstrap () {
-  $('body').addClass('page-signin')
+  // $('body').addClass('page-signin')
 
   const form = initValidate()
   bindSubmit(form)

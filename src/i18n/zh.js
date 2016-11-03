@@ -40,7 +40,10 @@ module.exports = {
   "signup_email": "邮箱",
   "signup_username": "用户名",
   "signup_password": "密码",
-  "signup_invite_code": "邀请码",
+  "signup_company": "公司",
+  "signup_job": "职位",
+  "signup_telephone": "电话",
+  "signup_company_size": "选择公司规模",
   "signup_button": "创建账号",
 
   "pricing_desc": "flow.ci 在内测期间完全免费"

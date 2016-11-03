@@ -4,14 +4,30 @@ input:not([type='submit']), textarea{
   padding: 8px 12px;
   border-radius: 2px;
   font-size: 16px;
-  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
 }
 
 textarea{
   padding: 12px;
   resize: vertical;
 }
-
+select{
+  height: 40px;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  border: 1px solid $col-font-gray;
+  background: none;
+  padding: 8px 30px 8px 12px;
+  font-size: 16px;
+  font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
+  background-repeat: no-repeat;
+  background-image: url('../static/images/down.svg');
+  background-position: calc(100% - 10px) center;
+  &:focus, &:hover{
+    outline: none;
+  }
+}
 button, input[type='submit']{
   border-radius: 2px;
   outline: none;
@@ -20,6 +36,6 @@ button, input[type='submit']{
   padding: 10px 12px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
   -webkit-appearance: none;
 }

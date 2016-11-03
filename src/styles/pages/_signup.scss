@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-
+  padding-top: 60px;
   justify-content: center;
   .form-container{
     display: flex;
@@ -13,10 +13,13 @@
 
 #signup-form{
   legend{ color: $col-green; }
-  input, textarea{
+  input, textarea, select{
     border-color: $col-green;
 
     @include placeholder{ color: rgba($col-green, .5); }
+  }
+  select[value] {
+    color: #81bf15;
   }
   input[type='submit']{ background-color: $col-green; }
 }

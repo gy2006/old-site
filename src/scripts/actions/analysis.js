@@ -172,7 +172,7 @@ const analysis = {
         'Application': 'apply',
         'Company': fields.company_name,
         '职位': fields.job,
-        'telephone': fields.telephone,
+        '电话': fields.telephone,
         '开发团队规模': fields.company_scale
       }
       return Object.assign({}, people, utm)

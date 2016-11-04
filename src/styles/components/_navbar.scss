@@ -4,7 +4,8 @@
 $navbar-height: 60px;
 .navbar{
   position: fixed;
-  top: 50px;
+  padding-top: 50px;
+  top: 0px;
   left: 0px;
   right: 0px;
   z-index: 1000;
@@ -66,7 +67,7 @@ $navbar-height: 60px;
     }
   }
   @media (max-width: 768px) {
-    top: 0px;
+    padding-top: 0px;
     .content-wrapper-270{
       display: block;
       padding: 0px;

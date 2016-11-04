@@ -11,7 +11,6 @@ module.exports = {
   "slogn_desc": "flow.ci, hosted continuous integration and delivery service for innovators who shape the future",
   "apply_placeholder": "Work email",
   "apply_btn": "Apply for early access",
-  "apply_success": "Thanks for applying. We will email you invitation code.  : )",
 
   "section_flow": "FLOW",
   "section_flow_desc": "Automate your development workflow without constraints.",

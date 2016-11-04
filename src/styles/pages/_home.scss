@@ -99,6 +99,12 @@ $color-flow-line: $color-grey;
     }
   }
   .languages{
+    .langs{
+      width: 90%;
+      max-width: 560px;
+      margin: 0px auto;
+      text-align: center;
+    }
     .lang{
       display: inline-block;
       vertical-align: middle;
@@ -150,20 +156,8 @@ $color-flow-line: $color-grey;
     input{
       font-size: 1em;
     }
-    &.success{
-      .form-result{
-        display: block;
-      }
-      .apply-incentive{
-        display: none;
-      }
-      form{
-        display: none;
-      }
-    }
-    .text-danger{
-      max-width: 540px;
-      margin: 0px auto 4px;
+    input[type='email']{
+      display: none;
     }
   }
 }
@@ -198,7 +192,7 @@ $color-flow-line: $color-grey;
     header{
       display: block;
       >h3{
-        font-size: 19px;
+        font-size: 28px;
         width: auto;
         text-align: left;
       }
@@ -211,17 +205,17 @@ $color-flow-line: $color-grey;
     .categories{
       padding-left: 56px;
       .cate{
-        position: relative;
-        padding-left: 64px;
+        display: inline-flex;
+        align-items: flex-start;
         h4{
         }
         >.icon{
           color: $col-primary;
           display: inline-block;
-          position: absolute;
           font-size: 32px;
-          top: 0px;
-          left: 0px;
+          margin-right: 20px;
+          width: 50px;
+          text-align: center;
         }
       }
       .item{
@@ -234,6 +228,9 @@ $color-flow-line: $color-grey;
   .more-things{
     .item{
       padding-left: 56px;
+      .icon{
+        width: 45px;
+      }
       >a{
         color: #53575C;
         font-size: 18px;
@@ -266,13 +263,34 @@ $color-flow-line: $color-grey;
         }
       }
     }
+    .form-container{
+      input[type='email']{
+        display: inline-block;
+      }
+    }
   }
   .zh .page-home{
     header >h3{
       font-size: 30px;
     }
     .banner header >h3{
-      font-size: 25px;
+      // font-size: 25px;
+    }
+    .more-things{
+      .things{
+        display: flex;
+        max-width: 460px;
+        margin: 0px auto;
+        justify-content: space-between;
+      }
+      .item{
+        .icon{
+          width: auto;
+        }
+        display: inline-block;
+        vertical-align: top;
+        padding-left: 0px;
+      }
     }
   }
 }
@@ -322,6 +340,8 @@ $color-flow-line: $color-grey;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
+        width: 100%;
+        max-width: 100%;
         .lang{
           width: 15%;
         }
@@ -376,7 +396,7 @@ $color-flow-line: $color-grey;
       }
     }
     .banner header >h3{
-      font-size: 28px;
+      // font-size: 28px;
       line-height: 44px;
       text-align: center;
       margin: 0px auto;
@@ -389,22 +409,13 @@ $color-flow-line: $color-grey;
         justify-content: space-around;
         .cate{
           width: auto;
+          >.icon{
+            width: auto;
+          }
         }
       }
     }
-    .more-things{
-      .things{
-        text-align: center;
-      }
-      .item{
-        display: inline-block;
-        vertical-align: top;
-        padding-left: 0px;
-      }
-      .item+.item{
-        margin-left: 100px;
-      }
-    }
+
   }
 }
 

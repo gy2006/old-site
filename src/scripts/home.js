@@ -14,7 +14,7 @@ function bindSubmit (form) {
 function initValidate () {
   return new FormValidate('#apply-form', [{
     name: 'email',
-    rules: 'required|email',
+    rules: 'email',
     errorElement: '.page-home .text-danger'
   }])
 }

@@ -11,9 +11,8 @@ block content
         .form-container
           div.text-danger
           form#apply-form(method='post' onsubmit="return false;")
-            input#email(type='email', name='email', placeholder='#{language.apply_placeholder}', required)
+            input#email(type='email', name='email', placeholder='#{language.apply_placeholder}')
             input(type='submit' value='#{language.apply_btn}')
-          .form-result.text-success #{language.apply_success}
     .section.flow-concept
       .content-wrapper-270
         header
@@ -39,57 +38,61 @@ block content
         .categories
           .cate.code-analysis
             i.icon.icon-analysis
-            h4.title #{language.section_plugin_analysis}
-            .list
-              .item
-                i.icon-check
-                | Rubocop
-              .item
-                i.icon-check
-                | Eslint
-              .item
-                i.icon-check
-                | pep8
-              .item
-                i.icon-check
-                | Codesniffer
-              .item
-                i.icon-check
-                | Pretty Result
+            div
+              h4.title #{language.section_plugin_analysis}
+              .list
+                .item
+                  i.icon-check
+                  | Rubocop
+                .item
+                  i.icon-check
+                  | Eslint
+                .item
+                  i.icon-check
+                  | pep8
+                .item
+                  i.icon-check
+                  | Codesniffer
+                .item
+                  i.icon-check
+                  | Pretty Result
 
           .cate.databases
             i.icon.icon-database
-            h4.title #{language.section_plugin_database}
-            .list
-              .item
-                i.icon-check
-                | MongoDB
-              .item
-                i.icon-check
-                | MySQL
-              .item
-                i.icon-check
-                | Redis
+            div
+              h4.title #{language.section_plugin_database}
+              .list
+                .item
+                  i.icon-check
+                  | MongoDB
+                .item
+                  i.icon-check
+                  | MySQL
+                .item
+                  i.icon-check
+                  | Redis
 
           .cate.notification
             i.icon.icon-chat
-            h4.title #{language.section_plugin_notification}
-            .list
-              .item
-                i.icon-check
-                | Email
-              .item
-                i.icon-check
-                | Slack
+            div
+              h4.title #{language.section_plugin_notification}
+              .list
+                .item
+                  i.icon-check
+                  | Email
+                .item
+                  i.icon-check
+                  | Slack
 
           .cate.others
             i.icon.icon-inbox
-            h4.title #{language.section_plugin_more}
-            .list
-              .item
-                i.icon-check
-                | Custom Scripts
-              .item ...
+            div
+              h4.title #{language.section_plugin_more}
+              .list
+                .item
+                  i.icon-check
+                  | Custom Scripts
+                .item ...
     .section.languages
       .content-wrapper-270
         header
@@ -125,9 +128,9 @@ block content
         .things
           div.item
             a(href='http://docs.flow.ci/#{locale}/' target='_blank').open-source-project
-              i.icon-gitbook
+              i.icon.icon-gitbook
               span #{language.view_github}
           div.item
             a(href='https://gitter.im/FIRHQ/flow.ci' target='_blank').contact
-              i.icon-gitter
+              i.icon.icon-gitter
               span #{language.chat_gitter}

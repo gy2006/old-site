@@ -8,10 +8,9 @@ module.exports = {
   "navbar_dashboard": "控制台",
 
   "slogan": "", // 中文版不显示 slogan
-  "slogn_desc": "融入 Workflow 机制的持续集成，<br/>让代码在 Build, Test, Deploy 间<br class='visiable-xs'/>轻盈灵动",
+  "slogn_desc": "融入 Workflow 机制的持续集成，让代码在 Build, Test, Deploy 间轻盈灵动",
   "apply_placeholder": "工作邮箱",
   "apply_btn": "现在就开始",
-  "apply_success": "感谢申请，稍后我们将发送邀请码到您的邮箱.: )",
 
   "section_flow": "", // 中文版 不使用
   "section_flow_desc": "连接分散重复的工作<br/>一分钟让流程自动运行",

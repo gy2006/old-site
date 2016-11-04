@@ -77,13 +77,14 @@ function bootstrap () {
   utms && analysis.register(utms)
   analysis.pageView()
   // set language
-  const languagesSelect = $('#languages')
-  languagesSelect.val(browser.locale)
-  languagesSelect.on('change', function () {
-    const l = languagesSelect.val()
+  const languageBtn = $('button.language')
+  languageBtn.click(function () {
+    const $ele = $(this)
+    const l = $ele.val()
     setLocale(l)
     analysis.event.setLocale(l)
   })
+
   const token = User.getUserToken()
   if (token) {
     User.get(token).done(function (userInfo) {

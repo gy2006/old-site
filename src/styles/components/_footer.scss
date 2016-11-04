@@ -1,29 +1,26 @@
 .footer-wrap{
   width: 880px;
-  margin: 0px auto;
-  text-align: right;
+  margin-bottom: 40px!important;
+  height: 36px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
   .mixpanel-footer {
-    margin-bottom: 12px;
     display: inline-block;
     vertical-align: top;
-    margin-right: 8px;
+    margin-right: 16px;
+    font-size: 0px;
+    height: 100%;
   }
-  select{
-    display: inline-block;
-    vertical-align: top;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    padding: 10px 16px;
+  .language{
+    width: 110px;
+    border: 1px solid #9298A1;
+    color: #9298A1;
+    text-align: center;
     background-color: transparent;
-    color: #8D9094;
-    &:focus,&:hover{
-      outline: none;
-    }
-  }
-  .weibo-footer{
-    float: right;
-    margin-top: 8px;
-    margin-right: 12px;
+    border-radius: 3px;
+    font-size: 14px;
+    padding: 0;
+    height: 100%;
   }
 }

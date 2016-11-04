@@ -5,10 +5,14 @@ export const USERNAME_REG = /^\w{3,15}$/ // /^[0-9a-zA-Z]{3,15}$/;
 // set default cookie config
 let host = location.hostname.split('.')
 let domain = `.${location.hostname}`
-// 子域名取上层域名
-if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}/.test(host) && host.length > 2) {
+if (/^\d{1,3}\.\d{1,3}\.\d{1,3}/.test(location.hostname)) {
+  domain = location.hostname
+} else if (host.length > 2) {
+  // 子域名取上层域名
   host[0] = ''
   domain = host.join('.')
+} else if (host.length === 1) {
+  domain = host[0]
 }
 
 export const SESSION_COOKIE_MAXAGE = 7 * 24 * 60 * 60
@@ -23,8 +27,8 @@ export const SESSION_COOKIE_CONFIG = Object.assign({}, BASE_COOKIE_CONFIG, {
   'max-age': SESSION_COOKIE_MAXAGE
 })
 
-export const COOKIE_KEY = 'flow_session'
-// export const COOKIE_KEY = __TARGET__ === 'production' ? 'flow_session' : `flow_session_${__TARGET__}`
+// export const COOKIE_KEY = 'flow_session'
+export const COOKIE_KEY = __TARGET__ === 'production' ? 'flow_session' : `flow_session_${__TARGET__}`
 
 export const REDIRECT_KEY = __TARGET__ === 'production' ? 'flow_previous_url' : `flow_${__TARGET__}_previous_url`
 

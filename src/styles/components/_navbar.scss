@@ -1,105 +1,105 @@
 @import 'bourbon';
 @import 'avatar';
+@import '../variables/colors';
 $navbar-height: 60px;
 .navbar{
   position: fixed;
-  top:0px;
-  width: 100%;
-  z-index: 999;
+  padding-top: 50px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1000;
   background-color: #fff;
   .content-wrapper-270{
-    padding: 0px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
   }
   .navbar-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: $navbar-height;
-    border-bottom: 1px solid #eee;
-    .navbar-toggle{
-      background-color: #fff;
-
-    }
     .navbar-banner{
-      padding: 15px;
+      display: block;
+      padding-bottom: 6px;
+      .logo{
+        vertical-align: bottom;
+      }
+    }
+    .navbar-toggle{
+      display: none;
     }
   }
   .navbar-collpase{
-    background-color: #fff;
-    height: 0px;
-    height: 0vh;
-    overflow: hidden;
-    transition: height .35s;
-    &.collpase{
-      height: 600px;
-      height: 100vh;
-    }
-    >.nav-item{
-      text-transform: uppercase;
-      >a{
-        padding: 10px 15px;
-        display: block;
+    display: flex;
+    align-items: center;
+    .nav-item{
+      line-height: 24px;
+      margin-left: 10px;
+      &.nav-user{
+        a{
+          background-color: $col-blue;
+          color: #fff;
+          display: flex!important;
+          align-items: center;
+          >.avator{
+            margin-right: 12px;
+          }
+          &:hover{
+            color: #fff;
+          }
+        }
       }
       &.nav-multi-item{
-        >a{
+        a{
           display: inline-block;
         }
       }
-      &:last-child{
-        margin-right: 0px;
+      a{
+        padding: 6px 10px;
+        display: block;
+        &:hover{
+          color: $col-blue;
+        }
       }
-    }
-  }
-}
-@media (min-width: 768px) {
-  .navbar{
-    top: 0px;
-    padding-top: 30px;
-    background-color: transparent;
-    .content-wrapper-270{
-      display: flex;
-      .navbar-collpase{
-        flex: 1 1 auto;
-        &.collpase{
-          height: auto!important;
+      .text-primary{
+        &:hover{
+          color: darken($col-blue, 10%);
         }
       }
     }
+  }
+  @media (max-width: 768px) {
+    padding-top: 0px;
     .content-wrapper-270{
-      padding: 0px 15px;
+      display: block;
+      padding: 0px;
     }
     .navbar-header{
-      border: none;
-      margin-bottom: 0px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      .navbar-banner{
+        padding: 15px;
+      }
       .navbar-toggle{
-        display: none;
+        display: block;
+        background-color: transparent;
       }
     }
     .navbar-collpase{
-      margin: 0px;
-      height: $navbar-height;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      >.nav-item{
-        margin-right: 6px;
-        margin-bottom: 0px;
-        >a{
-          padding: 6px 10px;
-          display: inline-block;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      transition: height .35s;
+      &.collpase{
+        height: 100vh;
+      }
+      .nav-item{
+        margin-left: 0px;
+        a{
+          padding: 10px 15px;
         }
       }
-    }
-  }
-}
-.nav-user{
-  >a{
-    background-color: #556af8;
-    color: #fff;
-    display: flex!important;
-    align-items: center;
-    >.avator{
-      margin-right: 12px;
     }
   }
 }

@@ -11,13 +11,14 @@
 
 html, body{
   width: 100%;
+  overflow-x: hidden;
 }
 
 body{
   margin: 0;
   color: $col-font-gray;
-  font-size: 14px;
-  font-family: 'Open Sans', 'Avenir Next', myriad-pro,'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  font-family: 'Open Sans', 'PingFang SC', 'Helvetica Neue', Helvetica, sans-serif;
 
   -webkit-font-smoothing: antialiased;
 }
@@ -25,6 +26,12 @@ body{
 .page-container{
   padding: 40px;
 }
+.visiable-xs{
+  display: none;
+  @media (max-width: 480px) {
+    display: block;
+  }
+}
 
 .text-danger{
   color: $col-red;
@@ -32,10 +39,6 @@ body{
 .text-success{
   color: $col-green;
 }
-
-.text-danger{
-  color: $col-red;
-}
-.text-success{
-  color: $col-green;
+.text-primary{
+  color: $col-primary
 }

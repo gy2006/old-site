@@ -1,7 +1,8 @@
+block language
 div.footer-wrap.content-wrapper-270
   <a href="https://mixpanel.com/f/partner" class="mixpanel-footer" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
-  span.language
-    select#languages
-      option(value='zh') 中文
-      option(value='en') English
+  if locale === 'zh'
+    button.language(value='en') English
+  else
+    button.language(value='zh') 中文
 

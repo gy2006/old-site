@@ -186,7 +186,7 @@ $color-flow-line: $color-grey;
     }
   }
   .banner {
-    form{
+    form, .text-danger{
       max-width: 540px;
     }
     header{

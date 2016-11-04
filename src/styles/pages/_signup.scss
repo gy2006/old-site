@@ -12,14 +12,11 @@
 }
 
 #signup-form{
-  legend{ color: $col-green; }
-  input, textarea, select{
-    border-color: $col-green;
+  legend{ color: $col-primary; }
+  // input, textarea, select{
+  //   border-color: $col-green;
 
-    @include placeholder{ color: rgba($col-green, .5); }
-  }
-  select[value] {
-    color: #81bf15;
-  }
-  input[type='submit']{ background-color: $col-green; }
+  //   @include placeholder{ color: rgba($col-green, .5); }
+  // }
+  // input[type='submit']{ background-color: $col-green; }
 }

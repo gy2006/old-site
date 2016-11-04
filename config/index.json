@@ -4,7 +4,7 @@
   "local": {
     "__TARGET__" : "'local'",
     "NODE_ENV": "'development'",
-    "__API__": "'//api.flow.ci'",
+    "__API__": "'//api-lyon.flow.ci'",
     "__DASHBOARD_URL__": "'//localhost:3000'",
     "__MIXPANEL_TOKEN__": "'2b1e930ff88661ec1804746b8f80d0cf'",
     "__BUGHD_TOKEN__":"'5bb557f47ec7d8eec20e45466cdfc70b'"

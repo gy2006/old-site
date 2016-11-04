@@ -1,15 +1,16 @@
 - bughd_token = htmlWebpackPlugin.options.bughd_token
 - modified = htmlWebpackPlugin.options.last_modify
 doctype html
-html
+html(lang="#{htmlWebpackPlugin.options.locale}")
   block language
     - language = htmlWebpackPlugin.options.language
+    - locale = htmlWebpackPlugin.options.locale
   head
     meta(charset='utf-8')
     meta(property="wb:webmaster", content="977ca36fa31b75c1")
     meta(http-equiv="last-modified" content="#{modified}")
+    meta(http-equiv="X-UA-Compatible" content="IE=Edge")
     meta(name="viewport", content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no")
-
     block title
       title flow.ci | Hosted Continuous Integration and Delivery Service
     script(type="text/javascript", src="https://dn-bughd-web.qbox.me/bughd.min.js", crossOrigin="anonymous")
@@ -23,7 +24,7 @@ html
       })(window,document,'script','//dn-firweb.qbox.me/analytics.js','ga');
       ga('create', 'UA-43616652-7', 'auto');
       ga('send', 'pageview');
-  body
+  body(class='#{locale}')
     include ../includes/beta_bar
     include ../includes/navbar
     block content

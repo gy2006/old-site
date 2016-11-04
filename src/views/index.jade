@@ -5,21 +5,23 @@ block content
     .section.banner
       .content-wrapper-270
         header.slogan
-          h1 #{language.slogan}
-          h3 #{language.slogn_desc}
-
+          if locale !== 'zh'
+            h1 #{language.slogan}
+          h3 !{language.slogn_desc}
         .form-container
           div.text-danger
           form#apply-form(method='post' onsubmit="return false;")
-            input#email(type='email', name='email', placeholder='#{language.apply_placeholder}', required)
+            input#email(type='email', name='email', placeholder='#{language.apply_placeholder}')
             input(type='submit' value='#{language.apply_btn}')
-          .form-result.text-success #{language.apply_success}
-          .apply-incentive #{language.apply_incentive}
     .section.flow-concept
       .content-wrapper-270
         header
-          h2 #{language.section_flow}
-          h3 #{language.section_flow_desc}
+          if locale !== 'zh'
+            h2 !{language.section_flow}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/time.svg'))
+          h3 !{language.section_flow_desc}
       .flow
         .flow-line
         .flow-steps
@@ -27,63 +29,79 @@ block content
     .section.plugins
       .content-wrapper-270
         header
-          h2 #{language.section_plugin}
-          h3 #{language.section_plugin_desc}
+          if locale !== 'zh'
+            h2 !{language.section_plugin}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/stack.svg'))
+          h3 !{language.section_plugin_desc}
         .categories
           .cate.code-analysis
-            h4.title #{language.section_plugin_analysis}
-            .list
-              .item
-                i.icon-check
-                | Rubocop
-              .item
-                i.icon-check
-                | Eslint
-              .item
-                i.icon-check
-                | pep8
-              .item
-                i.icon-check
-                | Codesniffer
+            i.icon.icon-analysis
+            div
+              h4.title #{language.section_plugin_analysis}
+              .list
                 .item
-                i.icon-check
-                | Pretty Result
+                  i.icon-check
+                  | Rubocop
+                .item
+                  i.icon-check
+                  | Eslint
+                .item
+                  i.icon-check
+                  | pep8
+                .item
+                  i.icon-check
+                  | Codesniffer
+                .item
+                  i.icon-check
+                  | Pretty Result
 
           .cate.databases
-            h4.title #{language.section_plugin_database}
-            .list
-              .item
-                i.icon-check
-                | MongoDB
-              .item
-                i.icon-check
-                | MySQL
-              .item
-                i.icon-check
-                | Redis
+            i.icon.icon-database
+            div
+              h4.title #{language.section_plugin_database}
+              .list
+                .item
+                  i.icon-check
+                  | MongoDB
+                .item
+                  i.icon-check
+                  | MySQL
+                .item
+                  i.icon-check
+                  | Redis
 
           .cate.notification
-            h4.title #{language.section_plugin_notification}
-            .list
-              .item
-                i.icon-check
-                | Email
-              .item
-                i.icon-check
-                | Slack
+            i.icon.icon-chat
+            div
+              h4.title #{language.section_plugin_notification}
+              .list
+                .item
+                  i.icon-check
+                  | Email
+                .item
+                  i.icon-check
+                  | Slack
 
           .cate.others
-            h4.title #{language.section_plugin_more}
-            .list
-              .item
-                i.icon-check
-                | Custom Scripts
-              .item ...
+            i.icon.icon-inbox
+            div
+              h4.title #{language.section_plugin_more}
+              .list
+                .item
+                  i.icon-check
+                  | Custom Scripts
+                .item ...
     .section.languages
       .content-wrapper-270
         header
-          h2 #{language.section_languages}
-          h3 #{language.section_languages_desc}
+          if locale !== 'zh'
+            h2 !{language.section_languages}
+          else
+            .left-icon-wrap
+              img(src=require('../static/images/coffee.svg'))
+          h3 !{language.section_languages_desc}
         .langs
           div.lang
             i.icon-ruby
@@ -104,14 +122,15 @@ block content
     .section.more-things
       .content-wrapper-270
         header
-          h2 #{language.section_more}
-          h3 #{language.section_more_desc}
+          if locale !== 'zh'
+            h2 !{language.section_more}
+          h3 !{language.section_more_desc}
         .things
           div.item
-            a(href='https://github.com/FIRHQ/flow.ci' target='_blank').open-source-project
-              i.icon-github
+            a(href='http://docs.flow.ci/#{locale}/' target='_blank').open-source-project
+              i.icon.icon-gitbook
               span #{language.view_github}
           div.item
             a(href='https://gitter.im/FIRHQ/flow.ci' target='_blank').contact
-              i.icon-comments-o
+              i.icon.icon-gitter
               span #{language.chat_gitter}

@@ -1,4 +1,4 @@
-{
+module.exports = {
   "navbar_blog": "BLOG",
   "navbar_doc": "DOCUMENT",
   "navbar_changelog": "Changelog",
@@ -11,8 +11,6 @@
   "slogn_desc": "flow.ci, hosted continuous integration and delivery service for innovators who shape the future",
   "apply_placeholder": "Work email",
   "apply_btn": "Apply for early access",
-  "apply_success": "Thanks for applying. We will email you invitation code.  : )",
-  "apply_incentive": "",
 
   "section_flow": "FLOW",
   "section_flow_desc": "Automate your development workflow without constraints.",
@@ -42,7 +40,10 @@
   "signup_email": "Job Email",
   "signup_username": "Username",
   "signup_password": "Password",
-  "signup_invite_code": "Invite Code",
+  "signup_company": "Company",
+  "signup_job": "Job",
+  "signup_telephone": "Telephone",
+  "signup_company_size": "Choose Size of development team",
   "signup_button": "Create an account",
 
   "pricing_desc": "flow.ci is <b>free</b> until the end of beta."

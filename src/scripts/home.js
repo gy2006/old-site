@@ -1,16 +1,12 @@
 import FormValidate from './validate'
 import $ from 'jquery'
-import applyCI from './actions/applyForCi'
 import FlowAnimate from './components/flowAnimate'
 
 function bindSubmit (form) {
   function handlerSubmit (e) {
     e.preventDefault()
-    const fields = form.getValues()
-    applyCI(fields, () => {
-      $('.page-home .form-container').addClass('success')
-      this.reset()
-    })
+    const { email } = form.getValues()
+    window.location.href = `/signup.html?email=${email}`
   }
   form.$form.submit(handlerSubmit)
 }
@@ -18,7 +14,7 @@ function bindSubmit (form) {
 function initValidate () {
   return new FormValidate('#apply-form', [{
     name: 'email',
-    rules: 'required|email',
+    rules: '',
     errorElement: '.page-home .text-danger'
   }])
 }

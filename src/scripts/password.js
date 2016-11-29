@@ -37,8 +37,8 @@ function initForgetValidate (id) {
 
 function bootstrapForget () {
   const id = 'forget-password-form'
-  // console.log('bootstrap signin');
-  $('#forget-password').show()
+  $('#forget-password').removeClass('hide')
+
   const form = initForgetValidate(id)
   bindForgetSubmit(id, form)
 }
@@ -80,7 +80,7 @@ function initResetValidate (id) {
 }
 
 function bootstrapReset (sign) {
-  $('#reset-password').show()
+  $('#reset-password').removeClass('hide')
   const params = getSearch()
 
   const id = 'reset-password-form'

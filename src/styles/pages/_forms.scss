@@ -29,9 +29,14 @@
   }
   input, textarea, select{
     width: 100%;
-    border-color: $col-primary;
+    border-color: $col-grey100;
     @include placeholder {
-      color: rgba($col-primary, .5);
+      color: #A7ACB9;
+    }
+  }
+  input, textarea{
+    &:focus{
+      border-color: $col-primary;
     }
   }
 
@@ -49,12 +54,6 @@
 }
 
 #signin-form{
-  input{
-    border-color: #D9DADF;
-    @include placeholder {
-      color: #A7ACB9;
-    }
-  }
   input[type='submit']{
     margin-bottom: 10px;
   }

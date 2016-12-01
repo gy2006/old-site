@@ -43,6 +43,7 @@ export default function bootstrap () {
 
   const params = getSearch()
   if (params.reset_password) {
+    // todo i18n
     $('#signin-form legend').text('Password change successful')
     const email = params.email
     if (email) {

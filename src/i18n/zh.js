@@ -45,5 +45,17 @@ module.exports = {
   "signup_company_size": "选择公司规模",
   "signup_button": "创建账号",
 
-  "pricing_desc": "flow.ci 在内测期间完全免费"
+  "pricing_desc": "flow.ci 在内测期间完全免费",
+
+  // forget password
+  "forget_password": "忘记密码?",
+  "forget_password_title": "忘记密码",
+  "forget_password_apply_success": "heck your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
+  "forget_password_email": "邮箱",
+  "forget_password_submit": "发送重置密码邮件",
+
+  "reset_password_title": "重置密码 $email",
+  "reset_password_password": "新密码",
+  "reset_password_confirm_password": "确认密码",
+  "reset_password_submit": "重置密码并登录"
 }

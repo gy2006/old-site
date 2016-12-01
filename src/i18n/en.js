@@ -55,7 +55,7 @@ module.exports = {
   "forget_password_email": "Email",
   "forget_password_submit": "Send password reset email",
 
-  "reset_password_title": "Change your password",
+  "reset_password_title": "Change Password for $email",
   "reset_password_password": "Password",
   "reset_password_confirm_password": "Confirm Password",
   "reset_password_submit": "Change password",

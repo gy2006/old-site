@@ -61,8 +61,11 @@ export function resetPassword (token, password) {
       reset_password_token: token,
       password,
       confirm_password: password
-    },
-    dataType: 'text'
+    }
+  }).done(function (resp) {
+    const accessToken = resp.access_token
+    saveAccessToken(accessToken)
+    redirectToDashboard(accessToken)
   })
 }
 

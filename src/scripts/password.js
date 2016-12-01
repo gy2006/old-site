@@ -52,8 +52,6 @@ function bindResetSubmit (sign, id, form) {
     const fields = form.getValues()
 
     User.resetPassword(sign, fields.password).done(() => {
-      const params = getSearch()
-      window.location.href = `/signin.html?email=${params.email}&reset_password=1`
       this.reset()
     }).fail((e) => {
       form.setError('$form', Errors(e))
@@ -85,7 +83,9 @@ function bootstrapReset (sign) {
 
   const id = 'reset-password-form'
   if (params.email) {
-    $(`#${id} legend`).text(`Change password for ${params.email}`)
+    const element = $(`#${id} legend`)
+    const text = element.text()
+    element.text(text.replace('$email', params.email))
   }
   const form = initResetValidate(id)
   bindResetSubmit(sign, id, form)

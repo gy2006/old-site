@@ -54,7 +54,7 @@ module.exports = {
   "forget_password_email": "邮箱",
   "forget_password_submit": "发送重置密码邮件",
 
-  "reset_password_title": "重置密码",
+  "reset_password_title": "重置密码 $email",
   "reset_password_password": "新密码",
   "reset_password_confirm_password": "确认密码",
   "reset_password_submit": "重置密码并登录"

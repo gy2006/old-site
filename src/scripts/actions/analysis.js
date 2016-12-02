@@ -2,6 +2,7 @@ import mixpanel from 'mixpanel-browser'
 import { UTM_LIST } from '../constant'
 import cookies from '../util/cookies'
 import browser from '../util/browser'
+import $ from 'jquery'
 
 function getDomain () {
   const matches = document.location.hostname.match(/[a-z0-9][a-z0-9\-]+\.[a-z\.]{2,6}$/i)
@@ -123,9 +124,26 @@ function trackFullEvent (eventName, props, peoplePropsName, options = {}, callba
   })
 }
 
+function getIp (callback) {
+  $.get(`//${__MIXPANEL_PROXY__}/ip`).done((data) => {
+    const ip = data.ip
+    callback(ip)
+  })
+}
+
 const analysis = {
   init: function () {
-    mixpanel.init(__MIXPANEL_TOKEN__)
+    const HTTP_PROTOCOL = ((document.location.protocol === 'https:') ? 'https://' : 'http://')
+    const MIXPANEL_HOST = `${HTTP_PROTOCOL}${__MIXPANEL_PROXY__}`
+
+    mixpanel.init(__MIXPANEL_TOKEN__, {
+      'api_host': MIXPANEL_HOST,
+      'decide_host': MIXPANEL_HOST
+    })
+    mixpanel.set_client_ip(mixpanel.get_property('ip'))
+    getIp(function (ip) {
+      mixpanel.set_client_ip(ip)
+    })
     mixpanelVariables.init(__MIXPANEL_TOKEN__)
     mixpanel.register({ 'Browser Language': browser.locale })
   },

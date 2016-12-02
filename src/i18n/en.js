@@ -51,7 +51,7 @@ module.exports = {
   // forget password
   "forget_password": "Forget Password?",
   "forget_password_title": "Reset your passowrd",
-  "forget_password_apply_success": "heck your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
+  "forget_password_apply_success": "Check your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
   "forget_password_email": "Email",
   "forget_password_submit": "Send password reset email",
 

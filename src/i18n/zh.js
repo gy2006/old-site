@@ -50,7 +50,7 @@ module.exports = {
   // forget password
   "forget_password": "忘记密码?",
   "forget_password_title": "忘记密码",
-  "forget_password_apply_success": "heck your email for a link to reset your password. If it doesn't appear within a few minutes, check your spam folder.",
+  "forget_password_apply_success": "请登录邮箱查收重置密码邮件，如果未收到邮件请检查是否在垃圾邮箱中。",
   "forget_password_email": "邮箱",
   "forget_password_submit": "发送重置密码邮件",
 

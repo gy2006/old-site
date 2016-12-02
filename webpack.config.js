@@ -28,6 +28,10 @@ const webpackConfig = {
     ],
     vendor: config.vendor
   },
+  resolve: {
+    root: './src',
+    extensions: ['', '.js', '.jsx', '.json']
+  },
   module: {
     loaders: [
       {

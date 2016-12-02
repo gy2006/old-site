@@ -38,7 +38,7 @@ for HOST in ${HOSTS[@]}; do
 ssh ${USER}@${HOST} -p ${PORT} "mkdir -p ${DEPLOY_DIR}"
 #ssh ${USER}@${HOST} -p ${PORT} "find   ${LATEST_DIR}/ -maxdepth 1 -mtime -1 | xargs -i cp -frv  {} ${DEPLOY_DIR}/"
 # 保留60天发布的文件，避免客户端缓存失效
-ssh ${USER}@${HOST} -p ${PORT} "find   ${LATEST_DIR}/ -maxdepth 1 -mtime -60 | xargs -i cp -frv  {} ${DEPLOY_DIR}/"
+ssh ${USER}@${HOST} -p ${PORT} "find   ${LATEST_DIR}/ -maxdepth 1 -type f -mtime -60 | xargs -i cp -frv  {} ${DEPLOY_DIR}/"
 scp -P ${PORT}  -rv ./dist/* ${USER}@${HOST}:${DEPLOY_DIR}
 
 ssh ${USER}@${HOST} -p ${PORT}  <<EOF

@@ -1,6 +1,6 @@
 module.exports = {
-  "navbar_blog": "BLOG",
-  "navbar_doc": "DOCUMENT",
+  "navbar_blog": "Blog",
+  "navbar_doc": "Document",
   "navbar_changelog": "Changelog",
   "navbar_pricing": "Pricing",
   "navbar_signin": "Sign In",
@@ -8,7 +8,7 @@ module.exports = {
   "navbar_dashboard": "Dashboard",
 
   "slogan": "Keep your code flowing",
-  "slogn_desc": "flow.ci, hosted continuous integration and delivery service for innovators who shape the future",
+  "slogn_desc": "flow.ci, hosted continuous integration and delivery service for innovators who shape the future.",
   "apply_placeholder": "Work email",
   "apply_btn": "Apply for early access",
 

@@ -5,7 +5,11 @@ import {
 import { REDIRECT_KEY, BASE_COOKIE_CONFIG } from '../constant'
 
 function getDefaultUrl (accessToken) {
-  return __TARGET__ === 'local' ? `${__DASHBOARD_URL__}?access_token=${accessToken}` : __DASHBOARD_URL__
+  return __DASHBOARD_URL__
+}
+
+function isRelativeUrl (url) {
+  return /^\/+\w+/.test(url)
 }
 
 export function getDashboardUrl (accessToken) {
@@ -14,11 +18,10 @@ export function getDashboardUrl (accessToken) {
     clearCookie(REDIRECT_KEY, BASE_COOKIE_CONFIG)
     url = decodeURIComponent(url)
   }
-  const reg = new RegExp(`^(http|https)\:${__DASHBOARD_URL__}`)
-  if (!url || !reg.test(url)) {
-    url = getDefaultUrl(accessToken)
+  if (isRelativeUrl(url)) {
+    return __DASHBOARD_URL__ + url
   }
-  return url
+  return getDefaultUrl()
 }
 
 export default function redirectToDashboard (accessToken) {

@@ -11,7 +11,8 @@
     "__API__": true,
     "__DASHBOARD_URL__": true,
     "__MIXPANEL_TOKEN__": true,
-    "__BUGHD_TOKEN__": true
+    "__BUGHD_TOKEN__": true,
+    "__MIXPANEL_PROXY__": true
   },
   "rules": {
     "camelcase": [2, { "properties": "never" }],

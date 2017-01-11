@@ -1,4 +1,6 @@
 import $ from 'jquery'
+import Browser from '../util/browser'
+
 import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
 import analysis from './analysis'
 import saveAccessToken from './saveAccessToken'
@@ -30,10 +32,10 @@ export function test (userToken) {
 
 export function create (user) {
   const urlParams = getSearch()
-
+  const locale = Browser.locale === 'en' ? 'en' : 'zh-CN'
   return $.post({
     url: SIGNUP_URL,
-    data: user
+    data: Object.assign(user, { locale })
   }).done(function (resp) {
     const accessToken = resp.access_token
     saveAccessToken(accessToken)

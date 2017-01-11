@@ -147,12 +147,6 @@ const analysis = {
     mixpanelVariables.init(__MIXPANEL_TOKEN__)
     mixpanel.register({ 'Browser Language': browser.locale })
   },
-  identify: function (id) {
-    if (id !== mixpanel.get_distinct_id()) {
-      mixpanelVariables.clear()
-    }
-    return mixpanel.identify(id)
-  },
   pageView: function () {
     const eventName = 'Page View'
     const props = { path: location.pathname, protocol: location.protocol }
@@ -198,7 +192,7 @@ const analysis = {
   },
   event: {
     getUserSuccess: function (user) {
-      analysis.identify(user.email)
+      mixpanel.identify(user.email)
     },
     signIn: function (user, callback) {
       analysis.trackAlias(user.email)
@@ -215,7 +209,7 @@ const analysis = {
       }, [], {}, callback)
     },
     confirmEmail: function (urlParams) {
-      analysis.identify(urlParams.email)
+      mixpanel.identify(urlParams.email)
       if (urlParams.inviter_email) {
         mixpanelVariables.setValue({ Inviter: urlParams.inviter_email })
       }

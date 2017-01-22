@@ -1,4 +1,5 @@
 module.exports = {
+  "navbar_club": "Club",
   "navbar_blog": "Blog",
   "navbar_doc": "Document",
   "navbar_changelog": "Changelog",

@@ -7,7 +7,7 @@ import home from './scripts/home'
 import signin from './scripts/signin'
 import signup from './scripts/signup'
 import resetPassword from './scripts/password'
-
+import pricing from './scripts/pricing'
 import analysis from './scripts/actions/analysis'
 import getSearch from './scripts/util/getSearch'
 import setLocale from './scripts/actions/setLocale'
@@ -108,6 +108,8 @@ function bootstrap () {
     resetPassword()
   } else if (path === '/') {
     home()
+  } else if (/^\/pricing(\.html)?/.test(path)) {
+    pricing()
   }
 }
 

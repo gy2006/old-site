@@ -97,9 +97,14 @@
           border-radius: 3px;
           >a{
             color: #4B4E52;
-            padding: 8px 40px;
           }
         }
+      .buy:hover{
+        background-color: #556af8;
+        >a{
+          color: #fff;
+        }
+      }
     }
     .type_flow{
       .type_title{
@@ -111,6 +116,12 @@
         }
         >span:nth-child(2){
           color: #81BF15;
+        }
+      }
+      .buy:hover{
+        background-color: #81bf15;
+        >a{
+          color: #fff;
         }
       }
     }

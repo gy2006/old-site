@@ -8,24 +8,19 @@ header.navbar
         i.icon-menu
     .navbar-collpase
       .nav-item
-        a(href='//club.flow.ci/' target='_blank')
-          #{language.navbar_club}
+        a(href='http://blog.flow.ci/' target='_blank') #{language.navbar_blog}
       .nav-item
-        a(href='http://blog.flow.ci/' target='_blank')
-          #{language.navbar_blog}
+        a(href='http://docs.flow.ci/#{locale}/' target='_blank') #{language.navbar_doc}
       .nav-item
-        a(href='http://docs.flow.ci/#{locale}/' target='_blank')
-          #{language.navbar_doc}
+        a(href='http://changelog.flow.ci/' target='_blank') #{language.navbar_changelog}
       .nav-item
-        a(href='http://changelog.flow.ci/' target='_blank')
-          #{language.navbar_changelog}
+        a(href='//club.flow.ci/' target='_blank') #{language.navbar_club}
       .nav-item
         a(href='/pricing.html') #{language.navbar_pricing}
       .nav-item.nav-multi-item.nav-sign
         a(href='/signin.html') #{language.navbar_signin}
         span /
-        a(href='/signup.html' class="text-primary")
-          #{language.navbar_signup}
+        a(href='/signup.html' class="text-primary") #{language.navbar_signup}
       .nav-item.nav-condensed.nav-user.hide
         a
           img.avator

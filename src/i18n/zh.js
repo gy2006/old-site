@@ -1,5 +1,5 @@
 module.exports = {
-  "navbar_club": "论坛",
+  "navbar_club": "社区",
   "navbar_blog": "博客",
   "navbar_doc": "文档",
   "navbar_changelog": "更新日志",

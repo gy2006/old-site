@@ -1,5 +1,71 @@
 extends ../layouts/default
-
 block content
-  .page-pricing
-    p !{language.pricing_desc}
+  .pricing
+      p.title 选择任何定价方案，您都享有14天的免费试用
+      ul.list
+        li.type_flow
+          .type_title
+            font 流量版
+          .price
+            span ￥
+            span 0.06
+            span /分钟
+          .msg
+             仅按构建项目消耗流量计费
+          ul.describe
+            li 不限项目
+            li 5个并发构建
+            li 25个项目成员
+            li 不限构建时间
+          .buy
+            a(href="javascript:void(0)") 马上使用
+        li
+          .type_title
+            font 基础版
+          .price
+            span ￥
+            span 99
+            span /月
+          .msg
+          ul.describe
+            li 5个项目
+            li 2个并发构建
+            li 10个项目成员
+            li 120分钟构建时间 /日
+          .buy
+            a(href="javascript:void(0)") 马上使用
+        li
+          .type_title
+            font 标准版
+          .price
+            span ￥
+            span 699
+            span /月
+          .msg
+          ul.describe
+            li 50个项目
+            li 5个并发构建
+            li 25个项目成员
+            li 600分钟构建时间 /日
+          .buy
+            a(href="javascript:void(0)") 马上使用
+        li
+          .type_title
+            font 企业版
+          .price
+            span ￥
+            span 2999
+            span /月
+          .msg
+          ul.describe
+            li 不限项目
+            li 20个并发构建
+            li 50个项目成员
+            li 不限构建时间
+          .buy
+            a(href="javascript:void(0)") 马上使用
+      .contact
+        p.question
+          span 如果您还有其他问题
+        .contact_way
+          a(href="javascript:void(0)") 联系我们

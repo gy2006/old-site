@@ -1,14 +1,16 @@
 import $ from 'jquery'
 import User from './actions/user'
+import redirectToDashboard from './actions/redirectToDashboard'
+
 function testLogin () {
-  if (User.getUserToken()) {
-    $('.buy').on('click', function () {
-      window.location.href = 'dashboard.flow.ci/'
-    })
-  } else {
-    window.location.href = 'signin.html'
-  }
+  $('.buy').on('click', function () {
+    if (User.getUserToken()) {
+      redirectToDashboard()
+    } else {
+      window.location.href = '/signin.html'
+    }
+  })
 }
-export default function abc () {
+export default function () {
   testLogin()
 }

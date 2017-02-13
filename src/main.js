@@ -37,11 +37,23 @@ FormValidate.setDefaultValidators({
   }
 })
 
-FormValidate.setDefaultRulesMap({
-  username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
-  loginname: 'Incorrect email or username format',
-  confirm: 'Password doesn\'t match the confirmation'
-})
+function language () {
+  if (browser.locale !== 'zh') {
+    return {
+      username: 'Unsupported characters. Please use only use alphanumeric characters and underscore.',
+      loginname: 'Incorrect email or username format',
+      confirm: 'Password doesn\'t match the confirmation'
+    }
+  } else {
+    return {
+      username: '不支持的字符。请仅使用字母数字字符和下划线.',
+      loginname: '不正确的电子邮件或用户名格式',
+      confirm: '密码与确认不符'
+    }
+  }
+}
+
+FormValidate.setDefaultRulesMap(language())
 
 function getUtm () {
   const value = {}

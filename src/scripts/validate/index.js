@@ -15,20 +15,39 @@
 import $ from 'jquery'
 import Validators from './validate'
 import AliasPlugin from './plugin'
+import browser from '../util/browser'
 
-const REQUIRED = 'required'
+const REQUIRED = 'Required'
 
 let defaultValidators = Object.assign({}, Validators)
-let defaultRulesMapping = {
-  email: 'Invalid Email',
-  required: 'Required',
-  maxlength: function ({ params: ruleParams }, field) {
-    return `Must not exceed ${ruleParams[0]} characters in length`
-  },
-  minlength: function ({ params: ruleParams }, field) {
-    return `Must at least ${ruleParams[0]} characters in length`
-  },
-  'default': 'Invalid'
+let defaultRulesMapping = Translation()
+
+function Translation () {
+  if (browser.locale !== 'zh') {
+    return {
+      email: 'Invalid Email',
+      required: 'Required',
+      maxlength: function ({ params: ruleParams }, field) {
+        return `Must not exceed ${ruleParams[0]} characters in length`
+      },
+      minlength: function ({ params: ruleParams }, field) {
+        return `Must at least ${ruleParams[0]} characters in length`
+      },
+      'default': 'Invalid'
+    }
+  } else {
+    return {
+      email: '电子邮件无效',
+      required: '不能为空',
+      maxlength: function ({ params: ruleParams }, field) {
+        return `不得超过 ${ruleParams[0]} 个字符`
+      },
+      minlength: function ({ params: ruleParams }, field) {
+        return `不得少于 ${ruleParams[0]} 个字符`
+      },
+      'default': '无效的'
+    }
+  }
 }
 
 function getRuleMessage (rule, field) {

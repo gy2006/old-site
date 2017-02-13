@@ -10,6 +10,10 @@ function testLogin () {
       window.location.href = '/signin.html'
     }
   })
+  $('.contact_way .btn').on('click', function () {
+    const drift = window.drift
+    drift && drift.api && drift.api.openChat && drift.api.openChat()
+  })
 }
 export default function () {
   testLogin()

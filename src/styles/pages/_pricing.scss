@@ -154,24 +154,19 @@
           color: #4B4E52;
           margin-left: -100px;
         }
-
       }
       .contact_way{
-        display: block;
-        margin-top: 8px;
-        background-color: #556AF8;
-        color: #fff;
-        width: 220px;
-        height: 50px;
-        font-size: 18px;
-        border-radius: 3px;
         text-align: center;
-        line-height: 50px;
-        margin:  0 auto;
-        >a{
+        button{
+          font-size: 18px;
+          background-color: #556AF8;
+          border-radius: 3px;
           color: #fff;
-          padding: 10px 30px;
+          width: 220px;
+          height: 50px;
+          line-height: 30px;
         }
+
       }
     }
 }

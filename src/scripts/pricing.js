@@ -1,11 +1,11 @@
 import $ from 'jquery'
 import User from './actions/user'
-import redirectToDashboard from './actions/redirectToDashboard'
+import redirectToPay from './actions/redirectToPay'
 
 function testLogin () {
   $('.buy').on('click', function () {
     if (User.getUserToken()) {
-      redirectToDashboard()
+      redirectToPay()
     } else {
       window.location.href = '/signin.html'
     }

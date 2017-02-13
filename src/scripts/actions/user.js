@@ -18,7 +18,7 @@ export function removeUserToken () {
 
 export function get (userToken) {
   const token = userToken || getUserToken()
-  return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
+  return $.ajax(`${GETUSER_URL}?access_token=${token}&locale=${Browser.locale}`, {
     method: 'get'
   })
 }

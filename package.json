@@ -36,7 +36,7 @@
     "jade-loader": "^0.8.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.22",
-    "mixpanel-browser": "git://github.com/FIRHQ/mixpanel-js.git",
+    "mixpanel-browser": "git://github.com/FIRHQ/mixpanel-js.git#v2.11.0",
     "nconf": "^0.8.4",
     "node-sass": "^3.4.2",
     "postcss-loader": "^1.0.0",

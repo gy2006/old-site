@@ -210,7 +210,7 @@ const analysis = {
       }
       mixpanel.alias(user.email, undefined, callback)
       const people = analysis.common.getCreatePeopleProperty(user)
-      mixpanel.people.set(people, undefined, callback)
+      mixpanel.people.set(people, callback)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'

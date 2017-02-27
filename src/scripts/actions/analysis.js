@@ -201,7 +201,7 @@ const analysis = {
       mixpanel.people.increment('signed_in', 1, callback)
     },
     signUp: function (user, urlParams, userCallback) {
-      let callbackCount = 2
+      let callbackCount = 3
       function callback () {
         callbackCount--
         if (callbackCount === 0) {
@@ -210,7 +210,7 @@ const analysis = {
       }
       mixpanel.alias(user.email, undefined, callback)
       const people = analysis.common.getCreatePeopleProperty(user)
-      mixpanel.people.set_once(people)
+      mixpanel.people.set(people, undefined, callback)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'

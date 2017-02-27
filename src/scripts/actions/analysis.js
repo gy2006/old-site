@@ -170,7 +170,7 @@ const analysis = {
     mixpanelVariables.setValue(property)
   },
   common: {
-    getUtmProperty: function () {
+    getCreatePeopleProperty: function (fields) {
       const utm = {}
       UTM_LIST.forEach((key) => {
         const value = mixpanelVariables.getValue(key)
@@ -178,7 +178,16 @@ const analysis = {
           utm[key] = value
         }
       })
-      return utm
+      const people = {
+        '$email': fields.email,
+        'Apply_At': new Date(),
+        'Application': 'apply',
+        'Company': fields.company_name,
+        '职位': fields.job,
+        '电话': fields.telephone,
+        '开发团队规模': fields.company_scale
+      }
+      return Object.assign({}, people, utm)
     }
   },
   event: {
@@ -190,19 +199,10 @@ const analysis = {
       mixpanel.register({ 'email': user.email })
       mixpanel.people.increment('signed_in', 1, callback)
     },
-    signUp: function (user, urlParams, userCallback) {
-      let callbackCount = 2
-      function callback () {
-        callbackCount--
-        if (callbackCount === 0) {
-          userCallback()
-        }
-      }
-      mixpanel.alias(user.email, undefined, callback)
-      const utm = analysis.common.getUtmProperty(user)
-      if (Object.keys(utm).length > 0) {
-        mixpanel.people.set_once(utm)
-      }
+    signUp: function (user, urlParams, callback) {
+      mixpanel.alias(user.email)
+      const people = analysis.common.getCreatePeopleProperty(user)
+      mixpanel.people.set_once(people)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'

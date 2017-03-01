@@ -38,6 +38,8 @@ export const GETUSER_URL = `${__API__}/user`
 export const FORGET_PASSWORD_URL = `${__API__}/user/password`
 export const RESET_PASSWORD_URL = `${__API__}/user/password`
 
+export const GET_OAUTHCODE_URL = `${__API__}/user/oauth_code`
+
 export const UTM_LIST = [
   'utm_source',
   'utm_medium',

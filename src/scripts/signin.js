@@ -42,7 +42,7 @@ function OauthLogin () {
   if (!!params.code && !!params.redirect_uri && token) {
     $.ajax(`${GET_OAUTHCODE_URL}?access_token=${token}&code=${params.code}`, {
       method: 'patch'
-    }).done(function () {
+    }).then(function () {
       $('signin-form').html('登录成功')
       window.location.href = `${params.redirect_uri}?code=${params.code}`
     })

@@ -40,11 +40,16 @@ function OauthLogin () {
   const token = User.getUserToken()
   const params = getSearch()
   if (!!params.code && !!params.redirect_uri && token) {
-    $.ajax(`${GET_OAUTHCODE_URL}?access_token=${token}&code=${params.code}`, {
-      method: 'patch'
-    }).then(function () {
-      $('signin-form').html('登录成功')
-      window.location.href = `${params.redirect_uri}?code=${params.code}`
+    $('#signin-form').html('登录成功')
+    $.ajax({
+      url: `${GET_OAUTHCODE_URL}?access_token=${token}&code=${params.code}`,
+      method: 'patch',
+      success: function () {
+        window.location.href = `${params.redirect_uri}?code=${params.code}`
+      },
+      fail: function (error) {
+        throw new Error(error)
+      }
     })
   }
 }

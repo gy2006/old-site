@@ -1,0 +1,12 @@
+blueprints/**/files/**
+blueprints/**/index.js
+coverage/**
+node_modules/**
+dist/**
+*.spec.js
+src/index.html
+tests/**
+build/**
+bin/**
+interfaces/**
+src/static/**

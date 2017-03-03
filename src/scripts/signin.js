@@ -4,7 +4,8 @@ import signin from './actions/signin'
 import Errors from './errors'
 import Button from './button'
 import getSearch from './util/getSearch'
-
+import User from './actions/user'
+import { GET_OAUTHCODE_URL } from './constant'
 function bindSubmit (form) {
   function handlerSubmit (e) {
     const $submitBtn = new Button($(this).find('input[type="submit"]'))
@@ -35,12 +36,29 @@ function initValidate () {
   })
 }
 
+function OauthLogin () {
+  const token = User.getUserToken()
+  const params = getSearch()
+  if (!!params.code && !!params.redirect_uri && token) {
+    $('#signin-form').html('登录成功')
+    $.ajax({
+      url: `${GET_OAUTHCODE_URL}?access_token=${token}&code=${params.code}`,
+      method: 'patch',
+      success: function () {
+        window.location.href = `${params.redirect_uri}?code=${params.code}`
+      },
+      fail: function (error) {
+        throw new Error(error)
+      }
+    })
+  }
+}
 export default function bootstrap () {
   // $('body').addClass('page-signin')
 
   const form = initValidate()
   bindSubmit(form)
-
+  OauthLogin()
   const params = getSearch()
   if (params.reset_password) {
     // todo i18n

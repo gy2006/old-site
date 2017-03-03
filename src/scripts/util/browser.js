@@ -41,7 +41,7 @@ function getLocale () {
     }
     return false
   })
-  const locale = language || 'en'
+  const locale = language || 'zh'
 
   if (cookieLocale !== locale) {
     setLocale(locale)

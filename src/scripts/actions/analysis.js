@@ -180,6 +180,7 @@ const analysis = {
       })
       const people = {
         '$email': fields.email,
+        'name': fields.username,
         'Apply_At': new Date(),
         'Application': 'apply',
         'Company': fields.company_name,
@@ -199,10 +200,17 @@ const analysis = {
       mixpanel.register({ 'email': user.email })
       mixpanel.people.increment('signed_in', 1, callback)
     },
-    signUp: function (user, urlParams, callback) {
-      mixpanel.alias(user.email)
+    signUp: function (user, urlParams, userCallback) {
+      let callbackCount = 3
+      function callback () {
+        callbackCount--
+        if (callbackCount === 0) {
+          userCallback()
+        }
+      }
+      mixpanel.alias(user.email, undefined, callback)
       const people = analysis.common.getCreatePeopleProperty(user)
-      mixpanel.people.set_once(people)
+      mixpanel.people.set(people, callback)
       const isInvited = !!urlParams.project_id
       trackFullEvent('Sign up', {
         Invited: isInvited ? 'YES' : 'NO'

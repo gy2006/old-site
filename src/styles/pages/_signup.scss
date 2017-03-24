@@ -19,4 +19,14 @@
   //   @include placeholder{ color: rgba($col-green, .5); }
   // }
   // input[type='submit']{ background-color: $col-green; }
+  .form-code{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    >input{
+      margin-bottom: 0px;
+      width: 200px;
+    }
+  }
 }

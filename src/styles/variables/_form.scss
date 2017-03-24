@@ -33,9 +33,24 @@ button, input[type='submit']{
   outline: none;
   border: none;
   background-color: $col-font-gray;
-  padding: 10px 12px;
+  padding: 9px 12px;
+  height: 40px;
   cursor: pointer;
   font-size: 16px;
   font-family: 'PingFang SC', 'Open Sans','Helvetica Neue', Helvetica, sans-serif;
   -webkit-appearance: none;
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  background-color: #DFE0E6!important;
+  color: #fff!important;
+  border-color: #DFE0E6!important;
+}
+
+.btn-green{
+  background-color: $col-green;
+  color: #fff;
 }

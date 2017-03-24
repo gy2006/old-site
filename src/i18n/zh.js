@@ -43,6 +43,7 @@ module.exports = {
   "signup_company": "公司",
   "signup_job": "职位",
   "signup_telephone": "电话",
+  "signup_code": "验证码",
   "signup_company_size": "选择公司规模",
   "signup_button": "创建账号",
 

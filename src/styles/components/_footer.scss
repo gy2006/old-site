@@ -26,9 +26,18 @@
 .beian{
   text-align: center;
   margin: 20px 0;
+  font-size: 12px;
   >a{
     display:inline-block;
     text-decoration:none;
-    font-size: 12px;
+    margin-right: 5px;
+  }
+  img{
+    margin-right: 5px;
+  }
+  p{
+    display: inline-block;
+    color:#939393;
+    margin: 0;
   }
 }

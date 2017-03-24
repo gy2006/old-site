@@ -26,7 +26,7 @@ block content
             span.text-danger
           div.form-control.form-code
             div.between
-              input#code(type='text', name='verfication_code', placeholder='#{language.signup_code}', required )
+              input#code(type='text', name='verification_code', placeholder='#{language.signup_code}', required )
               button#getCode.btn-green(disabled='disabled') 获取验证码
             span.text-danger
           div.form-control.form-company-scale
@@ -44,4 +44,5 @@ block content
                 option(value='large') above 50
             span.text-danger
           div.text-danger.form-error
-          input(type='submit', value='#{language.signup_button}')
+          div.form-actions
+            input(type='submit', value='#{language.signup_button}')

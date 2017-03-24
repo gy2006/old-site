@@ -7,7 +7,6 @@ import saveAccessToken from './saveAccessToken'
 import redirectToDashboard from './redirectToDashboard'
 import { get as getCookie, clear as clearCookie } from '../util/cookies'
 import getSearch from '../util/getSearch'
-import Errors from '../errors'
 
 export function getUserToken () {
   return getCookie(COOKIE_KEY)
@@ -32,8 +31,6 @@ export function getVerifyCode (email, tel) {
       phone_number: tel,
       locale: Browser.locale === 'en' ? 'en' : 'zh-CN'
     }
-  }).fail((e) => {
-    alert(Errors(e))
   })
 }
 export function test (userToken) {

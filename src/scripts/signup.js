@@ -93,7 +93,7 @@ function injectSeach () {
   }
 }
 
-function startGetCodeLisnter () {
+function startGetCodeLisnter (form) {
   const $email = $('#email')
   const $telephone = $('#telephone')
   const $btn = $('#getCode')
@@ -118,11 +118,11 @@ function startGetCodeLisnter () {
     const email = $email.val()
     const tel = $telephone.val()
     if (!email || !emailValidate(email)) {
-      alert(translation.emailError)
+      form.setError('email', translation.emailError)
       return false
     }
     if (!tel) {
-      alert(translation.telephoneError)
+      form.setError('telephone', translation.telephoneError)
       return false
     }
     return true
@@ -149,7 +149,9 @@ function startGetCodeLisnter () {
     waitText()
     timer = setTimeout(init, times * 1000)
 
-    User.getVerifyCode(email, tel)
+    User.getVerifyCode(email, tel).fail((e) => {
+      form.setError('$form', Errors(e))
+    })
   })
 }
 export default function bootstrap () {
@@ -158,5 +160,5 @@ export default function bootstrap () {
   injectSeach()
   const form = initValidate()
   bindSubmit(form)
-  startGetCodeLisnter()
+  startGetCodeLisnter(form)
 }

@@ -11,17 +11,16 @@
   }
 
   .form-control{
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     position: relative;
-    input{
-      margin-bottom: 4px;
-    }
   }
-
+  .form-actions{
+    margin-top: 20px;
+  }
   .text-danger {
     color: $col-red;
-    margin-bottom: 4px;
     display: none;
+    font-size: 14px;
   }
 
   .form-error{

@@ -20,13 +20,18 @@
   // }
   // input[type='submit']{ background-color: $col-green; }
   .form-code{
+    button{
+      white-space: nowrap;
+    }
+  }
+  .between{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 4px;
     >input{
       margin-bottom: 0px;
-      width: 200px;
+      width: 180px;
     }
   }
 }

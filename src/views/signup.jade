@@ -24,9 +24,9 @@ block content
           div.form-control.form-telephone
             input#telephone(type='text', name='telephone', placeholder='#{language.signup_telephone}', required )
             span.text-danger
-          div.form-control
-            div.form-code
-              input#code(type='text', name='code', placeholder='#{language.signup_code}', required )
+          div.form-control.form-code
+            div.between
+              input#code(type='text', name='verfication_code', placeholder='#{language.signup_code}', required )
               button#getCode.btn-green(disabled='disabled') 获取验证码
             span.text-danger
           div.form-control.form-company-scale

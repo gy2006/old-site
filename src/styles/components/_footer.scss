@@ -1,6 +1,5 @@
 .footer-wrap{
-  width: 880px;
-  margin-bottom: 40px!important;
+  // margin-bottom: 40px!important;
   height: 36px;
   display: flex;
   align-items: stretch;
@@ -22,5 +21,14 @@
     font-size: 14px;
     padding: 0;
     height: 100%;
+  }
+}
+.beian{
+  text-align: center;
+  margin: 20px 0;
+  >a{
+    display:inline-block;
+    text-decoration:none;
+    font-size: 12px;
   }
 }

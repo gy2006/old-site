@@ -1,8 +1,12 @@
 block language
-div.footer-wrap.content-wrapper-270
-  <a href="https://mixpanel.com/f/partner" class="mixpanel-footer" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
-  if locale === 'zh'
-    button.language(value='en') English
-  else
-    button.language(value='zh') 中文
-
+div.content-wrapper-270
+  div.footer-wrap
+    <a href="https://mixpanel.com/f/partner" class="mixpanel-footer" rel="nofollow"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+    if locale === 'zh'
+      button.language(value='en') English
+    else
+      button.language(value='zh') 中文
+  div.beian
+    a(target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502030718")
+      img(src=require("../static/images/beianbgs.png") style="float:left;")
+      p(style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;") 京公网安备 11010502030718号

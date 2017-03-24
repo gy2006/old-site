@@ -7,6 +7,7 @@ import saveAccessToken from './saveAccessToken'
 import redirectToDashboard from './redirectToDashboard'
 import { get as getCookie, clear as clearCookie } from '../util/cookies'
 import getSearch from '../util/getSearch'
+import Errors from '../errors'
 
 export function getUserToken () {
   return getCookie(COOKIE_KEY)
@@ -23,6 +24,18 @@ export function get (userToken) {
   })
 }
 
+export function getVerifyCode (email, tel) {
+  return $.ajax(`${__API__}/sms/verification_code`, {
+    method: 'post',
+    data: {
+      email,
+      phone_number: tel,
+      locale: Browser.locale === 'en' ? 'en' : 'zh-CN'
+    }
+  }).fail((e) => {
+    alert(Errors(e))
+  })
+}
 export function test (userToken) {
   const token = userToken || getUserToken()
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
@@ -73,6 +86,7 @@ export function resetPassword (token, password) {
 
 export default {
   get: get,
+  getVerifyCode,
   test: test,
   create: create,
   getUserToken,

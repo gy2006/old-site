@@ -72,7 +72,7 @@ function initValidate () {
     rules: 'required',
     errorElement: '#signup-form .form-company-scale .text-danger'
   }, {
-    name: 'verfication_code',
+    name: 'verification_code',
     reules: 'required',
     errorElement: '#signup-form .form-code .text-danger'
   }], {

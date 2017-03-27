@@ -164,6 +164,8 @@ export default class FormValidator {
     this.options = options
     this.onerror = options.onerror || noop
 
+    this.errors = {}
+
     this.fields = fields
     this.validators = Object.assign({}, FormValidator.getDefaultValidators(),
       options.validators)

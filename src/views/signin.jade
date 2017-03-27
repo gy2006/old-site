@@ -13,6 +13,7 @@ block content
             input#password(placeholder='#{language.signin_password}', name='password', type='password', required)
             span.text-danger.pull-left
           div.text-danger.form-error
-          input(type='submit', value='#{language.signin_button}')
+          div.form-actions
+            input(type='submit', value='#{language.signin_button}')
           div
             a(href='/password_reset.html' id='password_reset') #{language.forget_password}

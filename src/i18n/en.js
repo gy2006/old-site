@@ -44,6 +44,7 @@ module.exports = {
   "signup_company": "Company",
   "signup_job": "Job",
   "signup_telephone": "Telephone",
+  "signup_code": "验证码",
   "signup_company_size": "Choose Size of development team",
   "signup_button": "Create an account",
 

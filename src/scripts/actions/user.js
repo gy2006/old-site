@@ -23,6 +23,16 @@ export function get (userToken) {
   })
 }
 
+export function getVerifyCode (email, tel) {
+  return $.ajax(`${__API__}/sms/verification_code`, {
+    method: 'post',
+    data: {
+      email,
+      phone_number: tel,
+      locale: Browser.locale === 'en' ? 'en' : 'zh-CN'
+    }
+  })
+}
 export function test (userToken) {
   const token = userToken || getUserToken()
   return $.ajax(`${GETUSER_URL}?access_token=${token}`, {
@@ -73,6 +83,7 @@ export function resetPassword (token, password) {
 
 export default {
   get: get,
+  getVerifyCode,
   test: test,
   create: create,
   getUserToken,

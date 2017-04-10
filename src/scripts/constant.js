@@ -28,6 +28,8 @@ export const SESSION_COOKIE_CONFIG = Object.assign({}, BASE_COOKIE_CONFIG, {
 })
 
 // export const COOKIE_KEY = 'flow_session'
+export const CD_COOKIE_KEY = 'cd_flow_session'
+
 export const COOKIE_KEY = __TARGET__ === 'production' ? 'flow_session' : `flow_session_${__TARGET__}`
 
 export const REDIRECT_KEY = __TARGET__ === 'production' ? 'flow_previous_url' : `flow_${__TARGET__}_previous_url`

@@ -38,10 +38,10 @@ function initValidate () {
 
 function OauthLogin () {
   const token = User.getUserToken()
+  const cdToken = User.getCdUserToken()
   const params = getSearch()
   const { code, redirect_uri: url } = params
-  console.log(token)
-  alert(token)
+  console.log(token, cdToken)
   if (!!code && !!url && url.includes('club.flow.ci') && token) {
     $('#signin-form').html('登录成功')
     $.ajax({
@@ -54,7 +54,7 @@ function OauthLogin () {
         throw new Error(error)
       }
     })
-  } else if (!!code && !!url && url.includes('cd-lyon.flow.ci') && token) {
+  } else if (!!code && !!url && url.includes('cd-lyon.flow.ci') && cdToken) {
     $('#signin-form').html('登录成功')
     setTimeout(function () {
       window.location.href = `${params.redirect_uri}?code=${params.code}`

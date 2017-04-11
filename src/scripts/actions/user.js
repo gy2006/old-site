@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import Browser from '../util/browser'
 
-import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
+import { COOKIE_KEY, CD_COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
 import analysis from './analysis'
 import saveAccessToken from './saveAccessToken'
 import redirectToDashboard from './redirectToDashboard'
@@ -13,7 +13,7 @@ export function getUserToken () {
 }
 
 export function getCdUserToken () {
-  return getCookie(COOKIE_KEY)
+  return getCookie(CD_COOKIE_KEY)
 }
 
 export function removeUserToken () {
@@ -44,6 +44,12 @@ export function test (userToken) {
   })
 }
 
+function toFlowCd () {
+  setTimeout(function () {
+    window.location.href = 'http://cd-lyon.flow.ci/login/cb'
+  }, 500)
+}
+
 export function create (user) {
   const urlParams = getSearch()
   const locale = Browser.locale === 'en' ? 'en' : 'zh-CN'
@@ -53,6 +59,9 @@ export function create (user) {
   }).done(function (resp) {
     const accessToken = resp.access_token
     saveAccessToken(accessToken)
+    if (urlParams.redirect_uri && urlParams.redirect_uri.includes('cd-lyon.flow.ci')) {
+      return toFlowCd()
+    }
     analysis.event.signUp(user, urlParams, function () {
       redirectToDashboard(accessToken)
     })

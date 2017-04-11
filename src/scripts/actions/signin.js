@@ -16,11 +16,11 @@ export default function signIn (data) {
     url: SIGNIN_URL,
     data: Object.assign(data, { locale }, { code })
   }).done((resp) => {
+    const accessToken = resp.access_token
+    saveAccessToken(accessToken)
     if (params.redirect_uri && params.redirect_uri.includes('cd-lyon.flow.ci')) {
       return window.location.href = `${params.redirect_uri}?code=${params.code}`
     }
-    const accessToken = resp.access_token
-    saveAccessToken(accessToken)
     if (!!params.code && !!params.redirect_uri) {
       window.location.href = `${params.redirect_uri}?code=${params.code}`
     } else {

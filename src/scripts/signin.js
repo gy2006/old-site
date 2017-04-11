@@ -41,7 +41,6 @@ function OauthLogin () {
   const cdToken = User.getCdUserToken()
   const params = getSearch()
   const { code, redirect_uri: url } = params
-  console.log(token, cdToken)
   if (!!code && !!url && url.includes('club.flow.ci') && token) {
     $('#signin-form').html('登录成功')
     $.ajax({

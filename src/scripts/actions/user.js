@@ -12,6 +12,10 @@ export function getUserToken () {
   return getCookie(COOKIE_KEY)
 }
 
+export function getCdUserToken () {
+  return getCookie(COOKIE_KEY)
+}
+
 export function removeUserToken () {
   return clearCookie(COOKIE_KEY, SESSION_COOKIE_CONFIG)
 }
@@ -89,5 +93,6 @@ export default {
   getUserToken,
   removeUserToken,
   forgetPassword,
-  resetPassword
+  resetPassword,
+  getCdUserToken
 }

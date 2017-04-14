@@ -103,7 +103,7 @@ $color-flow-line: $color-grey;
       width: 90%;
       max-width: 560px;
       margin: 0px auto;
-      text-align: center;
+      // text-align: center;
     }
     .lang{
       display: inline-block;
@@ -255,10 +255,10 @@ $color-flow-line: $color-grey;
     }
     .languages{
       .lang{
-        width: 33%;
+        width: (100% / 3);
         >i{
-          width: 120px;
-          height: 120px;
+          width: 110px;
+          height: 110px;
           margin-bottom: 36px;
         }
       }
@@ -343,7 +343,7 @@ $color-flow-line: $color-grey;
         width: 100%;
         max-width: 100%;
         .lang{
-          width: 15%;
+          width: (100% / 7);
         }
       }
     }

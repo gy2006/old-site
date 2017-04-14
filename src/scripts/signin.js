@@ -38,8 +38,10 @@ function initValidate () {
 
 function OauthLogin () {
   const token = User.getUserToken()
+  const cdToken = User.getCdUserToken()
   const params = getSearch()
-  if (!!params.code && !!params.redirect_uri && token) {
+  const { code, redirect_uri: url } = params
+  if (!!code && !!url && url.includes('club.flow.ci') && token) {
     $('#signin-form').html('登录成功')
     $.ajax({
       url: `${GET_OAUTHCODE_URL}?access_token=${token}&code=${params.code}`,
@@ -51,6 +53,11 @@ function OauthLogin () {
         throw new Error(error)
       }
     })
+  } else if (!!code && !!url && url.includes('cd.flow.ci') && cdToken) {
+    $('#signin-form').html('登录成功')
+    setTimeout(function () {
+      window.location.href = `${params.redirect_uri}?code=${params.code}`
+    }, 1000)
   }
 }
 export default function bootstrap () {

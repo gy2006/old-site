@@ -36,6 +36,7 @@
     "html-webpack-plugin": "^2.9.0",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
+    "js-cookie": "^2.1.4",
     "json-loader": "^0.5.4",
     "karma": "^0.13.22",
     "mixpanel-browser": "git://github.com/FIRHQ/mixpanel-js.git#v2.11.0",

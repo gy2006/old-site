@@ -1,16 +1,20 @@
-export function save (name, value, options = {}) {
-  let cookie = `${name}=${value};`
-  for (const key in options) {
-    cookie += `${key}=${options[key]};`
+import JsCookies from 'js-cookie'
+
+const Cookies = JsCookies.withConverter({
+  read: function (cookie, name) {
+    return cookie
+  },
+  write: function (value, key) {
+    return value
   }
-  // console.log(cookie);
-  document.cookie = cookie
+})
+
+export function save (name, value, options = {}) {
+  Cookies.set(name, value, options)
 }
 
 export function get (name) {
-  const reg = new RegExp(`\\s*${name}=([^;]*)`)
-  const match = document.cookie.match(reg)
-  return match && match.length ? match[1] : undefined
+  return Cookies.get(name)
 }
 
 export function clear (name, options = {}) {

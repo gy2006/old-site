@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import Browser from '../util/browser'
 
-import { COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
+import { COOKIE_KEY, CD_COOKIE_KEY, GETUSER_URL, SIGNUP_URL, FORGET_PASSWORD_URL, RESET_PASSWORD_URL, SESSION_COOKIE_CONFIG } from '../constant'
 import analysis from './analysis'
 import saveAccessToken from './saveAccessToken'
 import redirectToDashboard from './redirectToDashboard'
@@ -10,6 +10,10 @@ import getSearch from '../util/getSearch'
 
 export function getUserToken () {
   return getCookie(COOKIE_KEY)
+}
+
+export function getCdUserToken () {
+  return getCookie(CD_COOKIE_KEY)
 }
 
 export function removeUserToken () {
@@ -40,6 +44,12 @@ export function test (userToken) {
   })
 }
 
+function toFlowCd () {
+  setTimeout(function () {
+    window.location.href = 'http://cd.flow.ci/login/cb'
+  }, 500)
+}
+
 export function create (user) {
   const urlParams = getSearch()
   const locale = Browser.locale === 'en' ? 'en' : 'zh-CN'
@@ -49,6 +59,9 @@ export function create (user) {
   }).done(function (resp) {
     const accessToken = resp.access_token
     saveAccessToken(accessToken)
+    if (urlParams.redirect_uri && urlParams.redirect_uri.includes('cd.flow.ci')) {
+      return toFlowCd()
+    }
     analysis.event.signUp(user, urlParams, function () {
       redirectToDashboard(accessToken)
     })
@@ -89,5 +102,6 @@ export default {
   getUserToken,
   removeUserToken,
   forgetPassword,
-  resetPassword
+  resetPassword,
+  getCdUserToken
 }

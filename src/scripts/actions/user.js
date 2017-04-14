@@ -46,7 +46,7 @@ export function test (userToken) {
 
 function toFlowCd () {
   setTimeout(function () {
-    window.location.href = 'http://cd-lyon.flow.ci/login/cb'
+    window.location.href = 'http://cd.flow.ci/login/cb'
   }, 500)
 }
 
@@ -59,7 +59,7 @@ export function create (user) {
   }).done(function (resp) {
     const accessToken = resp.access_token
     saveAccessToken(accessToken)
-    if (urlParams.redirect_uri && urlParams.redirect_uri.includes('cd-lyon.flow.ci')) {
+    if (urlParams.redirect_uri && urlParams.redirect_uri.includes('cd.flow.ci')) {
       return toFlowCd()
     }
     analysis.event.signUp(user, urlParams, function () {

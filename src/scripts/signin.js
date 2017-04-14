@@ -53,7 +53,7 @@ function OauthLogin () {
         throw new Error(error)
       }
     })
-  } else if (!!code && !!url && url.includes('cd-lyon.flow.ci') && cdToken) {
+  } else if (!!code && !!url && url.includes('cd.flow.ci') && cdToken) {
     $('#signin-form').html('登录成功')
     setTimeout(function () {
       window.location.href = `${params.redirect_uri}?code=${params.code}`

@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block navbar
+block content
+  .page-404
+    h1 oops, the page not found
+    div.imgWrap
+      img(src=require('../static/images/404.png'))
+      div.actions
+        a(class='btn btn-home' href='/') Go Home
+block footer

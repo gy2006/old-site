@@ -9,7 +9,7 @@
   h1{
     font-weight: bold;
     font-size: 26px;
-    color: #4F5565;
+    color: $col-black;
     margin-bottom: 70px;
   }
   .imgWrap{
@@ -27,7 +27,7 @@
     }
   }
   .btn-home{
-    background-color: #4F5565;
+    background-color: $col-black;
     color: #fff;
     font-weight: bold;
     font-size: 20px;

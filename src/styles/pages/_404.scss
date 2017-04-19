@@ -1,10 +1,11 @@
 .page-404{
   height: 100vh;
-  min-height: 600px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background: #F6F5F5;
   h1{
     font-weight: bold;
     font-size: 26px;
@@ -41,6 +42,7 @@
     }
   }
   @media (max-width: 480px) {
+    min-height: 600px;
     .imgWrap{
       margin-bottom: 30px;
       >img{

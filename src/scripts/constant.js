@@ -1,6 +1,6 @@
 export const EMAIL_REG = /^[a-zA-Z0-9_+.-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,6}/i
 // 已字母开头，数字或字母结尾
-export const USERNAME_REG = /^\w{3,15}$/ // /^[0-9a-zA-Z]{3,15}$/;
+export const USERNAME_REG = /^\w{2,15}$/ // /^[0-9a-zA-Z]{3,15}$/;
 
 // set default cookie config
 let host = location.hostname.split('.')

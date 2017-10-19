@@ -129,7 +129,6 @@ if (nconf.get('NODE_ENV') === 'production') {
 //       filename: path.basename(file, '.jade') + '.html',
 //       inject: 'body',
 //       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-//       bughd_token: targetConfig['__BUGHD_TOKEN__'],
 //       locale: defaultLanguage,
 //       language: i18n[defaultLanguage]
 //     })
@@ -168,7 +167,6 @@ glob.sync('./src/views/**/*.jade').map(file => {
           filename: locale + '/' + baseName + '.html',
           inject: 'body',
           favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-          bughd_token: targetConfig['__BUGHD_TOKEN__'],
           locale: locale,
           last_modify: timeStamp.toISOString(),
           language: i18n[locale]
@@ -182,7 +180,6 @@ glob.sync('./src/views/**/*.jade').map(file => {
       filename: baseName + '.html',
       inject: 'body',
       favicon: path.resolve(__dirname, 'src/static/favicon.ico'),
-      bughd_token: targetConfig['__BUGHD_TOKEN__'],
       locale: defaultLanguage,
       last_modify: timeStamp.toISOString(),
       language: i18n[defaultLanguage]

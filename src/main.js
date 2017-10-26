@@ -5,7 +5,6 @@ import User from './scripts/actions/user'
 import { getDashboardUrl } from './scripts/actions/redirectToDashboard'
 import home from './scripts/home'
 import signin from './scripts/signin'
-import signup from './scripts/signup'
 import resetPassword from './scripts/password'
 import pricing from './scripts/pricing'
 import analysis from './scripts/actions/analysis'
@@ -116,9 +115,7 @@ function bootstrap () {
     // window.drift.identify('visitor')
   }
 
-  if (/^\/signup(\.html)?/.test(path)) {
-    signup()
-  } else if (/^\/signin(\.html)?/.test(path)) {
+  if (/^\/signin(\.html)?/.test(path)) {
     signin()
   } else if (/^\/password_reset(\.html)?/.test(path)) {
     resetPassword()

@@ -106,13 +106,9 @@ function bootstrap () {
       const $navAvator = $navUser.find('.avator')
       $navLink.attr('href', getDashboardUrl(token))
       $navAvator.attr('src', userInfo.avatar)
-      const { id, username, email } = userInfo
-      window.drift.identify(id, { name: username, email })
     }).fail(function () {
       User.removeUserToken()
     })
-  } else {
-    // window.drift.identify('visitor')
   }
 
   if (/^\/signin(\.html)?/.test(path)) {

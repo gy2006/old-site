@@ -3,10 +3,8 @@ import $ from 'jquery'
 import './scripts/polyfill/assign'
 import User from './scripts/actions/user'
 import { getDashboardUrl } from './scripts/actions/redirectToDashboard'
-import home from './scripts/home'
 import signin from './scripts/signin'
 import resetPassword from './scripts/password'
-import pricing from './scripts/pricing'
 import analysis from './scripts/actions/analysis'
 import getSearch from './scripts/util/getSearch'
 import setLocale from './scripts/actions/setLocale'
@@ -115,10 +113,6 @@ function bootstrap () {
     signin()
   } else if (/^\/password_reset(\.html)?/.test(path)) {
     resetPassword()
-  } else if (path === '/') {
-    home()
-  } else if (/^\/pricing(\.html)?/.test(path)) {
-    pricing()
   }
 }
 

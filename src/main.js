@@ -2,7 +2,7 @@ import './styles/main.scss'
 import $ from 'jquery'
 import './scripts/polyfill/assign'
 import User from './scripts/actions/user'
-import { getDashboardUrl } from './scripts/actions/redirectToDashboard'
+import redirectToDashboard, { getDashboardUrl } from './scripts/actions/redirectToDashboard'
 import signin from './scripts/signin'
 import resetPassword from './scripts/password'
 import analysis from './scripts/actions/analysis'
@@ -104,6 +104,9 @@ function bootstrap () {
       const $navAvator = $navUser.find('.avator')
       $navLink.attr('href', getDashboardUrl(token))
       $navAvator.attr('src', userInfo.avatar)
+      if (path === '/') {
+        redirectToDashboard()
+      }
     }).fail(function () {
       User.removeUserToken()
     })

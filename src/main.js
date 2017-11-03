@@ -3,10 +3,8 @@ import $ from 'jquery'
 import './scripts/polyfill/assign'
 import User from './scripts/actions/user'
 import { getDashboardUrl } from './scripts/actions/redirectToDashboard'
-import home from './scripts/home'
 import signin from './scripts/signin'
 import resetPassword from './scripts/password'
-import pricing from './scripts/pricing'
 import analysis from './scripts/actions/analysis'
 import getSearch from './scripts/util/getSearch'
 import setLocale from './scripts/actions/setLocale'
@@ -106,23 +104,15 @@ function bootstrap () {
       const $navAvator = $navUser.find('.avator')
       $navLink.attr('href', getDashboardUrl(token))
       $navAvator.attr('src', userInfo.avatar)
-      const { id, username, email } = userInfo
-      window.drift.identify(id, { name: username, email })
     }).fail(function () {
       User.removeUserToken()
     })
-  } else {
-    // window.drift.identify('visitor')
   }
 
   if (/^\/signin(\.html)?/.test(path)) {
     signin()
   } else if (/^\/password_reset(\.html)?/.test(path)) {
     resetPassword()
-  } else if (path === '/') {
-    home()
-  } else if (/^\/pricing(\.html)?/.test(path)) {
-    pricing()
   }
 }
 

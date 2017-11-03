@@ -25,428 +25,346 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-java {
-  &:before {
-    content: $icon-java;
-  }
-}
-.icon-close {
-  &:before {
-    content: $icon-close;
-  }
-}
-.icon-users {
-  &:before {
-    content: $icon-users;
-  }
-}
-.icon-battery-1 {
-  &:before {
-    content: $icon-battery-1;
-  }
-}
-.icon-book {
-  &:before {
-    content: $icon-book;
-  }
-}
-.icon-file {
-  &:before {
-    content: $icon-file;
-  }
-}
-.icon-box {
-  &:before {
-    content: $icon-box;
-  }
-}
-.icon-logo {
-  &:before {
-    content: $icon-logo;
-  }
-}
-.icon-cog {
-  &:before {
-    content: $icon-cog;
-  }
-}
-.icon-repo-push {
-  &:before {
-    content: $icon-repo-push;
-  }
-}
-.icon-menu {
-  &:before {
-    content: $icon-menu;
-  }
-}
-.icon-code-fork {
-  &:before {
-    content: $icon-code-fork;
-  }
-}
-.icon-git-commit {
-  &:before {
-    content: $icon-git-commit;
-  }
-}
-.icon-dots-three-horizontal {
-  &:before {
-    content: $icon-dots-three-horizontal;
-  }
-}
-.icon-logout {
-  &:before {
-    content: $icon-logout;
-  }
-}
-.icon-owner {
-  &:before {
-    content: $icon-owner;
-  }
-}
-.icon-timer {
-  &:before {
-    content: $icon-timer;
-  }
-}
-.icon-wechat {
-  &:before {
-    content: $icon-wechat;
-  }
-}
-.icon-android {
-  &:before {
-    content: $icon-android;
-  }
-}
-.icon-search {
-  &:before {
-    content: $icon-search;
-  }
-}
-.icon-trash {
-  &:before {
-    content: $icon-trash;
-  }
-}
-.icon-coding_net {
-  &:before {
-    content: $icon-coding_net;
-  }
-}
-.icon-key {
-  &:before {
-    content: $icon-key;
-  }
-}
-.icon-bell {
-  &:before {
-    content: $icon-bell;
-  }
-}
-.icon-hour-glass {
-  &:before {
-    content: $icon-hour-glass;
-  }
-}
-.icon-ruby {
-  &:before {
-    content: $icon-ruby;
-  }
-}
-.icon-apple {
-  &:before {
-    content: $icon-apple;
-  }
-}
-.icon-left {
-  &:before {
-    content: $icon-left;
-  }
-}
-.icon-code {
-  &:before {
-    content: $icon-code;
-  }
-}
-.icon-down {
-  &:before {
-    content: $icon-down;
-  }
-}
-.icon-right {
-  &:before {
-    content: $icon-right;
-  }
-}
-.icon-bitbucket {
-  &:before {
-    content: $icon-bitbucket;
-  }
-}
-.icon-stack {
-  &:before {
-    content: $icon-stack;
-  }
-}
-.icon-battery-0 {
-  &:before {
-    content: $icon-battery-0;
-  }
-}
-.icon-git-pull-request {
-  &:before {
-    content: $icon-git-pull-request;
-  }
-}
-.icon-spinner5 {
-  &:before {
-    content: $icon-spinner5;
-  }
-}
-.icon-home {
-  &:before {
-    content: $icon-home;
-  }
-}
-.icon-computer {
-  &:before {
-    content: $icon-computer;
-  }
-}
-.icon-plus {
-  &:before {
-    content: $icon-plus;
-  }
-}
-.icon-edit {
-  &:before {
-    content: $icon-edit;
-  }
-}
-.icon-user {
-  &:before {
-    content: $icon-user;
-  }
-}
-.icon-paper-plane {
-  &:before {
-    content: $icon-paper-plane;
-  }
-}
-.icon-question {
-  &:before {
-    content: $icon-question;
-  }
-}
-.icon-github {
-  &:before {
-    content: $icon-github;
-  }
-}
-.icon-monitor {
-  &:before {
-    content: $icon-monitor;
-  }
-}
-.icon-nodejs {
-  &:before {
-    content: $icon-nodejs;
-  }
-}
-.icon-rails {
-  &:before {
-    content: $icon-rails;
-  }
-}
-.icon-battery-2 {
-  &:before {
-    content: $icon-battery-2;
-  }
-}
-.icon-radio-checked {
-  &:before {
-    content: $icon-radio-checked;
-  }
-}
-.icon-magic {
-  &:before {
-    content: $icon-magic;
-  }
-}
-.icon-pencil {
-  &:before {
-    content: $icon-pencil;
-  }
-}
-.icon-alert {
-  &:before {
-    content: $icon-alert;
-  }
-}
-.icon-repo {
-  &:before {
-    content: $icon-repo;
-  }
-}
-.icon-check {
-  &:before {
-    content: $icon-check;
-  }
-}
-.icon-coding_net-full {
-  &:before {
-    content: $icon-coding_net-full;
-  }
-}
-.icon-blocked {
-  &:before {
-    content: $icon-blocked;
-  }
-}
-.icon-battery-3 {
-  &:before {
-    content: $icon-battery-3;
-  }
-}
-.icon-battery-4 {
-  &:before {
-    content: $icon-battery-4;
-  }
-}
-.icon-github-full {
-  &:before {
-    content: $icon-github-full;
-  }
-}
-.icon-terminal {
-  &:before {
-    content: $icon-terminal;
-  }
-}
-.icon-locked {
-  &:before {
-    content: $icon-locked;
-  }
-}
-.icon-bolt {
-  &:before {
-    content: $icon-bolt;
-  }
-}
-.icon-chain-broken {
-  &:before {
-    content: $icon-chain-broken;
-  }
-}
-.icon-gitter {
-  &:before {
-    content: $icon-gitter;
-  }
-}
-.icon-gitbook {
-  &:before {
-    content: $icon-gitbook;
-  }
-}
-.icon-cog2 {
-  &:before {
-    content: $icon-cog2;
-  }
-}
-.icon-bitbucket-full {
-  &:before {
-    content: $icon-bitbucket-full;
-  }
-}
-.icon-prepare {
-  &:before {
-    content: $icon-prepare;
-  }
-}
-.icon-failure {
-  &:before {
-    content: $icon-failure;
-  }
-}
-.icon-loop {
-  &:before {
-    content: $icon-loop;
-  }
-}
-.icon-sync {
-  &:before {
-    content: $icon-sync;
-  }
-}
-.icon-upload {
-  &:before {
-    content: $icon-upload;
-  }
-}
-.icon-club {
-  &:before {
-    content: $icon-club;
-  }
-}
-.icon-date {
-  &:before {
-    content: $icon-date;
-  }
-}
-.icon-shape {
-  &:before {
-    content: $icon-shape;
-  }
-}
-.icon-python {
-  &:before {
-    content: $icon-python;
-  }
-}
-.icon-php {
-  &:before {
-    content: $icon-php;
-  }
-}
-.icon-eye {
-  &:before {
-    content: $icon-eye;
-  }
-}
-.icon-eye-blocked {
-  &:before {
-    content: $icon-eye-blocked;
-  }
-}
-.icon-star-empty {
-  &:before {
-    content: $icon-star-empty;
-  }
-}
-.icon-star-full {
-  &:before {
-    content: $icon-star-full;
-  }
-}
-.icon-checkbox-checked {
-  &:before {
-    content: $icon-checkbox-checked;
-  }
-}
-.icon-checkbox-unchecked {
-  &:before {
-    content: $icon-checkbox-unchecked;
-  }
-}
-.icon-file-code {
-  &:before {
-    content: $icon-file-code;
-  }
-}
-.icon-gitlab {
-  &:before {
-    content: $icon-gitlab;
-  }
+.icon-brace-left:before {
+  content: "\e900";
+}
+
+.icon-logo:before {
+  content: "\e907";
+}
+
+.icon-close:before {
+  content: "\e600";
+}
+
+.icon-users:before {
+  content: "\e901";
+}
+
+.icon-battery-1:before {
+  content: "\e902";
+}
+
+.icon-book:before {
+  content: "\e903";
+}
+
+.icon-file:before {
+  content: "\e904";
+}
+
+.icon-box:before {
+  content: "\e905";
+}
+
+.icon-cog:before {
+  content: "\e906";
+}
+
+.icon-repo-push:before {
+  content: "\e908";
+}
+
+.icon-menu:before {
+  content: "\e909";
+}
+
+.icon-code-fork:before {
+  content: "\e90a";
+}
+
+.icon-git-commit:before {
+  content: "\e90b";
+}
+
+.icon-dots-three-horizontal:before {
+  content: "\e90c";
+}
+
+.icon-logout:before {
+  content: "\e90d";
+}
+
+.icon-owner:before {
+  content: "\e90e";
+}
+
+.icon-timer:before {
+  content: "\e90f";
+}
+
+.icon-wechat:before {
+  content: "\e910";
+}
+
+.icon-android:before {
+  content: "\e911";
+}
+
+.icon-search:before {
+  content: "\e912";
+}
+
+.icon-trash:before {
+  content: "\e913";
+}
+
+.icon-coding_net:before {
+  content: "\e914";
+}
+
+.icon-key:before {
+  content: "\e915";
+}
+
+.icon-bell:before {
+  content: "\e916";
+}
+
+.icon-hour-glass:before {
+  content: "\e917";
+}
+
+.icon-ruby:before {
+  content: "\e918";
+}
+
+.icon-apple:before {
+  content: "\e919";
+}
+
+.icon-left:before {
+  content: "\e91a";
+}
+
+.icon-code:before {
+  content: "\e91b";
+}
+
+.icon-down:before {
+  content: "\e91c";
+}
+
+.icon-right:before {
+  content: "\e91d";
+}
+
+.icon-bitbucket:before {
+  content: "\e91e";
+}
+
+.icon-stack:before {
+  content: "\e91f";
+}
+
+.icon-battery-0:before {
+  content: "\e920";
+}
+
+.icon-git-pull-request:before {
+  content: "\e921";
+}
+
+.icon-spinner5:before {
+  content: "\e922";
+}
+
+.icon-home:before {
+  content: "\e923";
+}
+
+.icon-computer:before {
+  content: "\e924";
+}
+
+.icon-plus:before {
+  content: "\e925";
+}
+
+.icon-edit:before {
+  content: "\e926";
+}
+
+.icon-user:before {
+  content: "\e927";
+}
+
+.icon-paper-plane:before {
+  content: "\e928";
+}
+
+.icon-question:before {
+  content: "\e929";
+}
+
+.icon-github:before {
+  content: "\e92a";
+}
+
+.icon-monitor:before {
+  content: "\e92b";
+}
+
+.icon-nodejs:before {
+  content: "\e92c";
+}
+
+.icon-rails:before {
+  content: "\e92d";
+}
+
+.icon-battery-2:before {
+  content: "\e92e";
+}
+
+.icon-radio-checked:before {
+  content: "\e92f";
+}
+
+.icon-magic:before {
+  content: "\e930";
+}
+
+.icon-pencil:before {
+  content: "\e931";
+}
+
+.icon-alert:before {
+  content: "\e932";
+}
+
+.icon-repo:before {
+  content: "\e933";
+}
+
+.icon-check:before {
+  content: "\e934";
+}
+
+.icon-coding_net-full:before {
+  content: "\e935";
+}
+
+.icon-blocked:before {
+  content: "\e936";
+}
+
+.icon-battery-3:before {
+  content: "\e937";
+}
+
+.icon-battery-4:before {
+  content: "\e938";
+}
+
+.icon-github-full:before {
+  content: "\e939";
+}
+
+.icon-terminal:before {
+  content: "\e93a";
+}
+
+.icon-locked:before {
+  content: "\e93b";
+}
+
+.icon-bolt:before {
+  content: "\e93c";
+}
+
+.icon-chain-broken:before {
+  content: "\e93d";
+}
+
+.icon-gitter:before {
+  content: "\e93e";
+}
+
+.icon-gitbook:before {
+  content: "\e93f";
+}
+
+.icon-cog2:before {
+  content: "\e940";
+}
+
+.icon-bitbucket-full:before {
+  content: "\e941";
+}
+
+.icon-prepare:before {
+  content: "\e942";
+}
+
+.icon-failure:before {
+  content: "\e943";
+}
+
+.icon-loop:before {
+  content: "\e944";
+}
+
+.icon-sync:before {
+  content: "\e945";
+}
+
+.icon-upload:before {
+  content: "\e946";
+}
+
+.icon-club:before {
+  content: "\e947";
+}
+
+.icon-date:before {
+  content: "\e948";
+}
+
+.icon-shape:before {
+  content: "\e949";
+}
+
+.icon-java:before {
+  content: "\e94a";
+}
+
+.icon-python:before {
+  content: "\e94b";
+}
+
+.icon-php:before {
+  content: "\e94c";
+}
+
+.icon-eye:before {
+  content: "\e9ce";
+}
+
+.icon-eye-blocked:before {
+  content: "\e9d1";
+}
+
+.icon-star-empty:before {
+  content: "\e9d7";
+}
+
+.icon-star-full:before {
+  content: "\e9d9";
+}
+
+.icon-checkbox-checked:before {
+  content: "\ea52";
+}
+
+.icon-checkbox-unchecked:before {
+  content: "\ea53";
+}
+
+.icon-file-code:before {
+  content: "\f010";
+}
+
+.icon-gitlab:before {
+  content: "\f296";
 }

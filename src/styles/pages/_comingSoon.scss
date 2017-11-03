@@ -27,7 +27,7 @@
   a{
     color: #F8E71C;
     &:hover{
-      color: lighten(#F8E71C, 10%);
+      color: darken(#F8E71C, 10%);
     }
   }
   .open {
@@ -41,6 +41,7 @@
     margin-right: -70px;
     margin-bottom: -200px;
     user-select: none;
+    pointer-events: none;
   }
   .content{
     margin-top: 70px;

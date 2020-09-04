@@ -41,7 +41,7 @@
     "karma": "^0.13.22",
     "mixpanel-browser": "git://github.com/FIRHQ/mixpanel-js.git#v2.11.2",
     "nconf": "^0.8.4",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.14.1",
     "postcss-loader": "^1.0.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.0",
